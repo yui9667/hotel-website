@@ -1,28 +1,44 @@
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
-
+import './Nav.css';
 const Nav = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
   return (
-    <div className='bg-[#3A3A98]'>
-      <nav>
-        <ul>
-          <li>
-            <a href=''>Home</a>
+    <>
+      <nav className='nav-bar'>
+        <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
+          <li className='nav-item'>
+            <a className='nav-link' href=''>
+              Home
+            </a>
           </li>
-          <li>
-            <a href=''>Account</a>
+          <li className='nav-item'>
+            <a className='nav-link' href=''>
+              Account
+            </a>
           </li>
-          <li>
-            <FontAwesomeIcon icon={faGlobe} />
+          <li className='nav-item'>
+            <FontAwesomeIcon
+              icon={faGlobe}
+              className='nav-item'
+              style={{ color: '#fff' }}
+            />
           </li>
         </ul>
-        <div>
-          <span className=''></span>
-          <span className=''></span>
-          <span className=''></span>
+        <div
+          className={`hamburger ${isOpen ? 'active' : ''}`}
+          onClick={handleClick}
+        >
+          <span className='bar'></span>
+          <span className='bar'></span>
+          <span className='bar'></span>
         </div>
       </nav>
-    </div>
+    </>
   );
 };
 
