@@ -1,19 +1,12 @@
 import mongoose from 'mongoose';
 
-const connectDB = async () => {
-  try {
-  } catch (error) {
-    console.error('Error connecting to MongoDB: ', error.message);
-  }
-};
-
 const hotelSchema = new mongoose.Schema({
   hotelName: {
-    type: string,
+    type: String,
     required: true,
   },
   location: {
-    type: string,
+    type: String,
     required: true,
   },
   price: {
@@ -21,16 +14,25 @@ const hotelSchema = new mongoose.Schema({
     required: true,
   },
   description: {
-    type: string,
+    type: String,
     required: true,
   },
   rating: {
-    type: number,
+    type: Number,
     default: 0,
   },
-  amenities: [string],
-  images: [string],
+  amenities: [String],
+  images: [String],
+  rooms: [
+    {
+      roomType: { type: String, required: true },
+      pricePerNight: { type: Number, required: true },
+      availability: { type: Boolean, default: true },
+      capacity: { type: Number, required: true },
+      description: String,
+    },
+  ],
 });
 
-const hotel = mongoose.model('hotel', hotelSchema);
-export default hotel;
+const Hotel = mongoose.model('Hotel', hotelSchema);
+export default Hotel;

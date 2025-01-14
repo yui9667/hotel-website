@@ -1,10 +1,11 @@
+import dotenv from 'dotenv';
+dotenv.config({ path: './config.env' });
 import express from 'express';
 import mongoose from 'mongoose';
 //import db from './Config/db';
-import dotenv from 'dotenv';
 import connectDB from './Config/db.js';
+import cors from 'cors';
 const app = express();
-dotenv.config({ path: './config.env' });
 connectDB();
 
 //*Start the server
