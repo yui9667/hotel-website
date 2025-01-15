@@ -1,4 +1,4 @@
-import Hotel from '../Models/hotel.model';
+import Hotel from '../Models/hotel.model.js';
 import express from 'express';
 import db from '../Config/db.js';
 const router = express.Router();
@@ -17,7 +17,7 @@ router.get('/hotels', async (req, res) => {
 //*specific hotel
 router.get('/hotel/:id', async (req, res) => {
   const { id } = req.params;
-  const hotel = db.Hotel.FindById(id);
+  const hotel = await Hotel.findById(id);
   if (!hotel) {
     return res.status(404).send({ error: 'Hotel not found' });
   }

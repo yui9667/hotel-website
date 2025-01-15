@@ -4,14 +4,10 @@ dotenv.config();
 
 const connectDB = async () => {
   try {
-    const uri = process.env.DATABASE;
-    console.log('db.js', process.env.DATABASE); // This should output your MongoDB URI
+    const uri = process.env.DATABASE || 'http://localhost:27017/hotelDB';
 
     if (!uri) throw new Error('MongoDB URI is not defined ');
-    await mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(uri);
     console.log('MongoDB connected successfully');
   } catch (error) {
     console.error('Could not connect to MongoDB:', error.message);

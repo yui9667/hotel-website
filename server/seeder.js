@@ -12,12 +12,12 @@ const seederHotels = async () => {
     {
       hotelName: 'Downtown Haven',
       location: 'Malmö',
-      price: 1300,
+      price: 800,
       description:
         'A modern hotel located in the heart of the city, offering easy access to shopping districts and cultural landmarks. Ideal for business and leisure travelers alike.',
       rating: 8.9,
-      amenities: ['Wifi', 'Gym', 'Pool'],
-      images: '',
+      facilities: ['Wifi', 'Gym', 'Pool'],
+      hotelImages: '/images/bank-hotel.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -42,12 +42,12 @@ const seederHotels = async () => {
     {
       hotelName: 'Skyline Retreat',
       location: 'Malmö',
-      price: 1100,
+      price: 700,
       description:
-        'A chic, urban retreat with stunning views of the city skyline. Features a rooftop pool, fine dining, and modern amenities.',
+        'A chic, urban retreat with stunning views of the city skyline. Features a rooftop pool, fine dining, and modern.',
       rating: 8.2,
-      amenities: ['Wifi', 'Car park', 'Sauna'],
-      images: '',
+      facilities: ['Wifi', 'Car park', 'Sauna'],
+      hotelImages: '/images/malmo-hotel.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -72,16 +72,16 @@ const seederHotels = async () => {
     {
       hotelName: 'City Lights Suites',
       location: 'Malmö',
-      price: 1200,
+      price: 600,
       description:
         'An upscale hotel with spacious suites and a vibrant atmosphere. Perfect for guests seeking comfort and convenience.',
       rating: 8.0,
-      amenities: ['Wifi', 'Family room', 'Pool'],
-      images: '',
+      facilities: ['Wifi', 'Family room', 'Pool'],
+      hotelImages: '/images/hotel-malmo.jpg',
       rooms: [
         {
           roomType: 'Single',
-          pricePerNight: 500,
+          pricePerNight: 600,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
@@ -102,12 +102,11 @@ const seederHotels = async () => {
     {
       hotelName: 'Urban Bliss Inn',
       location: 'Malmö',
-      price: 1400,
+      price: 1000,
       description:
         'A budget-friendly hotel that doesn’t compromise on quality. Enjoy cozy rooms, free WiFi, and complimentary breakfast.',
-      rating: 7.8,
-      amenities: ['Wifi', 'Breakfast ', 'Pool'],
-      images: '',
+      facilities: ['Wifi', 'Breakfast ', 'Pool'],
+      hotelImages: '/images/hotel2.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -132,12 +131,12 @@ const seederHotels = async () => {
     {
       hotelName: 'Central Luxe',
       location: 'Malmö',
-      price: 2000,
+      price: 1500,
       description:
         'A luxury hotel known for its elegant interiors and personalized service. Offers exclusive spa treatments and a world-class restaurant.',
       rating: 9.2,
-      amenities: ['Wifi', 'Restaurant', 'Spa'],
-      images: '',
+      facilities: ['Wifi', 'Restaurant', 'Spa'],
+      hotelImages: '/images/gorgeous-hotel.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -162,12 +161,12 @@ const seederHotels = async () => {
     {
       hotelName: 'The Royal Plaza',
       location: 'Gothenburg',
-      price: 2500,
+      price: 2100,
       description:
         'A grand hotel offering a taste of royalty. With opulent rooms and premium facilities, it’s the perfect getaway for those seeking luxury.',
       rating: 8.9,
-      amenities: ['Wifi', 'Gym', 'Bar'],
-      images: '',
+      facilities: ['Wifi', 'Gym', 'Bar'],
+      hotelImages: '/images/grandHotel.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -196,8 +195,8 @@ const seederHotels = async () => {
       description:
         'A serene hotel located near the outskirts, offering breathtaking sunset views and tranquil surroundings.',
       rating: 9.0,
-      amenities: ['Spa', 'Breakfast', 'Pool'],
-      images: '',
+      facilities: ['Spa', 'Breakfast', 'Pool'],
+      hotelImages: '/images/quality-hotel-match.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -222,12 +221,12 @@ const seederHotels = async () => {
     {
       hotelName: 'Seaside Escape',
       location: 'Gothenburg',
-      price: 2500,
+      price: 2000,
       description:
         'A coastal gem with beachfront access, water sports, and fresh seafood dining. Ideal for a relaxing getaway.',
       rating: 9.0,
-      amenities: ['Wifi', 'Breakfast', 'Water sports'],
-      images: '',
+      facilities: ['Wifi', 'Breakfast', 'Water sports'],
+      hotelImages: '/images/hotel-pink.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -252,12 +251,12 @@ const seederHotels = async () => {
     {
       hotelName: 'Harbor Breeze Inn',
       location: 'Gothenburg',
-      price: 1300,
+      price: 2600,
       description:
         'A charming boutique hotel overlooking the harbor. Features nautical-themed rooms and a cozy café.',
       rating: 8.8,
-      amenities: ['Car parking ', 'Gym', 'Cafe'],
-      images: '',
+      facilities: ['Car parking ', 'Gym', 'Cafe'],
+      hotelImages: '/images/hotel-cheap.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -282,12 +281,12 @@ const seederHotels = async () => {
     {
       hotelName: 'Crystal Waters Resort',
       location: 'Gothenburg',
-      price: 2600,
+      price: 2100,
       description:
         'A sprawling resort with lush gardens, multiple pools, and family-friendly activities. A perfect destination for vacationers.',
       rating: 8.4,
-      amenities: ['Wifi', 'Family room', 'Pool'],
-      images: '',
+      facilities: ['Wifi', 'Family room', 'Pool'],
+      hotelImages: '/images/hotel-big.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -312,12 +311,12 @@ const seederHotels = async () => {
     {
       hotelName: 'Grand Oasis',
       location: 'Stockholm',
-      price: 3000,
+      price: 2900,
       description:
         'A luxurious resort with sprawling gardens, infinity pools, and a private golf course. Ideal for romantic getaways.',
       rating: 9.5,
-      amenities: ['Wifi', 'Golf', 'Pool'],
-      images: '',
+      facilities: ['Wifi', 'Golf', 'Pool'],
+      hotelImages: '/images/hotel-gorgeous.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -342,12 +341,12 @@ const seederHotels = async () => {
     {
       hotelName: 'Traveler’s Rest',
       location: 'Stockholm',
-      price: 2500,
+      price: 2100,
       description:
         'A budget-friendly option for backpackers and solo travelers. Features clean rooms, free WiFi, and a 24/7 café.',
       rating: 8.1,
-      amenities: ['Wifi', 'Cafe', 'Front desk[24-hour]'],
-      images: '',
+      facilities: ['Wifi', 'Cafe', 'Front desk[24-hour]'],
+      hotelImages: '/images/king-bed.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -376,8 +375,8 @@ const seederHotels = async () => {
       description:
         'Nestled in the hills, this lodge offers stunning views, cozy cabins, and adventurous hiking trails.',
       rating: 8.5,
-      amenities: ['Wifi', 'Gym', 'Spa'],
-      images: '',
+      facilities: ['Wifi', 'Gym', 'Spa'],
+      hotelImages: '/images/hotel-restaurant.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -406,8 +405,8 @@ const seederHotels = async () => {
       description:
         'A boutique hotel known for its contemporary design and excellent service. Located near cultural hotspots.',
       rating: 8.9,
-      amenities: ['Wifi', 'Gym', 'Hot springs'],
-      images: '',
+      facilities: ['Wifi', 'Gym', 'Hot springs'],
+      hotelImages: '/images/hotel-pink.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -432,12 +431,12 @@ const seederHotels = async () => {
     {
       hotelName: 'Cozy Corner Inn',
       location: 'Stockholm',
-      price: 1300,
+      price: 2500,
       description:
         'A small, family-run inn offering a home-like atmosphere. Enjoy homemade breakfasts and warm hospitality.',
       rating: 7.9,
-      amenities: ['Wifi', 'Family room', 'Breakfast'],
-      images: '',
+      facilities: ['Wifi', 'Family room', 'Breakfast'],
+      hotelImages: '/images/hotel-sea.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -462,14 +461,21 @@ const seederHotels = async () => {
   ];
 
   try {
-    //     await Hotel.deleteMany();
     await connectDB();
+    console.log('Database connected successfully');
+
+    const deleted = await Hotel.deleteMany();
+    console.log(
+      `${deleted.deletedCount} hotels have been deleted from the database`
+    );
     const result = await Hotel.insertMany(hotels);
     console.log(`${result.length} hotels have been added to the database`);
     mongoose.disconnect();
   } catch (error) {
     console.error('Error to seeding hotels:', error);
+  } finally {
     mongoose.disconnect();
+    console.log('Database disconnected!');
   }
 };
 seederHotels();
