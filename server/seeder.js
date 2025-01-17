@@ -105,6 +105,7 @@ const seederHotels = async () => {
       price: 1000,
       description:
         'A budget-friendly hotel that doesn’t compromise on quality. Enjoy cozy rooms, free WiFi, and complimentary breakfast.',
+      rating: 8.2,
       facilities: ['Wifi', 'Breakfast ', 'Pool'],
       hotelImages: '/images/hotel2.jpg',
       rooms: [
