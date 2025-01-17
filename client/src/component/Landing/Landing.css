@@ -8,3 +8,12 @@
   border: 1px solid;
   padding: 2rem;
 }
+.header {
+  background-image: url('../../../public/langing-image.png');
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  /*aspect-ratio: 16 / 5 for the big screen*/
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 5rem;
+}

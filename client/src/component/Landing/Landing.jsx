@@ -1,14 +1,22 @@
 import { useEffect, useState } from 'react';
 import './Landing.css';
+
+//*Select city
+
 const Landing = () => {
   const [hotels, setHotels] = useState([]);
-
+  const [location, setLocation] = useState('');
+  //*this is for showing data from server side
   useEffect(() => {
     const fetchData = async () => {
+      const url = location
+        ? `http://localhost:3002/api/hotel/location/${location}`
+        : 'http://localhost:3002/api/hotels';
+
       try {
-        const response = await fetch('http://localhost:3002/api/hotels');
+        const response = await fetch(url);
         if (!response.ok) {
-          throw new Error('Failed tp fetch data');
+          throw new Error('Failed to fetch data');
         }
         const data = await response.json();
         setHotels(data);
@@ -18,10 +26,28 @@ const Landing = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [location]);
+
   return (
     <div>
-      <h1>Hotel Listings </h1>
+      <header className='header'>
+        <div
+          className='flex flex-col justify-center item-centers text-center p-3'
+          style={{ backgroundColor: 'var(--second-color)' }}
+        >
+          <select
+            id=''
+            name='Select City'
+            className='w-28 rounded text-sm'
+            onChange={(e) => setLocation(e.target.value)}
+          >
+            <option value=''>Select City</option>
+            <option value='Malmö'>Malmö</option>
+            <option value='Gothenburg'>Gothenburg</option>
+            <option value='Stockholm'>Stockholm</option>
+          </select>
+        </div>
+      </header>
       <div>
         {hotels.length > 0 ? (
           hotels.map((hotel, index) => (
@@ -31,7 +57,7 @@ const Landing = () => {
             >
               <div className=' hotel-container'>
                 <img
-                  className='w-full h-full'
+                  className='w-full h-56'
                   key={index}
                   src={`http://localhost:3002${hotel.hotelImages}`}
                   alt={hotel.hotelName}
