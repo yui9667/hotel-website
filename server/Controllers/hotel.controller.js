@@ -24,4 +24,17 @@ router.get('/hotel/:id', async (req, res) => {
   res.send(hotel);
 });
 
+//*Select specific a city
+router.get('/hotel/location/:location', async (req, res) => {
+  const { location } = req.params;
+  const hotels = await Hotel.find();
+  const findLocation = hotels.filter((hotel) => hotel.location === location);
+  if (findLocation.length > 0) {
+    return res.json(findLocation);
+  } else {
+    return res
+      .status(404)
+      .json({ error: ` There are no hotels in ${location}` });
+  }
+});
 export default router;
