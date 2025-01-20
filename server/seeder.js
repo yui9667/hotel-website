@@ -34,7 +34,7 @@ const seederHotels = async () => {
         {
           roomType: 'Twin',
           pricePerNight: 1800,
-          capacity: 2,
+          capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
       ],
@@ -64,7 +64,7 @@ const seederHotels = async () => {
         {
           roomType: 'Twin',
           pricePerNight: 1500,
-          capacity: 2,
+          capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
       ],
@@ -94,7 +94,7 @@ const seederHotels = async () => {
         {
           roomType: 'Twin',
           pricePerNight: 1000,
-          capacity: 2,
+          capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
       ],
@@ -124,7 +124,7 @@ const seederHotels = async () => {
         {
           roomType: 'Twin',
           pricePerNight: 1200,
-          capacity: 2,
+          capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
       ],
@@ -154,7 +154,7 @@ const seederHotels = async () => {
         {
           roomType: 'Twin',
           pricePerNight: 2500,
-          capacity: 2,
+          capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
       ],
@@ -184,7 +184,7 @@ const seederHotels = async () => {
         {
           roomType: 'Twin',
           pricePerNight: 2500,
-          capacity: 2,
+          capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
       ],
@@ -214,7 +214,7 @@ const seederHotels = async () => {
         {
           roomType: 'Twin',
           pricePerNight: 2700,
-          capacity: 2,
+          capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
       ],
@@ -244,7 +244,7 @@ const seederHotels = async () => {
         {
           roomType: 'Twin',
           pricePerNight: 3000,
-          capacity: 2,
+          capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
       ],
@@ -274,7 +274,7 @@ const seederHotels = async () => {
         {
           roomType: 'Twin',
           pricePerNight: 3200,
-          capacity: 2,
+          capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
       ],
@@ -304,7 +304,7 @@ const seederHotels = async () => {
         {
           roomType: 'Twin',
           pricePerNight: 2800,
-          capacity: 2,
+          capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
       ],
@@ -334,7 +334,7 @@ const seederHotels = async () => {
         {
           roomType: 'Twin',
           pricePerNight: 3300,
-          capacity: 2,
+          capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
       ],
@@ -347,7 +347,7 @@ const seederHotels = async () => {
         'A budget-friendly option for backpackers and solo travelers. Features clean rooms, free WiFi, and a 24/7 café.',
       rating: 8.1,
       facilities: ['Wifi', 'Cafe', 'Front desk[24-hour]'],
-      hotelImages: '/images/king-bed.jpg',
+      hotelImages: '/images/hotel-stockholm.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -364,7 +364,7 @@ const seederHotels = async () => {
         {
           roomType: 'Twin',
           pricePerNight: 2900,
-          capacity: 2,
+          capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
       ],
@@ -394,7 +394,7 @@ const seederHotels = async () => {
         {
           roomType: 'Twin',
           pricePerNight: 3000,
-          capacity: 2,
+          capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
       ],
@@ -424,7 +424,7 @@ const seederHotels = async () => {
         {
           roomType: 'Twin',
           pricePerNight: 3100,
-          capacity: 2,
+          capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
       ],
@@ -454,7 +454,7 @@ const seederHotels = async () => {
         {
           roomType: 'Twin',
           pricePerNight: 3000,
-          capacity: 2,
+          capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
       ],

@@ -1,5 +1,4 @@
 .hotel-container {
-  background-color: var(--container-color);
   width: 100%;
   width: 300px;
   margin: 0 auto;
@@ -7,6 +6,9 @@
   border-radius: 10px;
   border: 1px solid;
   padding: 2rem;
+}
+.hotel-container:hover {
+  box-shadow: 2px 3px 2px 2px #bebebe;
 }
 .header {
   background-image: url('../../../public/langing-image.png');

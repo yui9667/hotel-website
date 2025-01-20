@@ -38,3 +38,19 @@ router.get('/hotel/location/:location', async (req, res) => {
   }
 });
 export default router;
+
+//*Search hotel by amount of guests  (Used for search bar) Used post because it is more than one request
+router.post('/hotel/search/:location', async (req, res) => {
+  const { location, checkIn, checkOut, people } = req.body;
+  try {
+    const hotels = await Hotel.find({ location });
+    const filteredHotels = hotels.filter((hotel) =>
+      hotel.rooms.some((room) => {
+        room.capacity >= people;
+      })
+    );
+    res.json(filteredHotels);
+  } catch (error) {
+    res.status(500).json({ error: 'Error to fetching search result' });
+  }
+});
