@@ -4,8 +4,7 @@ import './Landing.css';
 
 const Landing = () => {
   const [hotels, setHotels] = useState([]);
-  const [location, setLocation] = useState('');
-  //*Here is for calendar
+  // const [location, setLocation] = useState('');
 
   //*this is for showing data from server side
   useEffect(() => {
