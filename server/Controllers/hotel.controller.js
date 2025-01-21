@@ -45,6 +45,48 @@ router.post('/hotel/search', async (req, res) => {
   try {
     const hotels = await Hotel.find({ location });
     //*Calculate the price difference between weekdays and weekends
+    const calculatePrice = (pricePerNight, checkIn, checkOut) => {
+      const checkIn = new Date(checkIn);
+      const checkOut = new Date(checkOut);
+      let totalDays = 0;
+      let weekendDays = 0;
+
+      //* Created loop to see everyday
+      // for( let i= 0; arr.length < 0; i++)
+      for (
+        let date = new Date(checkIn);
+        date < checkOut;
+        date.setDate(date.getDate() + 1)
+      )
+        totalDays++;
+      //*Check week. Sunday is 0 and Saturday is 6
+      const dayOfWeek = data.getDate();
+
+      if (dayOfWeek === 0 || dayOfWeek === 6) {
+        weekendDays++;
+      }
+      //* weekdays
+      const weekdayDays = totalDays - weekendDays;
+      //*original price
+      const weekdayRate = pricePerNight;
+      //*Increase 20% on Weekend
+      const weekendRate = weekdayRate * 1.2;
+      return weekdayDays * weekdayRate + weekdayDays * weekendRate;
+    };
+
+    //* find the　specific rooms
+    const hotelPrice = hotels.map((hotel) => {
+      const roomNewPrice = hotel.rooms
+        .filter((room) => {
+          room.capacity >= people;
+        })
+        .map((room) => ({
+          ...room.toObject(),
+          adjustedPrice: calculatePrice(room.pricePerNight, checkIn, checkOut),
+        }));
+      return { ...hotel.toObject(), rooms: roomNewPrice };
+    });
+    res.json(hotelPrice);
   } catch (error) {
     res.status(500).json({ error: 'Error to fetching search result' });
   }
