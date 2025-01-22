@@ -1,9 +1,29 @@
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-const SearchBar = () => {
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
+import axios from 'axios';
+
+const SearchBar = ({ setResetLanding }) => {
+  const [location, setLocation] = useState('');
+  const [checkIn, setCheckIn] = useState('');
+  const [checkOut, setCheckOut] = useState('');
+  const [people, setPeople] = useState(1);
+
+  const handleSearch = async () => {
+    //console.log('click');
+
+    try {
+      const response = await axios.post(
+        'http://localhost:3002/api/hotel/search',
+        { location, checkIn, checkOut, people }
+      );
+      // console.log(response);
+      setResetLanding(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error('Failed to fetch data', error.message);
+    }
+  };
   return (
     <div>
       <header className='header'>
@@ -14,7 +34,7 @@ const SearchBar = () => {
           <select
             className='w-28 rounded text-sm mt-3'
             required
-            //    onChange={(e) => setLocation(e.target.value)}
+            onChange={(e) => setLocation(e.target.value)}
           >
             <option value=''>Select City</option>
             <option value='Malmö'>Malmö</option>
@@ -27,24 +47,32 @@ const SearchBar = () => {
               className='rounded w-28 mr-5 text-center'
               selectsStart
               placeholderText='Check In'
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-              startDate={startDate}
+              selected={checkIn}
+              onChange={(data) => setCheckIn(data)}
+              startDate={checkIn}
               required
             />
             <DatePicker
               className='rounded w-28 mr-5 text-center'
               selectsEnd
               placeholderText='Check Out'
-              selected={endDate}
-              onChange={(date) => setEndDate(date)}
-              endDate={endDate}
-              startDate={endDate}
-              minDate={startDate}
+              selected={checkOut}
+              onChange={(data) => setCheckOut(data)}
+              endDate={checkOut}
+              startDate={checkOut}
+              minDate={checkIn}
               required
             />
           </div>
-          <select className='w-28 rounded text-sm mt-2' id='guests' required>
+
+          <select
+            className='w-28 rounded text-sm mt-2'
+            id='guests'
+            value={people}
+            //change to number
+            onChange={(e) => setPeople(Number(e.target.value))}
+            required
+          >
             <option value=''>Guests</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
@@ -54,7 +82,7 @@ const SearchBar = () => {
           <button
             className='btn btn-primary px-4 py-1 m-2 text-sm'
             type='button'
-            //    onChange={(e) => setLocation(e.target.value)}
+            onClick={handleSearch}
           >
             Search
           </button>

@@ -4,14 +4,11 @@ import './Landing.css';
 
 const Landing = () => {
   const [hotels, setHotels] = useState([]);
-  // const [location, setLocation] = useState('');
-
+  const [resetLanding, setResetLanding] = useState([]);
   //*this is for showing data from server side
   useEffect(() => {
     const fetchData = async () => {
-      const url = location
-        ? `http://localhost:3002/api/hotel/location/${location}`
-        : 'http://localhost:3002/api/hotels';
+      const url = 'http://localhost:3002/api/hotels';
 
       try {
         const response = await fetch(url);
@@ -26,18 +23,16 @@ const Landing = () => {
       }
     };
     fetchData();
-  }, [location]);
-
+  }, []);
+  const displayFromSearchBar = resetLanding.length > 0 ? resetLanding : hotels;
   return (
     <div>
-      <SearchBar />
+      <SearchBar setResetLanding={setResetLanding} />
+
       <div>
-        <h1
-          className='text-2xl mb-20 '
-          // onChange={(e) => setLocation(e.target.value)}
-        ></h1>
-        {hotels.length > 0 ? (
-          hotels.map((hotel, index) => (
+        <h1 className='text-2xl mb-20 '></h1>
+        {displayFromSearchBar.length > 0 ? (
+          displayFromSearchBar.map((hotel, index) => (
             <div
               key={hotel._id}
               className='flex flex-col justify-center text-center leading-5'
@@ -84,7 +79,7 @@ const Landing = () => {
             </div>
           ))
         ) : (
-          <p>No hotels</p>
+          <p>No hotels found</p>
         )}
       </div>
     </div>
