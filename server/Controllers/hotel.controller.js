@@ -1,6 +1,6 @@
 import Hotel from '../Models/hotel.model.js';
 import express from 'express';
-import db from '../Config/db.js';
+// import db from '../Config/db.js';
 const router = express.Router();
 //*Here is endpoint for hotel's information
 
@@ -37,31 +37,34 @@ router.get('/hotel/location/:location', async (req, res) => {
       .json({ error: ` There are no hotels in ${location}` });
   }
 });
-export default router;
 
 //*Search hotel by amount of guests  (Used for search bar) Used post because it is more than one request
 router.post('/hotel/search', async (req, res) => {
   const { location, checkIn, checkOut, people } = req.body;
+
+  // console.log('Request body', req.body);
+  // console.log('Location requests: ', location);
   try {
     const hotels = await Hotel.find({ location });
+    console.log('hotels found:', hotels);
+    //res.json(hotels);
     //*Calculate the price difference between weekdays and weekends
     const calculatePrice = (pricePerNight, checkIn, checkOut) => {
-      const checkIn = new Date(checkIn);
-      const checkOut = new Date(checkOut);
+      const checkOutDate = new Date(checkOut);
       let totalDays = 0;
       let weekendDays = 0;
 
       //* Created loop to see everyday
       // for( let i= 0; arr.length < 0; i++)
       for (
-        let date = new Date(checkIn);
-        date < checkOut;
-        date.setDate(date.getDate() + 1)
+        let checkInDate = new Date(checkIn);
+        checkInDate < checkOutDate;
+        checkInDate.setDate(checkInDate.getDate() + 1)
       )
         totalDays++;
       //*Check week. Sunday is 0 and Saturday is 6
       const dayOfWeek = data.getDate();
-
+      //*Sunday is 0 and Saturday is 6
       if (dayOfWeek === 0 || dayOfWeek === 6) {
         weekendDays++;
       }
@@ -81,9 +84,11 @@ router.post('/hotel/search', async (req, res) => {
           room.capacity >= people;
         })
         .map((room) => ({
+          //*Convert to JavaScript from Mongoose
           ...room.toObject(),
           adjustedPrice: calculatePrice(room.pricePerNight, checkIn, checkOut),
         }));
+      //*Convert to JavaScript from Mongoose
       return { ...hotel.toObject(), rooms: roomNewPrice };
     });
     res.json(hotelPrice);
@@ -91,3 +96,4 @@ router.post('/hotel/search', async (req, res) => {
     res.status(500).json({ error: 'Error to fetching search result' });
   }
 });
+export default router;
