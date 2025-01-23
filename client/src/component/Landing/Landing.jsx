@@ -1,10 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
+import { useNavigate } from 'react-router-dom';
 import './Landing.css';
-
+import { SearchContext } from '../../SearchContext';
 const Landing = () => {
   const [hotels, setHotels] = useState([]);
   const [resetLanding, setResetLanding] = useState([]);
+
+  const { setSelectedHotel } = useContext(SearchContext);
+  const navigate = useNavigate();
   //*this is for showing data from server side
   useEffect(() => {
     const fetchData = async () => {
@@ -25,6 +29,20 @@ const Landing = () => {
     fetchData();
   }, []);
   const displayFromSearchBar = resetLanding.length > 0 ? resetLanding : hotels;
+  console.log('resetLanding in LandingPage:', resetLanding);
+
+  //* navigate room page
+  const clickRoom = (hotel) => {
+    if (resetLanding.length === 0) {
+      alert(
+        'Please fill all required fields: location, check-in, check-out, and number of people.'
+      );
+
+      return;
+    }
+    setSelectedHotel(hotel);
+    navigate('/hotel/room');
+  };
   return (
     <div>
       <SearchBar setResetLanding={setResetLanding} />
@@ -61,20 +79,12 @@ const Landing = () => {
                 </p> */}
 
                 <button
+                  onClick={() => clickRoom(hotel)}
                   type='button'
                   className='btn btn-primary px-4 py-1 m-2 text-sm drop-shadow-lg'
                 >
-                  Price
+                  Select
                 </button>
-                {/* <div>
-                  {hotel.rooms.map((img, index) => (
-                    <img
-                      key={index}
-                      src={img}
-                      alt={`${hotel.hotelName} ${index + 1}`}
-                    />
-                  ))}
-                </div> */}
               </div>
             </div>
           ))

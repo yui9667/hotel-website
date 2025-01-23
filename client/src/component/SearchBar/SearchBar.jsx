@@ -1,17 +1,17 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
-
+import { SearchContext } from '../../SearchContext';
 const SearchBar = ({ setResetLanding }) => {
+  //*passing props by context provider
+  const { setSearchParams } = useContext(SearchContext);
   const [location, setLocation] = useState('');
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [people, setPeople] = useState(1);
 
   const handleSearch = async () => {
-    //console.log('click');
-
     try {
       const response = await axios.post(
         'http://localhost:3002/api/hotel/search',
@@ -19,6 +19,8 @@ const SearchBar = ({ setResetLanding }) => {
       );
       // console.log(response);
       setResetLanding(response.data);
+
+      setSearchParams({ location, checkIn, checkOut, people });
       console.log(response.data);
     } catch (error) {
       console.error('Failed to fetch data', error.message);
@@ -50,6 +52,7 @@ const SearchBar = ({ setResetLanding }) => {
               selected={checkIn}
               onChange={(data) => setCheckIn(data)}
               startDate={checkIn}
+              minDate={new Date()}
               required
             />
             <DatePicker
