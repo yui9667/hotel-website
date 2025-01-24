@@ -21,18 +21,21 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
+          roomImages: '/images/one-bed.jpg',
           pricePerNight: 800,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
+          roomImages: '/images/king-bed.jpg',
           pricePerNight: 1500,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
+          roomImages: '/images/twin-bed.jpg',
           pricePerNight: 1800,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
@@ -51,18 +54,21 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
+          roomImages: '/images/single-bed.jpg',
           pricePerNight: 700,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
+          roomImages: '/images/king-bed.jpg',
           pricePerNight: 1300,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
+          roomImages: '/images/twin-bed.jpg',
           pricePerNight: 1500,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
@@ -81,18 +87,21 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
+          roomImages: '/images/one-bed.jpg',
           pricePerNight: 600,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
+          roomImages: '/images/king-bed.jpg',
           pricePerNight: 1100,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
+          roomImages: '/images/twin-bed.jpg',
           pricePerNight: 1000,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
@@ -111,18 +120,21 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
+          roomImages: '/images/king-bed.jpg',
           pricePerNight: 1000,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
+          roomImages: '/images/double-bed.jpg',
           pricePerNight: 1200,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
+          roomImages: '/images/twin-bed.jpg',
           pricePerNight: 1200,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
@@ -141,18 +153,21 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
+          roomImages: '/images/room-gorgeous2.jpg',
           pricePerNight: 1500,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
+          roomImages: '/images/room3-dark.jpg',
           pricePerNight: 2100,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
+          roomImages: '/images/twin-bed.jpg',
           pricePerNight: 2500,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
@@ -171,18 +186,21 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
+          roomImages: '/images/room-gorgeous.jpg',
           pricePerNight: 2100,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
+          roomImages: '/images/room-gorgeous2.jpg',
           pricePerNight: 2600,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
+          roomImages: '/images/twin-bed.jpg',
           pricePerNight: 2500,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
@@ -201,18 +219,21 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
+          roomImages: '/images/one-bed.jpg',
           pricePerNight: 2100,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
+          roomImages: '/images/king-bed.jpg',
           pricePerNight: 2600,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
+          roomImages: '/images/twin-bed.jpg',
           pricePerNight: 2700,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
@@ -231,18 +252,21 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
+          roomImages: '/images/single-bed.jpg',
           pricePerNight: 2000,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
+          roomImages: '/images/one-bed.jpg',
           pricePerNight: 2600,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
+          roomImages: '/images/twin-bed.jpg',
           pricePerNight: 3000,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
@@ -261,18 +285,21 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
+          roomImages: '/images/room3-dark.jpg',
           pricePerNight: 2600,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
+          roomImages: '/images/room-gorgeous2.jpg',
           pricePerNight: 3000,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
+          roomImages: '/images/twin-bed.jpg',
           pricePerNight: 3200,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
@@ -292,17 +319,20 @@ const seederHotels = async () => {
         {
           roomType: 'Single',
           pricePerNight: 2100,
+          roomImages: '/images/single-bed.jpg',
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
+          roomImages: '/images/king-bed.jpg',
           pricePerNight: 2500,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
+          roomImages: '/images/twin-bed.jpg',
           pricePerNight: 2800,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
@@ -321,18 +351,21 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
+          roomImages: '/images/room-gorgeous.jpg',
           pricePerNight: 2900,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
+          roomImages: '/images/room-gorgeous2.jpg',
           pricePerNight: 3200,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
+          roomImages: '/images/twin-bed.jpg',
           pricePerNight: 3300,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
@@ -351,18 +384,21 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
+          roomImages: '/images/room3-dark.jpg',
           pricePerNight: 2100,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
+          roomImages: '/images/room-gorgeous2.jpg',
           pricePerNight: 2800,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
+          roomImages: '/images/twin-bed.jpg',
           pricePerNight: 2900,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
@@ -381,18 +417,21 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
+          roomImages: '/images/single-bed.jpg',
           pricePerNight: 2500,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
+          roomImages: '/images/king-bed.jpg',
           pricePerNight: 2800,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
+          roomImages: '/images/twin-bed.jpg',
           pricePerNight: 3000,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
@@ -411,18 +450,21 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
+          roomImages: '/images/one-bed.jpg',
           pricePerNight: 2500,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
+          roomImages: '/images/single-bed.jpg',
           pricePerNight: 2900,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
+          roomImages: '/images/twin-bed.jpg',
           pricePerNight: 3100,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
@@ -441,18 +483,21 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
+          roomImages: '/images/one-bed.jpg',
           pricePerNight: 2500,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
+          roomImages: '/images/double-bed.jpg',
           pricePerNight: 2900,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
+          roomImages: '/images/twin-bed.jpg',
           pricePerNight: 3000,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',

@@ -21,7 +21,7 @@ const Landing = () => {
         }
         const data = await response.json();
         setHotels(data);
-        // console.log(data);
+        console.log(data);
       } catch (error) {
         console.error('Error message:', error);
       }
@@ -29,7 +29,7 @@ const Landing = () => {
     fetchData();
   }, []);
   const displayFromSearchBar = resetLanding.length > 0 ? resetLanding : hotels;
-  console.log('resetLanding in LandingPage:', resetLanding);
+  //console.log('resetLanding in LandingPage:', resetLanding);
 
   //* navigate room page
   const clickRoom = (hotel) => {
@@ -37,7 +37,6 @@ const Landing = () => {
       alert(
         'Please fill all required fields: location, check-in, check-out, and number of people.'
       );
-
       return;
     }
     setSelectedHotel(hotel);
