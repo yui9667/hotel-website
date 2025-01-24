@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import './Nav.css';
+import { Link } from 'react-router-dom';
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = () => {
@@ -12,9 +13,9 @@ const Nav = () => {
       <nav className='nav-bar'>
         <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
           <li className='nav-item'>
-            <a className='nav-link' href=''>
+            <Link to='/' className='text-white'>
               Home
-            </a>
+            </Link>
           </li>
           <li className='nav-item'>
             <a className='nav-link' href=''>

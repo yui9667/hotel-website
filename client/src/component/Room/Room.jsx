@@ -13,7 +13,7 @@ const Room = () => {
   const [rooms, setRooms] = useState([]);
 
   console.log('selected', selectedHotel);
-  console.log('searchParams', searchParams);
+  // console.log('searchParams', searchParams);
   useEffect(() => {
     if (hotelData && selectedHotel) {
       setRooms(selectedHotel.rooms);
@@ -74,11 +74,11 @@ const Room = () => {
               {room.roomType} bed
             </h2>
             <p className='mx-3'>{room.description}</p>
-            <p>Per person {room.pricePerNight}kr</p>
-            <p>{room.adjustedPrice}kr</p>
+            <p>Per Night {room.pricePerNight}kr</p>
+
             <button
               type='button'
-              className='btn btn-primary px-4 py-1 m-2 text-sm drop-shadow-lg'
+              className='btn btn-primary px-4 py-1 m-2 text-sm drop-shadow-sm'
             >
               Select
             </button>
