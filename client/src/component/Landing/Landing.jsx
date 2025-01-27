@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import { useNavigate } from 'react-router-dom';
 import './Landing.css';
-import { SearchContext } from '../../SearchContext';
+import { SearchContext } from '../../Context/SearchContext';
 const Landing = () => {
   const [hotels, setHotels] = useState([]);
   const [resetLanding, setResetLanding] = useState([]);

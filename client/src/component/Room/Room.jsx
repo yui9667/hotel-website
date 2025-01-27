@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { SearchContext } from '../../SearchContext';
+import { SearchContext } from '../../Context/SearchContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPerson,
@@ -7,13 +7,23 @@ import {
   faLocationDot,
   faBed,
 } from '@fortawesome/free-solid-svg-icons';
+import { AuthContext } from '../../Context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 const Room = () => {
   const { searchParams, selectedHotel } = useContext(SearchContext);
   const hotelData = { ...searchParams, ...selectedHotel };
   const [rooms, setRooms] = useState([]);
-
+  const { isAuthenticated } = useContext(AuthContext);
+  const navigate = useNavigate();
   console.log('selected', selectedHotel);
   // console.log('searchParams', searchParams);
+  const handleRoomSelection = () => {
+    if (isAuthenticated) {
+      navigate('/confirm');
+    } else {
+      navigate('/login');
+    }
+  };
   useEffect(() => {
     if (hotelData && selectedHotel) {
       setRooms(selectedHotel.rooms);
@@ -77,8 +87,9 @@ const Room = () => {
             <p>Per Night {room.pricePerNight}kr</p>
 
             <button
-              type='button'
               className='btn btn-primary px-4 py-1 m-2 text-sm drop-shadow-sm'
+              type='button'
+              onClick={handleRoomSelection}
             >
               Select
             </button>

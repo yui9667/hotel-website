@@ -1,11 +1,13 @@
 import axios from 'axios';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate = useNavigate();
+  const { setIsAuthenticated } = useContext(AuthContext);
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -13,9 +15,14 @@ const Login = () => {
         email,
         password,
       });
+      const { token } = response.data;
+      localStorage.setItem('authToken', token);
+      setIsAuthenticated(true);
       console.log('Login successfully', response);
       alert('login successfully!');
+      navigate('/hotel/room');
     } catch (error) {
+      alert('Login failed. Please try again.');
       console.error(error.message);
     }
   };
