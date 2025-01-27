@@ -1,14 +1,34 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const User = require('../Models/user.js');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+import User from '../Models/user.model.js';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 //*Register
 router.post('/register', async (req, res) => {
   try {
     const { username, email, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 6);
+    if (!username || !email || !password) {
+      return res.status(400).json({ message: ' All field are required ' });
+    }
+
+    if (password.length < 6) {
+      return res
+        .status(400)
+        .json({ message: 'Password must be at least 6 characters long' });
+    }
+    //* Check existing email or username
+
+    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+    if (existingUser) {
+      if (existingUser.username === username) {
+        return res.status(400).json({ message: 'Username is already taken' });
+      }
+      if (existingUser.email === email) {
+        return res.status(400).json({ message: 'Email is already taken' });
+      }
+    }
+    const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ username, email, password: hashedPassword });
     await user.save();
     res.status(201).json({ message: 'User registered successfully' });
@@ -40,4 +60,4 @@ router.post('/login', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

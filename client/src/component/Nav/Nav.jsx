@@ -18,9 +18,9 @@ const Nav = () => {
             </Link>
           </li>
           <li className='nav-item'>
-            <a className='nav-link' href=''>
+            <Link to='/login' className='nav-link'>
               Account
-            </a>
+            </Link>
           </li>
           <li className='nav-item'>
             <FontAwesomeIcon

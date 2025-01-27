@@ -4,6 +4,8 @@ import { SearchProvider } from './SearchContext';
 import Landing from './component/Landing/Landing';
 import Nav from './component/Nav/Nav';
 import Room from './component/Room/Room';
+import Login from './component/Login/Login';
+import Register from './component/Register/Register';
 function App() {
   return (
     <SearchProvider>
@@ -12,6 +14,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/hotel/room' element={<Room />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
         </Routes>
       </Router>
     </SearchProvider>
