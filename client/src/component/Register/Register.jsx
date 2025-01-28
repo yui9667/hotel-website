@@ -6,7 +6,13 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [isModal, setIsModal] = useState(false);
   const navigate = useNavigate();
+
+  const closeModal = () => {
+    navigate('/login');
+    setIsModal(false);
+  };
   const handleRegister = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -20,8 +26,7 @@ const Register = () => {
         password,
       });
       console.log('Registration successfully', response);
-      alert('Registration successfully!');
-      navigate('/login');
+      setIsModal(true);
     } catch (error) {
       console.error(error.message);
       alert(
@@ -93,6 +98,29 @@ const Register = () => {
           Register
         </button>
       </form>
+      {isModal && (
+        <div className='fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50'>
+          <div className='bg-white p-6 rounded shadow-md'>
+            <div className='flex flex-col justify-center items-center my-5 '>
+              <div className='flex flex-col '>
+                <h1 className='text-2xl'>Thank you for Registration</h1>
+                <img
+                  src='/animeImages/HappyEarth.svg'
+                  alt='Happy Earth anime holding heart with smile'
+                  style={{ width: '100%', maxWidth: '250px' }}
+                />
+                <button
+                  type='button'
+                  onClick={closeModal}
+                  className='btn btn-primary px-3 py-1 my-2 w-32 m-auto text-sm drop-shadow-sm'
+                >
+                  Login
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

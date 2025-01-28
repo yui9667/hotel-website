@@ -8,6 +8,7 @@ import Login from './component/Login/Login';
 import Register from './component/Register/Register';
 import { AuthProvider } from './Context/AuthContext';
 import Confirm from './component/Confirm/Confirm';
+
 function App() {
   return (
     <AuthProvider>
