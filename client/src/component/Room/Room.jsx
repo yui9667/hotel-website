@@ -15,6 +15,9 @@ const Room = () => {
   const [rooms, setRooms] = useState([]);
   const { isAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const checkInData = hotelData.checkIn ? new Date(hotelData.checkIn) : null;
+  const checkOutData = hotelData.checkOut ? new Date(hotelData.checkOut) : null;
   console.log('selected', selectedHotel);
   // console.log('searchParams', searchParams);
   const handleRoomSelection = () => {
@@ -54,11 +57,11 @@ const Room = () => {
           <div className='flex gap-3'>
             <p>
               <FontAwesomeIcon icon={faCalendarDays} className='mr-1 ' />
-              Check In {hotelData.checkIn?.toLocaleDateString()}
+              Check In {checkInData.checkIn?.toLocaleDateString()}
             </p>
             <p>
               <FontAwesomeIcon icon={faCalendarDays} className='mr-1 ' />
-              Check Out {hotelData.checkOut?.toLocaleDateString()}
+              Check Out {checkOutData.checkOut?.toLocaleDateString()}
             </p>
           </div>
 
