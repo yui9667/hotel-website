@@ -20,7 +20,7 @@ const Login = () => {
       setIsAuthenticated(true);
       console.log('Login successfully', response);
       alert('login successfully!');
-      navigate('/hotel/room');
+      navigate('/confirm');
     } catch (error) {
       alert('Login failed. Please try again.');
       console.error(error.message);

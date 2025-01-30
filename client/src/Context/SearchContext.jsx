@@ -23,15 +23,26 @@ const SearchProvider = ({ children }) => {
     return savedData ? JSON.parse(savedData).selectedHotel : null;
   });
 
+  const [selectedRoom, setSelectedRoom] = useState(() => {
+    const savedData = window.localStorage.getItem('hotelStorageData');
+    return savedData ? JSON.parse(savedData).selectedRoom : null;
+  });
   useEffect(() => {
     window.localStorage.setItem(
       'hotelStorageData',
-      JSON.stringify({ searchParams, selectedHotel })
+      JSON.stringify({ searchParams, selectedHotel, selectedRoom })
     );
-  }, [searchParams, selectedHotel]);
+  }, [searchParams, selectedHotel, selectedRoom]);
   return (
     <SearchContext.Provider
-      value={{ searchParams, setSearchParams, selectedHotel, setSelectedHotel }}
+      value={{
+        searchParams,
+        setSearchParams,
+        selectedHotel,
+        setSelectedHotel,
+        selectedRoom,
+        setSelectedRoom,
+      }}
     >
       {children}
     </SearchContext.Provider>

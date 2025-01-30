@@ -9,24 +9,33 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from '../../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import Confirm from '../Confirm/Confirm';
 const Room = () => {
-  const { searchParams, selectedHotel } = useContext(SearchContext);
-  const hotelData = { ...searchParams, ...selectedHotel };
-  const [rooms, setRooms] = useState([]);
+  const { searchParams, selectedHotel, selectedRoom, setSelectedRoom } =
+    useContext(SearchContext);
+  const hotelData = { ...searchParams, ...selectedHotel, ...selectedRoom };
   const { isAuthenticated } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const [rooms, setRooms] = useState([]);
 
+  const navigate = useNavigate();
+  // console.log('searchParams: location ,checkin/out and people. ', searchParams);
+  // console.log('selectedHotel : hotel information', selectedHotel);
+  // console.log('selectedRoom: a user selected', selectedRoom);
   const checkInData = hotelData.checkIn ? new Date(hotelData.checkIn) : null;
   const checkOutData = hotelData.checkOut ? new Date(hotelData.checkOut) : null;
-  console.log('selected', selectedHotel);
+
   // console.log('searchParams', searchParams);
-  const handleRoomSelection = () => {
+  //*navigation and pass a prop to use in confirm component
+  const handleRoomSelection = (room) => {
     if (isAuthenticated) {
+      setSelectedRoom(room);
+      console.log('Selected Room in RoomSelection:', room);
       navigate('/confirm');
     } else {
       navigate('/login');
     }
   };
+
   useEffect(() => {
     if (hotelData && selectedHotel) {
       setRooms(selectedHotel.rooms);
@@ -92,12 +101,13 @@ const Room = () => {
             <button
               className='btn btn-primary px-4 py-1 m-2 text-sm drop-shadow-sm'
               type='button'
-              onClick={handleRoomSelection}
+              onClick={() => handleRoomSelection(room)}
             >
               Select
             </button>
           </div>
         ))}
+        {selectedRoom && <Confirm selectedRoom={selectedRoom} />}
       </div>
     </div>
   );
