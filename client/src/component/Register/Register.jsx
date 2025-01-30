@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 const Register = () => {
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -21,7 +22,8 @@ const Register = () => {
     }
     try {
       const response = await axios.post('http://localhost:3002/user/register', {
-        username: name,
+        firstName,
+        lastName,
         email,
         password,
       });
@@ -47,12 +49,22 @@ const Register = () => {
         my-2'
         >
           <div className='flex items-center my-4'>
-            <h5 className='mr-2'>Name: </h5>
+            <h5 className='mr-2'>First name: </h5>
             <input
               className='border-2'
               type='text'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
+            />
+          </div>
+          <div className='flex items-center mb-4'>
+            <h5 className='mr-2'>Last name</h5>
+            <input
+              className='border-2'
+              type='text'
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
               required
             />
           </div>

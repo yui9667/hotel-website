@@ -107,7 +107,7 @@ const Room = () => {
             </button>
           </div>
         ))}
-        {selectedRoom && <Confirm selectedRoom={selectedRoom} />}
+        {/* {selectedRoom && <Confirm selectedRoom={selectedRoom} />} */}
       </div>
     </div>
   );

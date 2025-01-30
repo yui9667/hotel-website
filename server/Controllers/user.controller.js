@@ -7,8 +7,8 @@ import jwt from 'jsonwebtoken';
 //*Register
 router.post('/register', async (req, res) => {
   try {
-    const { username, email, password } = req.body;
-    if (!username || !email || !password) {
+    const { firstName, lastName, email, password } = req.body;
+    if (!firstName || !lastName || !email || !password) {
       return res.status(400).json({ message: ' All field are required ' });
     }
 
@@ -19,17 +19,19 @@ router.post('/register', async (req, res) => {
     }
     //* Check existing email or username
 
-    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+    const existingUser = await User.findOne({ email });
     if (existingUser) {
-      if (existingUser.username === username) {
-        return res.status(400).json({ message: 'Username is already taken' });
-      }
       if (existingUser.email === email) {
         return res.status(400).json({ message: 'Email is already taken' });
       }
     }
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ username, email, password: hashedPassword });
+    const user = new User({
+      firstName,
+      lastName,
+      email,
+      password: hashedPassword,
+    });
     await user.save();
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
