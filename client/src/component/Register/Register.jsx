@@ -28,6 +28,9 @@ const Register = () => {
         password,
       });
       console.log('Registration successfully', response);
+      console.log('information3', response.data.user);
+      console.log('information3', response.data.user.firstName);
+      console.log('information3', response.data.user.lastName);
       setIsModal(true);
     } catch (error) {
       console.error(error.message);

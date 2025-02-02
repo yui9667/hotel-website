@@ -9,7 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from '../../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import Confirm from '../Confirm/Confirm';
+//import Confirm from '../Confirm/Confirm';
 const Room = () => {
   const { searchParams, selectedHotel, selectedRoom, setSelectedRoom } =
     useContext(SearchContext);

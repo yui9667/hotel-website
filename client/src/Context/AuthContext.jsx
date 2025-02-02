@@ -6,7 +6,7 @@ const AuthProvider = ({ children }) => {
   //* Uses lazy initialization. React will run this function to initialize the state only when the component first render
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     //* it is saved in the localStorage
-    const savedData = window.localStorage.getItem('userStorageData');
+    const savedData = sessionStorage.getItem('userStorageData');
     if (savedData) {
       try {
         //*Convert to JavaScript object
@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     console.log('storage', isAuthenticated);
-    window.localStorage.setItem(
+    window.sessionStorage.setItem(
       'userStorageData',
       JSON.stringify({ isAuthenticated })
     );

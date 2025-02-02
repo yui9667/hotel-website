@@ -1,6 +1,7 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import axios from 'axios';
 import { SearchContext } from '../../Context/SearchContext';
-import { AuthContext } from '../../Context/AuthContext';
+//import { AuthContext } from '../../Context/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPerson,
@@ -16,11 +17,42 @@ const Confirm = () => {
   const hotelData = { ...searchParams, ...selectedHotel, ...selectedRoom };
   const checkInData = hotelData.checkIn ? new Date(hotelData.checkIn) : null;
   const checkOutData = hotelData.checkOut ? new Date(hotelData.checkOut) : null;
+  const [user, setUser] = useState(false);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
   console.log('Received in Confirm', selectedRoom);
   //console.log(authData.isAuthenticated);
   if (!selectedHotel) {
     return <p>No room selected</p>;
   }
+  const showLogin = async () => {
+    try {
+      const response = await axios.get('http://localhost:3002/user/info', {
+        params: { firstName, lastName, email },
+      });
+
+      console.log(firstName);
+      setUser(response.data);
+      setUser(response.data.user);
+      console.log('Login information', response.data);
+      console.log('Login information', response);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  const checkboxIn = (e) => {
+    const checked = e.target.value;
+    if (checked) {
+      showLogin();
+      setUser(checked);
+    } else {
+      setFirstName(firstName);
+      setLastName('');
+      setEmail('');
+    }
+  };
   return (
     <div>
       <div className='flex flex-col justify-center items-center border-2 rounded m-2'>
@@ -79,34 +111,40 @@ const Confirm = () => {
       </div>
       <div className='flex flex-col items-center m-2 border-2 rounded p-5'>
         <h1 className='m-2 text-2xl'>Who is the lead guest?</h1>
-        <form action='' className=' flex flex-col items-center mt-2 '>
+        <form className=' flex flex-col items-center mt-2 '>
           <input
             className='border-2 rounded my-4'
             type='name'
             placeholder='First name *'
             required
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
           />
           <input
             className='border-2 rounded '
             type='name'
             placeholder='Last name * '
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
             required
           />
           <input
             className='border-2 rounded my-4'
             type='email'
             placeholder='Email *'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
           <input
             className='border-2 rounded '
-            type='phone number'
+            type='number'
             placeholder='Phone number(optional)'
           />
 
           <label className='text-sm flex gap-2'>
-            <input type='checkbox' />
-            Same as a user
+            <input type='checkbox' value={user} onChange={checkboxIn} />
+            Same information as a user
           </label>
 
           <button

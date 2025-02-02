@@ -72,10 +72,6 @@ const Landing = () => {
                 </div>
                 <p className='my-2'>{hotel.location}</p>
                 <p className='text-rose-700'>{hotel.price} kr</p>
-                {/* <p className='border-2 border-black '>
-                  {' '}
-                  facilities:{hotel.facilities.join(' , ')}
-                </p> */}
 
                 <button
                   onClick={() => clickRoom(hotel)}

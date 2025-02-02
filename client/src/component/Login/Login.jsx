@@ -17,8 +17,12 @@ const Login = () => {
       });
       const { token } = response.data;
       localStorage.setItem('authToken', token);
+      localStorage.setItem('authToken', response.data);
+      localStorage.setItem('authToken', response.data.user);
       setIsAuthenticated(true);
       console.log('Login successfully', response);
+      console.log('Login successfully', response.data);
+      console.log('Login successfully', response.data.user);
       alert('login successfully!');
       navigate('/confirm');
     } catch (error) {

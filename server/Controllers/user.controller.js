@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { application } from 'express';
 const router = express.Router();
 import User from '../Models/user.model.js';
 import bcrypt from 'bcrypt';
@@ -21,9 +21,7 @@ router.post('/register', async (req, res) => {
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      if (existingUser.email === email) {
-        return res.status(400).json({ message: 'Email is already taken' });
-      }
+      return res.status(400).json({ message: 'Email is already taken' });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({
@@ -33,7 +31,8 @@ router.post('/register', async (req, res) => {
       password: hashedPassword,
     });
     await user.save();
-    res.status(201).json({ message: 'User registered successfully' });
+    console.log('User:', user);
+    res.status(201).json({ message: 'User registered successfully', user });
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ error: 'Registration failed' });
@@ -59,6 +58,22 @@ router.post('/login', async (req, res) => {
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ error: 'Login failed' });
+  }
+});
+
+//* Showing a user information to autofill in the confirm page
+router.get('/info', async (req, res) => {
+  try {
+    //*GET does not have body. Use params or query
+    const { firstName, lastName, email } = req.params;
+    const userInfo = await User.findOne({ firstName, lastName, email });
+    console.log(firstName, lastName, email);
+    if (!userInfo) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.json(userInfo);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to received ' });
   }
 });
 
