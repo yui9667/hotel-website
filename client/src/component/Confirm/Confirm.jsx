@@ -31,26 +31,21 @@ const Confirm = () => {
       const response = await axios.get('http://localhost:3002/user/info', {
         params: { firstName, lastName, email },
       });
-
-      console.log(firstName);
-      setUser(response.data);
       setUser(response.data.user);
-      console.log('Login information', response.data);
+      console.log('Login information', response.data.user);
       console.log('Login information', response);
     } catch (error) {
       console.error(error.message);
     }
   };
-
-  const checkboxIn = (e) => {
-    const checked = e.target.value;
+  //*showLogin をCallするのにこちらも async を使わないといけない。
+  const checkboxIn = async (e) => {
+    const checked = e.target.checked;
     if (checked) {
-      showLogin();
-      setUser(checked);
+      await showLogin();
+      console.log(user);
     } else {
-      setFirstName(firstName);
-      setLastName('');
-      setEmail('');
+      setUser(null);
     }
   };
   return (

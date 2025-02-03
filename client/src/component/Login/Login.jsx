@@ -1,34 +1,14 @@
-import axios from 'axios';
 import { useState, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
-  const { setIsAuthenticated } = useContext(AuthContext);
+  const { loginUser } = useContext(AuthContext);
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:3002/user/login', {
-        email,
-        password,
-      });
-      const { token } = response.data;
-      localStorage.setItem('authToken', token);
-      localStorage.setItem('authToken', response.data);
-      localStorage.setItem('authToken', response.data.user);
-      setIsAuthenticated(true);
-      console.log('Login successfully', response);
-      console.log('Login successfully', response.data);
-      console.log('Login successfully', response.data.user);
-      alert('login successfully!');
-      navigate('/confirm');
-    } catch (error) {
-      alert('Login failed. Please try again.');
-      console.error(error.message);
-    }
+    loginUser(email, password);
   };
   return (
     <div className='flex flex-col items-center justify-center'>

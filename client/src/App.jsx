@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 import { SearchProvider } from './Context/SearchContext';
 import Landing from './component/Landing/Landing';
 import Nav from './component/Nav/Nav';
@@ -13,16 +14,14 @@ function App() {
   return (
     <AuthProvider>
       <SearchProvider>
-        <Router>
-          <Nav />
-          <Routes>
-            <Route path='/' element={<Landing />} />
-            <Route path='/hotel/room' element={<Room />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/confirm' element={<Confirm />} />
-          </Routes>
-        </Router>
+        <Nav />
+        <Routes>
+          <Route path='/' element={<Landing />} />
+          <Route path='/hotel/room' element={<Room />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/confirm' element={<Confirm />} />
+        </Routes>
       </SearchProvider>
     </AuthProvider>
   );

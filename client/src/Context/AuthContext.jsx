@@ -1,35 +1,52 @@
 import { createContext, useState, useEffect } from 'react';
-
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  //* Uses lazy initialization. React will run this function to initialize the state only when the component first render
-  const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    //* it is saved in the localStorage
-    const savedData = sessionStorage.getItem('userStorageData');
-    if (savedData) {
-      try {
-        //*Convert to JavaScript object
-        const parsedData = JSON.parse(savedData);
-        //*return false if isAuthenticated is undefined OR operator can also show all false, 0 and '' to false
-        return parsedData.isAuthenticated || false;
-      } catch (error) {
-        console.error('Error parsing JSON from localStorage', error);
-        return false;
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
+  const navigate = useNavigate();
+  const loginUser = async (email, password) => {
+    try {
+      const response = await axios.post('http://localhost:3002/user/login', {
+        email,
+        password,
+      });
+      if (response.status === 200) {
+        setUser(response.data.user);
+        setToken(response.data.token);
+        console.log(response.data.user);
+        window.sessionStorage.setItem('Token :', response.data.token);
+        window.sessionStorage.setItem(
+          'userLocalStorage',
+          JSON.stringify(response.data.user)
+        );
+        navigate('/confirm');
       }
+    } catch (error) {
+      console.log(error.message);
     }
-    return false;
-  });
+  };
 
+  const logOutUser = () => {
+    setUser(null);
+    setToken(null);
+    //*Removed data as keys
+    window.sessionStorage.removeItem('userLocalStorage');
+    window.sessionStorage.removeItem('token');
+    navigate('/');
+  };
   useEffect(() => {
-    console.log('storage', isAuthenticated);
-    window.sessionStorage.setItem(
-      'userStorageData',
-      JSON.stringify({ isAuthenticated })
-    );
-  }, [isAuthenticated]);
+    const storedUser = window.sessionStorage.getItem('userLocalStorage');
+    const storedToken = window.sessionStorage.getItem('token');
+    if (storedToken && storedUser) {
+      setUser(JSON.parse(storedUser));
+      setToken(storedToken);
+    }
+  });
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+    <AuthContext.Provider value={{ logOutUser, loginUser, user, token }}>
       {children}
     </AuthContext.Provider>
   );

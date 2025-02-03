@@ -54,7 +54,15 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ userId: user._id }, 'your-secret-key ', {
       expiresIn: '1h',
     });
-    res.status(200).json({ token });
+    res.status(200).json({
+      token,
+      user: {
+        id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+      },
+    });
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ error: 'Login failed' });
@@ -66,12 +74,21 @@ router.get('/info', async (req, res) => {
   try {
     //*GET does not have body. Use params or query
     const { firstName, lastName, email } = req.params;
-    const userInfo = await User.findOne({ firstName, lastName, email });
+    const userInfo = await User.findOne({ email });
     console.log(firstName, lastName, email);
+    console.log(userInfo);
     if (!userInfo) {
       return res.status(404).json({ message: 'User not found' });
     }
-    res.json(userInfo);
+    res.json({
+      userInfo,
+      user: {
+        id: userInfo._id,
+        firstName: userInfo.firstName,
+        lastName: userInfo.lastName,
+        email: userInfo.email,
+      },
+    });
   } catch (error) {
     res.status(500).json({ error: 'Failed to received ' });
   }
