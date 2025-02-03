@@ -6,7 +6,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { loginUser } = useContext(AuthContext);
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     loginUser(email, password);
   };

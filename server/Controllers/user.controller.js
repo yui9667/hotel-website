@@ -69,29 +69,4 @@ router.post('/login', async (req, res) => {
   }
 });
 
-//* Showing a user information to autofill in the confirm page
-router.get('/info', async (req, res) => {
-  try {
-    //*GET does not have body. Use params or query
-    const { firstName, lastName, email } = req.params;
-    const userInfo = await User.findOne({ email });
-    console.log(firstName, lastName, email);
-    console.log(userInfo);
-    if (!userInfo) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-    res.json({
-      userInfo,
-      user: {
-        id: userInfo._id,
-        firstName: userInfo.firstName,
-        lastName: userInfo.lastName,
-        email: userInfo.email,
-      },
-    });
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to received ' });
-  }
-});
-
 export default router;

@@ -1,7 +1,6 @@
-import { useContext, useState } from 'react';
-import axios from 'axios';
+import { useContext, useState, useEffect } from 'react';
 import { SearchContext } from '../../Context/SearchContext';
-//import { AuthContext } from '../../Context/AuthContext';
+import { AuthContext } from '../../Context/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPerson,
@@ -13,41 +12,32 @@ import {
 const Confirm = () => {
   const { searchParams, selectedHotel, selectedRoom } =
     useContext(SearchContext);
-  // const { authData } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const hotelData = { ...searchParams, ...selectedHotel, ...selectedRoom };
   const checkInData = hotelData.checkIn ? new Date(hotelData.checkIn) : null;
   const checkOutData = hotelData.checkOut ? new Date(hotelData.checkOut) : null;
-  const [user, setUser] = useState(false);
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   console.log('Received in Confirm', selectedRoom);
+
+  const checkboxInfo = (e) => {
+    const checked = e.target.checked;
+    if (checked) {
+      setFirstName(user?.firstName || '');
+      setLastName(user?.lastName || '');
+      setEmail(user?.email || '');
+    } else {
+      setFirstName('');
+      setLastName('');
+      setEmail('');
+    }
+  };
   //console.log(authData.isAuthenticated);
   if (!selectedHotel) {
     return <p>No room selected</p>;
   }
-  const showLogin = async () => {
-    try {
-      const response = await axios.get('http://localhost:3002/user/info', {
-        params: { firstName, lastName, email },
-      });
-      setUser(response.data.user);
-      console.log('Login information', response.data.user);
-      console.log('Login information', response);
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-  //*showLogin をCallするのにこちらも async を使わないといけない。
-  const checkboxIn = async (e) => {
-    const checked = e.target.checked;
-    if (checked) {
-      await showLogin();
-      console.log(user);
-    } else {
-      setUser(null);
-    }
-  };
   return (
     <div>
       <div className='flex flex-col justify-center items-center border-2 rounded m-2'>
@@ -138,7 +128,7 @@ const Confirm = () => {
           />
 
           <label className='text-sm flex gap-2'>
-            <input type='checkbox' value={user} onChange={checkboxIn} />
+            <input type='checkbox' value={user} onChange={checkboxInfo} />
             Same information as a user
           </label>
 
