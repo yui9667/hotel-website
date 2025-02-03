@@ -1,4 +1,5 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { SearchContext } from '../../Context/SearchContext';
 import { AuthContext } from '../../Context/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,7 +17,7 @@ const Confirm = () => {
   const hotelData = { ...searchParams, ...selectedHotel, ...selectedRoom };
   const checkInData = hotelData.checkIn ? new Date(hotelData.checkIn) : null;
   const checkOutData = hotelData.checkOut ? new Date(hotelData.checkOut) : null;
-
+  const navigate = useNavigate();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -25,16 +26,23 @@ const Confirm = () => {
   const checkboxInfo = (e) => {
     const checked = e.target.checked;
     if (checked) {
-      setFirstName(user?.firstName || '');
-      setLastName(user?.lastName || '');
-      setEmail(user?.email || '');
+      setFirstName(user.firstName);
+      setLastName(user.lastName);
+      setEmail(user.email);
     } else {
       setFirstName('');
       setLastName('');
       setEmail('');
     }
   };
-  //console.log(authData.isAuthenticated);
+
+  const btn = () => {
+    if (!setFirstName || !setEmail || !lastName) {
+      alert('Please fill in your information');
+    } else {
+      navigate('/payment');
+    }
+  };
   if (!selectedHotel) {
     return <p>No room selected</p>;
   }
@@ -133,6 +141,7 @@ const Confirm = () => {
           </label>
 
           <button
+            onClick={btn}
             className='btn btn-primary px-4 py-1 m-2 text-sm drop-shadow-sm mt-4'
             type='button'
           >
