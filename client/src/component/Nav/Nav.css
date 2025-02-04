@@ -9,7 +9,6 @@
   position: fixed;
   left: -115%;
   top: -15px;
-
   background-color: var(--main-color);
   width: 100%;
   transition: 0.3s;

@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SearchContext } from '../../Context/SearchContext';
 import { AuthContext } from '../../Context/AuthContext';
+import { differenceInDays } from 'date-fns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPerson,
@@ -9,20 +10,23 @@ import {
   faLocationDot,
   faBed,
   faStar,
+  faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
 const Confirm = () => {
   const { searchParams, selectedHotel, selectedRoom } =
     useContext(SearchContext);
   const { user } = useContext(AuthContext);
   const hotelData = { ...searchParams, ...selectedHotel, ...selectedRoom };
-  const checkInData = hotelData.checkIn ? new Date(hotelData.checkIn) : null;
-  const checkOutData = hotelData.checkOut ? new Date(hotelData.checkOut) : null;
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  console.log('Received in Confirm', selectedRoom);
 
+  const checkInData = hotelData.checkIn ? new Date(hotelData.checkIn) : null;
+  const checkOutData = hotelData.checkOut ? new Date(hotelData.checkOut) : null;
+
+  console.log('Received in Confirm', selectedRoom);
+  console.log('check-in/out ', searchParams);
   const checkboxInfo = (e) => {
     const checked = e.target.checked;
     if (checked) {
@@ -49,17 +53,27 @@ const Confirm = () => {
   return (
     <div>
       <div className='flex flex-col justify-center items-center border-2 rounded m-2'>
-        <div className='flex justify-center items-center gap-8 m-3 border-3 rounded p-3'>
-          <p className=' flex '>
-            <FontAwesomeIcon icon={faCalendarDays} className='mx-1 mt-1' />
-            Check In {checkInData ? checkInData?.toLocaleDateString() : 'null'}
-          </p>
+        <div className='flex justify-center items-center m-3 border-3 rounded p-2'>
+          <div className=' flex text-center'>
+            <p>
+              <FontAwesomeIcon icon={faCalendarDays} className='mx-1 mt-1' />
+              Check In{' '}
+              {checkInData ? checkInData?.toLocaleDateString() : 'null'}
+            </p>
+          </div>
 
-          <p className='flex '>
-            <FontAwesomeIcon icon={faCalendarDays} className='mx-1 mt-1' />
-            Check Out{' '}
-            {checkOutData ? checkOutData?.toLocaleDateString() : 'null'}
-          </p>
+          <FontAwesomeIcon icon={faArrowRight} className='mx-1' />
+          <div className='flex text-center'>
+            <p>
+              <FontAwesomeIcon icon={faCalendarDays} className='mx-1 mt-1' />
+              Check Out{' '}
+              {checkOutData ? checkOutData?.toLocaleDateString() : 'null'}
+            </p>
+          </div>
+          <div className='flex flex-col text-center'>
+            <p>Night</p>
+            <p>{differenceInDays(checkOutData, checkInData)}</p>
+          </div>
         </div>
         <h1 className='text-3xl mb-3'>{hotelData.hotelName}</h1>
         <div className='flex flex-col items-center justify-center '>

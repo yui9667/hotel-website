@@ -9,16 +9,15 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from '../../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-//import Confirm from '../Confirm/Confirm';
+
 const Room = () => {
   const { searchParams, selectedHotel, selectedRoom, setSelectedRoom } =
     useContext(SearchContext);
   const hotelData = { ...searchParams, ...selectedHotel, ...selectedRoom };
   const { isAuthenticated } = useContext(AuthContext);
   const [rooms, setRooms] = useState([]);
-
   const navigate = useNavigate();
-  // console.log('searchParams: location ,checkin/out and people. ', searchParams);
+  console.log('searchParams: location ,checkin/out and people. ', searchParams);
   // console.log('selectedHotel : hotel information', selectedHotel);
   // console.log('selectedRoom: a user selected', selectedRoom);
   const checkInData = hotelData.checkIn ? new Date(hotelData.checkIn) : null;
@@ -63,15 +62,24 @@ const Room = () => {
             {hotelData.facilities.join(' , ')}
           </p>
 
-          <div className='flex gap-3'>
-            <p>
-              <FontAwesomeIcon icon={faCalendarDays} className='mr-1 ' />
-              Check In {checkInData.checkIn?.toLocaleDateString()}
-            </p>
-            <p>
-              <FontAwesomeIcon icon={faCalendarDays} className='mr-1 ' />
-              Check Out {checkOutData.checkOut?.toLocaleDateString()}
-            </p>
+          <div className='flex justify-center items-center gap-8 '>
+            <div>
+              <p className='flex '>
+                <FontAwesomeIcon icon={faCalendarDays} className='mr-1 mt-1' />
+                CheckIn
+              </p>
+              <p> {checkInData ? checkInData?.toLocaleDateString() : 'null'}</p>
+            </div>
+
+            <div>
+              <p className='flex '>
+                <FontAwesomeIcon icon={faCalendarDays} className='mr-1 mt-1' />
+                CheckOut
+              </p>
+              <p>
+                {checkOutData ? checkOutData?.toLocaleDateString() : 'null'}
+              </p>
+            </div>
           </div>
 
           <p>

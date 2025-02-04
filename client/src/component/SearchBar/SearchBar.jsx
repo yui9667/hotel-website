@@ -19,19 +19,28 @@ const SearchBar = ({ setResetLanding }) => {
 
   const handleSearch = async () => {
     try {
+      if (!location || !checkIn || !checkOut || !people) {
+        alert('please select all information! ');
+        return;
+      }
       const response = await axios.post(
         'http://localhost:3002/api/hotel/search',
         { location, checkIn, checkOut, people }
       );
-      // console.log(response);
       setResetLanding(response.data);
-
       setSearchParams({ location, checkIn, checkOut, people });
       console.log(response.data);
     } catch (error) {
       console.error('Failed to fetch data', error.message);
     }
   };
+  //*check-out next day of check-in
+  const checkoutNextDay = (data) => {
+    const nextDay = new Date(data);
+    nextDay.setDate(nextDay.getDate() + 1);
+    return nextDay;
+  };
+
   return (
     <div>
       <header className='header'>
@@ -81,7 +90,7 @@ const SearchBar = ({ setResetLanding }) => {
                 onChange={(data) => setCheckOut(data)}
                 endDate={checkOut}
                 startDate={checkOut}
-                minDate={checkIn + 2}
+                minDate={checkoutNextDay(checkIn)}
                 required
               />
             </div>

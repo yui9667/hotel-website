@@ -13,12 +13,12 @@ const Nav = () => {
       <nav className='nav-bar'>
         <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
           <li className='nav-item'>
-            <Link to='/' className='text-white'>
+            <Link to='/' className='text-white' onClick={handleClick}>
               Home
             </Link>
           </li>
           <li className='nav-item'>
-            <Link to='/login' className='nav-link'>
+            <Link to='/login' className='nav-link' onClick={handleClick}>
               Account
             </Link>
           </li>
