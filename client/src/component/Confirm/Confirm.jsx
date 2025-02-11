@@ -27,7 +27,7 @@ const Confirm = () => {
   const location = useLocation();
   const { selectedRoom } = location.state || 'not found';
 
-  console.log(selectedRoom);
+  //  console.log(selectedRoom);
   const checkboxInfo = (e) => {
     const checked = e.target.checked;
     if (checked) {
@@ -41,7 +41,7 @@ const Confirm = () => {
     }
     console.log(user);
   };
-  console.log(hotelData.rooms[0].roomType);
+
   const btn = () => {
     if (!setFirstName || !setEmail || !lastName) {
       alert('Please fill in your information');
@@ -81,7 +81,7 @@ const Confirm = () => {
         <div className='flex flex-col items-center justify-center '>
           <div className=' gap-3 p-4'>
             <img
-              className='w-32 h-auto '
+              className='w-56 h-auto '
               src={`http://localhost:3002${hotelData.hotelImages} `}
               alt={hotelData.hotelName}
             />
@@ -100,9 +100,9 @@ const Confirm = () => {
             </div>
           </div>
 
-          <div className='bg-blue-100 rounded  gap-3 p-5 mb-3'>
+          <div className='bg-blue-100  gap-3 p-5'>
             <img
-              className='w-32 h-auto '
+              className='w-56 h-auto '
               src={`http://localhost:3002${selectedRoom?.roomImages} `}
               alt={hotelData.hotelName}
             />
