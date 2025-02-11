@@ -75,7 +75,7 @@ router.post('/hotel/search', async (req, res) => {
       const weekdayRate = pricePerNight;
       //*Increase 20% on Weekend
       const weekendRate = weekdayRate * 1.2;
-      return weekdayDays * weekdayRate || weekdayDays * weekendRate;
+      return weekdayDays * weekdayRate + weekdayDays * weekendRate;
     };
 
     //* find the　specific rooms
@@ -99,4 +99,5 @@ router.post('/hotel/search', async (req, res) => {
     res.status(500).json({ error: 'Error to fetching search result' });
   }
 });
+
 export default router;

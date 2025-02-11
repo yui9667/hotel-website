@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { SearchProvider } from './Context/SearchContext';
 import Landing from './component/Landing/Landing';
 import Nav from './component/Nav/Nav';

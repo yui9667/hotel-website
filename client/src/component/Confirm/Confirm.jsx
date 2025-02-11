@@ -1,5 +1,5 @@
-import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { SearchContext } from '../../Context/SearchContext';
 import { AuthContext } from '../../Context/AuthContext';
 import { differenceInDays } from 'date-fns';
@@ -12,21 +12,38 @@ import {
   faStar,
   faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
+
 const Confirm = () => {
-  const { searchParams, selectedHotel, selectedRoom } =
-    useContext(SearchContext);
+  const { searchParams, selectedHotel } = useContext(SearchContext);
   const { user } = useContext(AuthContext);
-  const hotelData = { ...searchParams, ...selectedHotel, ...selectedRoom };
+  const hotelData = { ...searchParams, ...selectedHotel };
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-
   const checkInData = hotelData.checkIn ? new Date(hotelData.checkIn) : null;
   const checkOutData = hotelData.checkOut ? new Date(hotelData.checkOut) : null;
+  //const [selectedRoom, setSelectedRoom] = useState('');
 
-  console.log('Received in Confirm', selectedRoom);
-  console.log('check-in/out ', searchParams);
+  //   const fetchRoomData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         'http://localhost:3002/api/select/room'
+  //       );
+  //       setSelectedRoom(response.data);
+  //       console.log(response.data);
+  //     } catch (error) {
+  //       console.error(error.message);
+  //     }
+  //   };
+  //   fetchRoomData();
+  // }, []);
+
+  const location = useLocation();
+  const { selectedRoom } = location.state || 'not found';
+
+  console.log(selectedRoom);
   const checkboxInfo = (e) => {
     const checked = e.target.checked;
     if (checked) {
@@ -38,8 +55,9 @@ const Confirm = () => {
       setLastName('');
       setEmail('');
     }
+    console.log(user);
   };
-
+  console.log(hotelData.rooms[0].roomType);
   const btn = () => {
     if (!setFirstName || !setEmail || !lastName) {
       alert('Please fill in your information');
@@ -97,16 +115,17 @@ const Confirm = () => {
               </p>
             </div>
           </div>
+
           <div className='bg-blue-100 rounded  gap-3 p-5 mb-3'>
             <img
               className='w-32 h-auto '
-              src={`http://localhost:3002${selectedRoom.roomImages} `}
+              src={`http://localhost:3002${selectedRoom?.roomImages} `}
               alt={hotelData.hotelName}
             />
             <div className='ml-1'>
               <p>
                 <FontAwesomeIcon icon={faBed} className='mr-1' />
-                {selectedRoom.roomType}
+                {selectedRoom?.roomType}
               </p>
               <p>
                 <FontAwesomeIcon icon={faPerson} className='mr-2 text-lg' />

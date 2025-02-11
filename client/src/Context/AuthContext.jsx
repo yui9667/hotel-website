@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
           'userLocalStorage',
           JSON.stringify(response.data.user)
         );
-        navigate('/confirm');
+        navigate('/');
       }
     } catch (error) {
       console.log(error.message);
@@ -33,8 +33,8 @@ const AuthProvider = ({ children }) => {
     setUser(null);
     setToken(null);
     //*Removed data as keys
-    window.sessionStorage.removeItem('userLocalStorage');
-    window.sessionStorage.removeItem('token');
+    window.localStorage.removeItem('userLocalStorage');
+    window.localStorage.removeItem('token');
     navigate('/');
   };
   useEffect(() => {
@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
       setUser(JSON.parse(storedUser));
       setToken(storedToken);
     }
-  });
+  }, []);
   return (
     <AuthContext.Provider value={{ logOutUser, loginUser, user, token }}>
       {children}

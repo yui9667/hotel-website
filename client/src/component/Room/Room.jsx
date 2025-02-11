@@ -11,35 +11,30 @@ import { AuthContext } from '../../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const Room = () => {
-  const { searchParams, selectedHotel, selectedRoom, setSelectedRoom } =
-    useContext(SearchContext);
-  const hotelData = { ...searchParams, ...selectedHotel, ...selectedRoom };
-  const { isAuthenticated } = useContext(AuthContext);
+  const { searchParams, selectedHotel } = useContext(SearchContext);
+  const hotelData = { ...searchParams, ...selectedHotel };
+  const { loginUser } = useContext(AuthContext);
   const [rooms, setRooms] = useState([]);
   const navigate = useNavigate();
-  console.log('searchParams: location ,checkin/out and people. ', searchParams);
-  // console.log('selectedHotel : hotel information', selectedHotel);
-  // console.log('selectedRoom: a user selected', selectedRoom);
+
   const checkInData = hotelData.checkIn ? new Date(hotelData.checkIn) : null;
   const checkOutData = hotelData.checkOut ? new Date(hotelData.checkOut) : null;
-
-  // console.log('searchParams', searchParams);
+  console.log(hotelData);
   //*navigation and pass a prop to use in confirm component
-  const handleRoomSelection = (room) => {
-    if (isAuthenticated) {
-      setSelectedRoom(room);
-      console.log('Selected Room in RoomSelection:', room);
-      navigate('/confirm');
+  const handleRoomSelection = async (rooms) => {
+    if (loginUser) {
+      navigate('/confirm', { state: { selectedRoom: rooms } });
     } else {
       navigate('/login');
+      console.log('error');
     }
   };
 
   useEffect(() => {
-    if (hotelData && selectedHotel) {
-      setRooms(selectedHotel.rooms);
+    if (hotelData?.rooms) {
+      setRooms(hotelData.rooms);
     }
-  }, [hotelData, selectedHotel]);
+  }, [hotelData]);
   if (!rooms || rooms.length === 0) {
     return <div>Loading hotel information..</div>;
   }
@@ -115,7 +110,6 @@ const Room = () => {
             </button>
           </div>
         ))}
-        {/* {selectedRoom && <Confirm selectedRoom={selectedRoom} />} */}
       </div>
     </div>
   );

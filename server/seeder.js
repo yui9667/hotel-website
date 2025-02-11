@@ -457,7 +457,7 @@ const seederHotels = async () => {
         },
         {
           roomType: 'Double',
-          roomImages: '/images/single-bed.jpg',
+          roomImages: '/images/king-bed.jpg',
           pricePerNight: 2900,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
