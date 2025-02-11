@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { SearchContext } from '../../Context/SearchContext';
 import { AuthContext } from '../../Context/AuthContext';
@@ -12,7 +12,6 @@ import {
   faStar,
   faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
 
 const Confirm = () => {
   const { searchParams, selectedHotel } = useContext(SearchContext);
@@ -24,21 +23,6 @@ const Confirm = () => {
   const [email, setEmail] = useState('');
   const checkInData = hotelData.checkIn ? new Date(hotelData.checkIn) : null;
   const checkOutData = hotelData.checkOut ? new Date(hotelData.checkOut) : null;
-  //const [selectedRoom, setSelectedRoom] = useState('');
-
-  //   const fetchRoomData = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         'http://localhost:3002/api/select/room'
-  //       );
-  //       setSelectedRoom(response.data);
-  //       console.log(response.data);
-  //     } catch (error) {
-  //       console.error(error.message);
-  //     }
-  //   };
-  //   fetchRoomData();
-  // }, []);
 
   const location = useLocation();
   const { selectedRoom } = location.state || 'not found';

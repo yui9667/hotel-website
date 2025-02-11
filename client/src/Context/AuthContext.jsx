@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
           'userLocalStorage',
           JSON.stringify(response.data.user)
         );
-        navigate('/');
+        navigate('/hotel/room');
       }
     } catch (error) {
       console.log(error.message);

@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 const Room = () => {
   const { searchParams, selectedHotel } = useContext(SearchContext);
   const hotelData = { ...searchParams, ...selectedHotel };
-  const { loginUser } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   const [rooms, setRooms] = useState([]);
   const navigate = useNavigate();
 
@@ -22,11 +22,10 @@ const Room = () => {
   console.log(hotelData);
   //*navigation and pass a prop to use in confirm component
   const handleRoomSelection = async (rooms) => {
-    if (loginUser) {
+    if (user && token) {
       navigate('/confirm', { state: { selectedRoom: rooms } });
     } else {
       navigate('/login');
-      console.log('error');
     }
   };
 
