@@ -42,11 +42,11 @@ const Confirm = () => {
     console.log(user);
   };
 
-  const btn = () => {
+  const btn = (rooms) => {
     if (!setFirstName || !setEmail || !lastName) {
       alert('Please fill in your information');
     } else {
-      navigate('/payment');
+      navigate('/payment', { state: { selectedRoom: rooms } });
     }
   };
   if (!selectedHotel) {
@@ -158,7 +158,7 @@ const Confirm = () => {
           </label>
 
           <button
-            onClick={btn}
+            onClick={() => btn(selectedRoom)}
             className='btn btn-primary px-4 py-1 m-2 text-sm drop-shadow-sm mt-4'
             type='button'
           >
