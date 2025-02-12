@@ -23,6 +23,10 @@ const SearchBar = ({ setResetLanding }) => {
         alert('please select all information! ');
         return;
       }
+      if (checkIn >= checkOut) {
+        alert('please add correct date');
+        return;
+      }
       const response = await axios.post(
         'http://localhost:3002/api/hotel/search',
         { location, checkIn, checkOut, people }
