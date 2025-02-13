@@ -24,30 +24,28 @@ router.get('/hotel/:id', async (req, res) => {
   res.send(hotel);
 });
 
-//*Select specific a city
-router.get('/hotel/location/:location', async (req, res) => {
-  const { location } = req.params;
-  const hotels = await Hotel.find();
-  const findLocation = hotels.filter((hotel) => hotel.location === location);
-  if (findLocation.length > 0) {
-    return res.json(findLocation);
-  } else {
-    return res
-      .status(404)
-      .json({ error: ` There are no hotels in ${location}` });
-  }
-});
+// //*Select specific a city
+// router.get('/hotel/location/:location', async (req, res) => {
+//   const { location } = req.params;
+//   const hotels = await Hotel.find();
+//   const findLocation = hotels.filter((hotel) => hotel.location === location);
+//   if (findLocation.length > 0) {
+//     return res.json(findLocation);
+//   } else {
+//     return res
+//       .status(404)
+//       .json({ error: ` There are no hotels in ${location}` });
+//   }
+// });
 
 //*Search hotel by amount of guests  (Used for search bar) Used post because it is more than one request
 router.post('/hotel/search', async (req, res) => {
   const { location, checkIn, checkOut, people } = req.body;
 
-  // console.log('Request body', req.body);
-  // console.log('Location requests: ', location);
   try {
     const hotels = await Hotel.find({ location });
     //console.log('hotels found:', hotels);
-    //res.json(hotels);
+
     //*Calculate the price difference between weekdays and weekends
     const calculatePrice = (pricePerNight, checkIn, checkOut) => {
       const checkOutDate = new Date(checkOut);
@@ -66,16 +64,26 @@ router.post('/hotel/search', async (req, res) => {
         const dayOfWeek = checkInDate.getDay();
         //*Sunday is 0 and Saturday is 6
         if (dayOfWeek === 0 || dayOfWeek === 6) {
+          //   console.log('Weekend', dayOfWeek);
           weekendDays++;
         }
       }
       //* weekdays
       const weekdayDays = totalDays - weekendDays;
+
       //*original price
       const weekdayRate = pricePerNight;
       //*Increase 20% on Weekend
       const weekendRate = weekdayRate * 1.2;
-      return weekdayDays * weekdayRate + weekdayDays * weekendRate;
+      const result = weekdayDays * weekdayRate + weekendDays * weekendRate;
+      // console.log(
+      //   `Total Days: ${totalDays}, Weekdays: ${weekdayDays}, Weekends: ${weekendDays}`
+      // );
+      //* 5% increases price by people
+
+      const moreGuests = result * people;
+
+      return moreGuests;
     };
 
     //* find the　specific rooms
@@ -89,6 +97,7 @@ router.post('/hotel/search', async (req, res) => {
           ...room.toObject(),
           adjustedPrice: calculatePrice(room.pricePerNight, checkIn, checkOut),
         }));
+      // console.log('adjustedPrice', roomNewPrice);
       //*Convert to JavaScript from Mongoose
 
       return { ...hotel.toObject(), rooms: roomNewPrice };

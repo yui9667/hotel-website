@@ -8,7 +8,7 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+//const Stripe = require('stripe');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,14 +21,16 @@ app.use(
 const PORT = 3002;
 
 app.use(express.json());
-
+app.use(express.static('public'));
 app.use(
   cors({
     origin: 'http://localhost:5173',
   })
 );
 connectDB();
-
+app.post('/check-out', async () => {
+  const session = await stripe.checkout.create({});
+});
 app.use('/api', hotelRouter);
 //*Start the server
 app.use('/user', userRouter);

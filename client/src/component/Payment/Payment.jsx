@@ -1,23 +1,44 @@
 import { useContext } from 'react';
 import { SearchContext } from '../../Context/SearchContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faPerson,
-  faCalendarDays,
-  faLocationDot,
-  faBed,
-  faStar,
-  faArrowRight,
-} from '@fortawesome/free-solid-svg-icons';
-import { differenceInDays } from 'date-fns';
+// import {
+//   loadStripe,
+//   CardElement,
+//   useElements,
+//   elements,
+//   useStripe,
+// } from '@stripe/react-stripe-js';
+
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import {
+//   faPerson,
+//   faCalendarDays,
+//   faLocationDot,
+//   faBed,
+//   faStar,
+//   faArrowRight,
+// } from '@fortawesome/free-solid-svg-icons';
+// import { differenceInDays } from 'date-fns';
 import { useLocation } from 'react-router-dom';
 const Payment = () => {
+  // const stripe = useStripe();
+  // const element = useElements();
+
+  // const handleSumbit = async (e) => {
+  //   e.preventDefault();
+  //   if (!stripe || !element) {
+  //     return;
+  //   }
+  //   const card = elements.getElement(CardElement);
+  //   if (card === null) {
+  //     return;
+  //   }
+  // };
   const { searchParams, selectedHotel } = useContext(SearchContext);
   const hotelData = { ...searchParams, ...selectedHotel };
-  const checkInDate = hotelData?.checkIn ? new Date(hotelData.checkIn) : null;
-  const checkOutDate = hotelData?.checkOut
-    ? new Date(hotelData.checkOut)
-    : null;
+  //const checkInDate = hotelData?.checkIn ? new Date(hotelData.checkIn) : null;
+  //const checkOutDate = hotelData?.checkOut
+  //? new Date(hotelData.checkOut)
+  //: null;
   console.log(hotelData);
 
   //* Room
@@ -29,7 +50,7 @@ const Payment = () => {
       <div>
         <h1>here is payment </h1>
       </div>
-      <div className='flex justify-center items-center m-3 border-3 rounded p-2'>
+      {/* <div className='flex justify-center items-center m-3 border-3 rounded p-2'>
         <div className=' flex text-center'>
           <p>
             <FontAwesomeIcon icon={faCalendarDays} className='mx-1 mt-1' />
@@ -82,7 +103,7 @@ const Payment = () => {
             {hotelData.people} People
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

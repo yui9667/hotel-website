@@ -98,7 +98,10 @@ const Room = () => {
               {room.roomType} bed
             </h2>
             <p className='mx-3'>{room.description}</p>
-            <p>Per Night {room.pricePerNight}kr</p>
+            <p> {room.adjustedPrice} kr</p>
+            <p className='text-sm text-red-400'>
+              ( a person x {room.pricePerNight}kr )
+            </p>
 
             <button
               className='btn btn-primary px-4 py-1 m-2 text-sm drop-shadow-sm'

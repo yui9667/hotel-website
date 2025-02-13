@@ -22,21 +22,21 @@ const seederHotels = async () => {
         {
           roomType: 'Single',
           roomImages: '/images/one-bed.jpg',
-          pricePerNight: 800,
+          pricePerNight: 500,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
           roomImages: '/images/king-bed.jpg',
-          pricePerNight: 1500,
+          pricePerNight: 600,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
           roomImages: '/images/twin-bed.jpg',
-          pricePerNight: 1800,
+          pricePerNight: 800,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
@@ -62,14 +62,14 @@ const seederHotels = async () => {
         {
           roomType: 'Double',
           roomImages: '/images/king-bed.jpg',
-          pricePerNight: 1300,
+          pricePerNight: 800,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
           roomImages: '/images/twin-bed.jpg',
-          pricePerNight: 1500,
+          pricePerNight: 600,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
@@ -78,7 +78,7 @@ const seederHotels = async () => {
     {
       hotelName: 'City Lights Suites',
       location: 'Malmö',
-      price: 600,
+      price: 400,
       description:
         'An upscale hotel with spacious suites and a vibrant atmosphere. Perfect for guests seeking comfort and convenience.',
       rating: 8.0,
@@ -88,21 +88,21 @@ const seederHotels = async () => {
         {
           roomType: 'Single',
           roomImages: '/images/one-bed.jpg',
-          pricePerNight: 600,
+          pricePerNight: 400,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
           roomImages: '/images/king-bed.jpg',
-          pricePerNight: 1100,
+          pricePerNight: 500,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
           roomImages: '/images/twin-bed.jpg',
-          pricePerNight: 1000,
+          pricePerNight: 550,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
@@ -111,7 +111,7 @@ const seederHotels = async () => {
     {
       hotelName: 'Urban Bliss Inn',
       location: 'Malmö',
-      price: 1000,
+      price: 600,
       description:
         'A budget-friendly hotel that doesn’t compromise on quality. Enjoy cozy rooms, free WiFi, and complimentary breakfast.',
       rating: 8.2,
@@ -121,21 +121,21 @@ const seederHotels = async () => {
         {
           roomType: 'Single',
           roomImages: '/images/king-bed.jpg',
-          pricePerNight: 1000,
+          pricePerNight: 600,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
-          roomImages: '/images/double-bed.jpg',
-          pricePerNight: 1200,
+          roomImages: '/images/king-bed.jpg',
+          pricePerNight: 650,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
           roomImages: '/images/twin-bed.jpg',
-          pricePerNight: 1200,
+          pricePerNight: 700,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
@@ -144,7 +144,7 @@ const seederHotels = async () => {
     {
       hotelName: 'Central Luxe',
       location: 'Malmö',
-      price: 1500,
+      price: 400,
       description:
         'A luxury hotel known for its elegant interiors and personalized service. Offers exclusive spa treatments and a world-class restaurant.',
       rating: 9.2,
@@ -154,21 +154,21 @@ const seederHotels = async () => {
         {
           roomType: 'Single',
           roomImages: '/images/room-gorgeous2.jpg',
-          pricePerNight: 1500,
+          pricePerNight: 400,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
           roomImages: '/images/room3-dark.jpg',
-          pricePerNight: 2100,
+          pricePerNight: 500,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
           roomImages: '/images/twin-bed.jpg',
-          pricePerNight: 2500,
+          pricePerNight: 550,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
@@ -177,7 +177,7 @@ const seederHotels = async () => {
     {
       hotelName: 'The Royal Plaza',
       location: 'Gothenburg',
-      price: 2100,
+      price: 600,
       description:
         'A grand hotel offering a taste of royalty. With opulent rooms and premium facilities, it’s the perfect getaway for those seeking luxury.',
       rating: 8.9,
@@ -187,21 +187,21 @@ const seederHotels = async () => {
         {
           roomType: 'Single',
           roomImages: '/images/room-gorgeous.jpg',
-          pricePerNight: 2100,
+          pricePerNight: 600,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
           roomImages: '/images/room-gorgeous2.jpg',
-          pricePerNight: 2600,
+          pricePerNight: 700,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
           roomImages: '/images/twin-bed.jpg',
-          pricePerNight: 2500,
+          pricePerNight: 750,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
@@ -210,7 +210,7 @@ const seederHotels = async () => {
     {
       hotelName: 'Golden Horizon',
       location: 'Gothenburg',
-      price: 2100,
+      price: 800,
       description:
         'A serene hotel located near the outskirts, offering breathtaking sunset views and tranquil surroundings.',
       rating: 9.0,
@@ -220,21 +220,21 @@ const seederHotels = async () => {
         {
           roomType: 'Single',
           roomImages: '/images/one-bed.jpg',
-          pricePerNight: 2100,
+          pricePerNight: 800,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
           roomImages: '/images/king-bed.jpg',
-          pricePerNight: 2600,
+          pricePerNight: 820,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
           roomImages: '/images/twin-bed.jpg',
-          pricePerNight: 2700,
+          pricePerNight: 780,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
@@ -243,7 +243,7 @@ const seederHotels = async () => {
     {
       hotelName: 'Seaside Escape',
       location: 'Gothenburg',
-      price: 2000,
+      price: 600,
       description:
         'A coastal gem with beachfront access, water sports, and fresh seafood dining. Ideal for a relaxing getaway.',
       rating: 9.0,
@@ -253,21 +253,21 @@ const seederHotels = async () => {
         {
           roomType: 'Single',
           roomImages: '/images/single-bed.jpg',
-          pricePerNight: 2000,
+          pricePerNight: 600,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
           roomImages: '/images/one-bed.jpg',
-          pricePerNight: 2600,
+          pricePerNight: 700,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
           roomImages: '/images/twin-bed.jpg',
-          pricePerNight: 3000,
+          pricePerNight: 800,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
@@ -276,7 +276,7 @@ const seederHotels = async () => {
     {
       hotelName: 'Harbor Breeze Inn',
       location: 'Gothenburg',
-      price: 2600,
+      price: 700,
       description:
         'A charming boutique hotel overlooking the harbor. Features nautical-themed rooms and a cozy café.',
       rating: 8.8,
@@ -286,21 +286,21 @@ const seederHotels = async () => {
         {
           roomType: 'Single',
           roomImages: '/images/room3-dark.jpg',
-          pricePerNight: 2600,
+          pricePerNight: 700,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
           roomImages: '/images/room-gorgeous2.jpg',
-          pricePerNight: 3000,
+          pricePerNight: 750,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
           roomImages: '/images/twin-bed.jpg',
-          pricePerNight: 3200,
+          pricePerNight: 800,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
@@ -309,7 +309,7 @@ const seederHotels = async () => {
     {
       hotelName: 'Crystal Waters Resort',
       location: 'Gothenburg',
-      price: 2100,
+      price: 450,
       description:
         'A sprawling resort with lush gardens, multiple pools, and family-friendly activities. A perfect destination for vacationers.',
       rating: 8.4,
@@ -318,7 +318,7 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
-          pricePerNight: 2100,
+          pricePerNight: 450,
           roomImages: '/images/single-bed.jpg',
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
@@ -326,14 +326,14 @@ const seederHotels = async () => {
         {
           roomType: 'Double',
           roomImages: '/images/king-bed.jpg',
-          pricePerNight: 2500,
+          pricePerNight: 550,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
           roomImages: '/images/twin-bed.jpg',
-          pricePerNight: 2800,
+          pricePerNight: 700,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
@@ -342,7 +342,7 @@ const seederHotels = async () => {
     {
       hotelName: 'Grand Oasis',
       location: 'Stockholm',
-      price: 2900,
+      price: 700,
       description:
         'A luxurious resort with sprawling gardens, infinity pools, and a private golf course. Ideal for romantic getaways.',
       rating: 9.5,
@@ -352,21 +352,21 @@ const seederHotels = async () => {
         {
           roomType: 'Single',
           roomImages: '/images/room-gorgeous.jpg',
-          pricePerNight: 2900,
+          pricePerNight: 700,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
           roomImages: '/images/room-gorgeous2.jpg',
-          pricePerNight: 3200,
+          pricePerNight: 750,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
           roomImages: '/images/twin-bed.jpg',
-          pricePerNight: 3300,
+          pricePerNight: 800,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
@@ -375,7 +375,7 @@ const seederHotels = async () => {
     {
       hotelName: 'Traveler’s Rest',
       location: 'Stockholm',
-      price: 2100,
+      price: 850,
       description:
         'A budget-friendly option for backpackers and solo travelers. Features clean rooms, free WiFi, and a 24/7 café.',
       rating: 8.1,
@@ -385,21 +385,21 @@ const seederHotels = async () => {
         {
           roomType: 'Single',
           roomImages: '/images/room3-dark.jpg',
-          pricePerNight: 2100,
+          pricePerNight: 850,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
           roomImages: '/images/room-gorgeous2.jpg',
-          pricePerNight: 2800,
+          pricePerNight: 900,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
           roomImages: '/images/twin-bed.jpg',
-          pricePerNight: 2900,
+          pricePerNight: 920,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
@@ -408,7 +408,7 @@ const seederHotels = async () => {
     {
       hotelName: 'Mountain View Lodge',
       location: 'Stockholm',
-      price: 2500,
+      price: 700,
       description:
         'Nestled in the hills, this lodge offers stunning views, cozy cabins, and adventurous hiking trails.',
       rating: 8.5,
@@ -418,21 +418,21 @@ const seederHotels = async () => {
         {
           roomType: 'Single',
           roomImages: '/images/single-bed.jpg',
-          pricePerNight: 2500,
+          pricePerNight: 700,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
           roomImages: '/images/king-bed.jpg',
-          pricePerNight: 2800,
+          pricePerNight: 750,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
           roomImages: '/images/twin-bed.jpg',
-          pricePerNight: 3000,
+          pricePerNight: 820,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
@@ -441,7 +441,7 @@ const seederHotels = async () => {
     {
       hotelName: 'Aurora Suites',
       location: 'Stockholm',
-      price: 2500,
+      price: 900,
       description:
         'A boutique hotel known for its contemporary design and excellent service. Located near cultural hotspots.',
       rating: 8.9,
@@ -451,21 +451,21 @@ const seederHotels = async () => {
         {
           roomType: 'Single',
           roomImages: '/images/one-bed.jpg',
-          pricePerNight: 2500,
+          pricePerNight: 900,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
           roomImages: '/images/king-bed.jpg',
-          pricePerNight: 2900,
+          pricePerNight: 920,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
           roomImages: '/images/twin-bed.jpg',
-          pricePerNight: 3100,
+          pricePerNight: 970,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },
@@ -474,7 +474,7 @@ const seederHotels = async () => {
     {
       hotelName: 'Cozy Corner Inn',
       location: 'Stockholm',
-      price: 2500,
+      price: 700,
       description:
         'A small, family-run inn offering a home-like atmosphere. Enjoy homemade breakfasts and warm hospitality.',
       rating: 7.9,
@@ -484,21 +484,21 @@ const seederHotels = async () => {
         {
           roomType: 'Single',
           roomImages: '/images/one-bed.jpg',
-          pricePerNight: 2500,
+          pricePerNight: 700,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
         {
           roomType: 'Double',
           roomImages: '/images/double-bed.jpg',
-          pricePerNight: 2900,
+          pricePerNight: 800,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
         },
         {
           roomType: 'Twin',
           roomImages: '/images/twin-bed.jpg',
-          pricePerNight: 3000,
+          pricePerNight: 850,
           capacity: 4,
           description: 'Two single beds for a comfortable stay',
         },

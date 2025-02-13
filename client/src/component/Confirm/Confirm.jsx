@@ -100,7 +100,7 @@ const Confirm = () => {
             </div>
           </div>
 
-          <div className='bg-blue-100  gap-3 p-5'>
+          <div className='bg-blue-100 mb-2 gap-3 p-5'>
             <img
               className='w-56 h-auto '
               src={`http://localhost:3002${selectedRoom?.roomImages} `}
@@ -115,6 +115,8 @@ const Confirm = () => {
                 <FontAwesomeIcon icon={faPerson} className='mr-2 text-lg' />
                 {hotelData.people} people
               </p>
+              <p>{differenceInDays(checkOutData, checkInData)} night</p>
+              <p>Total {selectedRoom.adjustedPrice} SEK</p>
             </div>
           </div>
         </div>
