@@ -7,26 +7,21 @@ import {
   faLocationDot,
   faBed,
 } from '@fortawesome/free-solid-svg-icons';
-import { AuthContext } from '../../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const Room = () => {
   const { searchParams, selectedHotel } = useContext(SearchContext);
   const hotelData = { ...searchParams, ...selectedHotel };
-  const { user, token } = useContext(AuthContext);
+
   const [rooms, setRooms] = useState([]);
   const navigate = useNavigate();
 
   const checkInData = hotelData.checkIn ? new Date(hotelData.checkIn) : null;
   const checkOutData = hotelData.checkOut ? new Date(hotelData.checkOut) : null;
-  //console.log(hotelData);
+
   //*navigation and pass a prop to use in confirm component
   const handleRoomSelection = async (rooms) => {
-    if (user && token) {
-      navigate('/confirm', { state: { selectedRoom: rooms } });
-    } else {
-      navigate('/login');
-    }
+    navigate('/confirm', { state: { selectedRoom: rooms } });
   };
 
   useEffect(() => {

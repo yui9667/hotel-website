@@ -3,12 +3,14 @@ import SearchBar from '../SearchBar/SearchBar';
 import { useNavigate } from 'react-router-dom';
 import './Landing.css';
 import { SearchContext } from '../../Context/SearchContext';
+import { AuthContext } from '../../Context/AuthContext';
 const Landing = () => {
   const [hotels, setHotels] = useState([]);
   const [resetLanding, setResetLanding] = useState([]);
 
   const { setSelectedHotel } = useContext(SearchContext);
   const navigate = useNavigate();
+  const { user, token } = useContext(AuthContext);
   //*this is for showing data from server side
   useEffect(() => {
     const fetchData = async () => {
@@ -32,15 +34,19 @@ const Landing = () => {
   //console.log('resetLanding in LandingPage:', resetLanding);
 
   //* navigate room page
-  const clickRoom = (hotel) => {
+  const clickRoom = (hotel, rooms) => {
     if (resetLanding.length === 0) {
       alert(
         'Please fill all required fields: location, check-in, check-out, and number of people.'
       );
       return;
     }
-    setSelectedHotel(hotel);
-    navigate('/hotel/room');
+    if (user && token) {
+      navigate('/hotel/room', { state: { selectedRoom: rooms } });
+      setSelectedHotel(hotel);
+    } else {
+      navigate('/login');
+    }
   };
   return (
     <div>
