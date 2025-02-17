@@ -20,20 +20,19 @@ const SearchProvider = ({ children }) => {
     return savedData ? JSON.parse(savedData).selectedHotel : {};
   });
 
-  // const [selectedRoom, setSelectedRoom] = useState(() => {
-  //   const savedData = window.localStorage.getItem('hotelStorageData');
-  //   return savedData ? JSON.parse(savedData).selectedHotel : {};
-
-  // });
-
+  const [selectedRoom, setSelectedRoom] = useState(() => {
+    const savedData = window.localStorage.getItem('hotelStorageData');
+    return savedData ? JSON.parse(savedData).selectedHotel.rooms : {};
+  });
+  console.log(selectedRoom);
   useEffect(() => {
     console.log(searchParams);
     console.log(selectedHotel);
     window.localStorage.setItem(
       'hotelStorageData',
-      JSON.stringify({ searchParams, selectedHotel })
+      JSON.stringify({ searchParams, selectedHotel, selectedRoom })
     );
-  }, [searchParams, selectedHotel]);
+  }, [searchParams, selectedHotel, selectedRoom]);
   return (
     <SearchContext.Provider
       value={{
@@ -41,6 +40,8 @@ const SearchProvider = ({ children }) => {
         setSearchParams,
         selectedHotel,
         setSelectedHotel,
+        selectedRoom,
+        setSelectedRoom,
       }}
     >
       {children}

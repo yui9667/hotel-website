@@ -2,6 +2,8 @@ import Hotel from '../Models/hotel.model.js';
 import express from 'express';
 // import db from '../Config/db.js';
 const router = express.Router();
+import Stripe from 'stripe';
+const stripe = process.env.STRIPE_SECRET_KEY;
 //*Here is endpoint for hotel's information
 
 //*Get all hotels
@@ -23,20 +25,6 @@ router.get('/hotel/:id', async (req, res) => {
   }
   res.send(hotel);
 });
-
-// //*Select specific a city
-// router.get('/hotel/location/:location', async (req, res) => {
-//   const { location } = req.params;
-//   const hotels = await Hotel.find();
-//   const findLocation = hotels.filter((hotel) => hotel.location === location);
-//   if (findLocation.length > 0) {
-//     return res.json(findLocation);
-//   } else {
-//     return res
-//       .status(404)
-//       .json({ error: ` There are no hotels in ${location}` });
-//   }
-// });
 
 //*Search hotel by amount of guests  (Used for search bar) Used post because it is more than one request
 router.post('/hotel/search', async (req, res) => {
@@ -80,9 +68,7 @@ router.post('/hotel/search', async (req, res) => {
       //   `Total Days: ${totalDays}, Weekdays: ${weekdayDays}, Weekends: ${weekendDays}`
       // );
       //* 5% increases price by people
-
       const moreGuests = result * people;
-
       return moreGuests;
     };
 

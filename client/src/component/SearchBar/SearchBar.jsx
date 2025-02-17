@@ -84,6 +84,7 @@ const SearchBar = ({ setResetLanding }) => {
                 required
               />
             </div>
+
             <div>
               <FontAwesomeIcon icon={faCalendar} className='mr-1 text-white ' />
               <DatePicker

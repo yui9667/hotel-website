@@ -19,7 +19,7 @@ const Room = () => {
 
   const checkInData = hotelData.checkIn ? new Date(hotelData.checkIn) : null;
   const checkOutData = hotelData.checkOut ? new Date(hotelData.checkOut) : null;
-  console.log(hotelData);
+  //console.log(hotelData);
   //*navigation and pass a prop to use in confirm component
   const handleRoomSelection = async (rooms) => {
     if (user && token) {

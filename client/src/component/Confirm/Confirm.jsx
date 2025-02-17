@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { SearchContext } from '../../Context/SearchContext';
+
 import { AuthContext } from '../../Context/AuthContext';
+import { SearchContext } from '../../Context/SearchContext';
 import { differenceInDays } from 'date-fns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -12,22 +12,50 @@ import {
   faStar,
   faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
-
+import { useLocation } from 'react-router-dom';
+//import { loadStripe } from '@stripe/stripe-js';
+import axios from 'axios';
 const Confirm = () => {
-  const { searchParams, selectedHotel } = useContext(SearchContext);
   const { user } = useContext(AuthContext);
-  const hotelData = { ...searchParams, ...selectedHotel };
-  const navigate = useNavigate();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const location = useLocation();
+  const { searchParams, selectedHotel } = useContext(SearchContext);
+  const hotelData = { ...searchParams, ...selectedHotel };
   const checkInData = hotelData.checkIn ? new Date(hotelData.checkIn) : null;
   const checkOutData = hotelData.checkOut ? new Date(hotelData.checkOut) : null;
+  const locationRoom = location.state?.selectedRoom;
 
-  const location = useLocation();
-  const { selectedRoom } = location.state || 'not found';
+  const handleSubmit = async () => {
+    //*Since I use test mode, I don't need to use key.
+    // const stripe = await new loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+    // console.log(stripe);
+    const body = {
+      hotelData: hotelData,
+      selectedRoom: locationRoom,
+    };
+    try {
+      const response = await axios.post(
+        'http://localhost:3002/create-checkout-session',
+        body
+      );
+      const session = await response.data;
+      console.log(session);
 
-  //  console.log(selectedRoom);
+      if (!setFirstName || !setEmail || !lastName) {
+        return alert('Please fill in your information');
+      }
+      if (session.url) {
+        window.location.href = session.url;
+      } else {
+        console.error('No session URL receive ');
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
   const checkboxInfo = (e) => {
     const checked = e.target.checked;
     if (checked) {
@@ -42,13 +70,6 @@ const Confirm = () => {
     console.log(user);
   };
 
-  const btn = (rooms) => {
-    if (!setFirstName || !setEmail || !lastName) {
-      alert('Please fill in your information');
-    } else {
-      navigate('/payment', { state: { selectedRoom: rooms } });
-    }
-  };
   if (!selectedHotel) {
     return <p>No room selected</p>;
   }
@@ -103,20 +124,20 @@ const Confirm = () => {
           <div className='bg-blue-100 mb-2 gap-3 p-5'>
             <img
               className='w-56 h-auto '
-              src={`http://localhost:3002${selectedRoom?.roomImages} `}
+              src={`http://localhost:3002${locationRoom?.roomImages} `}
               alt={hotelData.hotelName}
             />
             <div className='ml-1'>
               <p>
                 <FontAwesomeIcon icon={faBed} className='mr-1' />
-                {selectedRoom?.roomType}
+                {locationRoom?.roomType}
               </p>
               <p>
                 <FontAwesomeIcon icon={faPerson} className='mr-2 text-lg' />
                 {hotelData.people} people
               </p>
               <p>{differenceInDays(checkOutData, checkInData)} night</p>
-              <p>Total {selectedRoom.adjustedPrice} SEK</p>
+              <p>Total {locationRoom.adjustedPrice} SEK</p>
             </div>
           </div>
         </div>
@@ -160,7 +181,7 @@ const Confirm = () => {
           </label>
 
           <button
-            onClick={() => btn(selectedRoom)}
+            onClick={handleSubmit}
             className='btn btn-primary px-4 py-1 m-2 text-sm drop-shadow-sm mt-4'
             type='button'
           >
