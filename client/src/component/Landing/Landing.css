@@ -6,9 +6,13 @@
   border-radius: 10px;
   border: 1px solid;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
 }
 .hotel-container:hover {
-  box-shadow: 2px 3px 2px 2px #bebebe;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.3);
 }
 .header {
   background-image: url('../../../public/landing-image.png');

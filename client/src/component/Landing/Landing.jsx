@@ -4,10 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import './Landing.css';
 import { SearchContext } from '../../Context/SearchContext';
 import { AuthContext } from '../../Context/AuthContext';
+import { motion } from 'motion/react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
 const Landing = () => {
   const [hotels, setHotels] = useState([]);
   const [resetLanding, setResetLanding] = useState([]);
-
   const { setSelectedHotel } = useContext(SearchContext);
   const navigate = useNavigate();
   const { user, token } = useContext(AuthContext);
@@ -60,23 +62,34 @@ const Landing = () => {
               key={hotel._id}
               className='flex flex-col justify-center text-center leading-5'
             >
-              <div className=' hotel-container'>
+              <motion.div
+                className=' hotel-container'
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <img
                   className='w-full h-56'
                   key={index}
                   src={`http://localhost:3002${hotel.hotelImages}`}
                   alt={hotel.hotelName}
                 />
+                <p
+                  className='border-2 border-indigo-500 rounded-lg mt-3 p-1 ml-40 px-2'
+                  style={{ color: 'var( --main-color)' }}
+                >
+                  <FontAwesomeIcon icon={faStar} className='pr-1' />
+                  {hotel.rating}
+                </p>
                 <div className='flex justify-between '>
                   <h2 className='text-xl mt-3 '>{hotel.hotelName}</h2>
-                  <p
-                    className='border-2 border-indigo-500 rounded-lg mt-3 p-1 px-2'
-                    style={{ color: 'var( --main-color)' }}
-                  >
-                    {hotel.rating}
-                  </p>
                 </div>
-                <p className='my-2'>{hotel.location}</p>
+                <p className='my-2'>
+                  <FontAwesomeIcon
+                    icon={faLocationDot}
+                    className='pr-1 text-green-800'
+                  />
+                  {hotel.location}
+                </p>
                 <p className='text-rose-700'>{hotel.price} kr</p>
 
                 <button
@@ -86,7 +99,7 @@ const Landing = () => {
                 >
                   Select
                 </button>
-              </div>
+              </motion.div>
             </div>
           ))
         ) : (

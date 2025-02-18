@@ -1,5 +1,4 @@
 import { useContext, useState } from 'react';
-
 import { AuthContext } from '../../Context/AuthContext';
 import { SearchContext } from '../../Context/SearchContext';
 import { differenceInDays } from 'date-fns';

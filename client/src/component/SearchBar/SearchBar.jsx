@@ -49,17 +49,17 @@ const SearchBar = ({ setResetLanding }) => {
     <div>
       <header className='header'>
         <div
-          className='flex flex-col justify-center items-center text-center'
-          // style={{ backgroundColor: 'var(--second-color)' }}
+          className='flex flex-col m-20 justify-center items-center text-center sm:flex-row m-0 gap-3 '
+          style={{ backgroundColor: 'var(--second-color)' }}
         >
-          <div>
+          <div className=''>
             <FontAwesomeIcon
               icon={faLocationDot}
               style={{ color: '#fff' }}
               className='mr-1'
             />
             <select
-              className='w-28 rounded text-sm mt-3'
+              className='w-28 rounded text-sm  '
               required
               onChange={(e) => setLocation(e.target.value)}
             >
@@ -70,35 +70,33 @@ const SearchBar = ({ setResetLanding }) => {
             </select>
           </div>
 
-          <div className='text-sm my-3 flex flex-col justify-center items-center'>
-            <div>
-              <FontAwesomeIcon icon={faCalendar} className='mr-1 text-white ' />
-              <DatePicker
-                className='rounded w-28 mb-3 text-center '
-                selectsStart
-                placeholderText='Check In'
-                selected={checkIn}
-                onChange={(data) => setCheckIn(data)}
-                startDate={checkIn}
-                minDate={new Date()}
-                required
-              />
-            </div>
+          <div>
+            <FontAwesomeIcon icon={faCalendar} className='mr-1 text-white ' />
+            <DatePicker
+              className='rounded w-28 text-center'
+              selectsStart
+              placeholderText='Check In'
+              selected={checkIn}
+              onChange={(data) => setCheckIn(data)}
+              startDate={checkIn}
+              minDate={new Date()}
+              required
+            />
+          </div>
 
-            <div>
-              <FontAwesomeIcon icon={faCalendar} className='mr-1 text-white ' />
-              <DatePicker
-                className='rounded w-28 text-center'
-                selectsEnd
-                placeholderText='Check Out'
-                selected={checkOut}
-                onChange={(data) => setCheckOut(data)}
-                endDate={checkOut}
-                startDate={checkOut}
-                minDate={checkoutNextDay(checkIn)}
-                required
-              />
-            </div>
+          <div>
+            <FontAwesomeIcon icon={faCalendar} className='mr-1 text-white ' />
+            <DatePicker
+              className='rounded w-28 text-center'
+              selectsEnd
+              placeholderText='Check Out'
+              selected={checkOut}
+              onChange={(data) => setCheckOut(data)}
+              endDate={checkOut}
+              startDate={checkOut}
+              minDate={checkoutNextDay(checkIn)}
+              required
+            />
           </div>
 
           <div>
