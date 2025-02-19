@@ -59,7 +59,7 @@ const SearchBar = ({ setResetLanding }) => {
               className='mr-1'
             />
             <select
-              className='w-28 rounded text-sm  '
+              className=' w-28 rounded text-sm md:text-base  '
               required
               onChange={(e) => setLocation(e.target.value)}
             >
@@ -105,7 +105,7 @@ const SearchBar = ({ setResetLanding }) => {
               className='mr-1 text-white text-lg'
             />
             <select
-              className='w-28 rounded text-sm '
+              className='w-28 rounded text-sm md:text-base '
               id='guests'
               value={people}
               //change to number

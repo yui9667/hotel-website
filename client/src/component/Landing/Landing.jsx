@@ -68,34 +68,36 @@ const Landing = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <img
-                  className='w-full h-56'
+                  className='w-full h-56 md:h-80'
                   key={index}
                   src={`http://localhost:3002${hotel.hotelImages}`}
                   alt={hotel.hotelName}
                 />
                 <p
-                  className='border-2 border-indigo-500 rounded-lg mt-3 p-1 ml-40 px-2'
+                  className='border-2 border-indigo-500 rounded-lg mt-3 p-1 ml-40 px-2 md: border-3 text-lg ml-80 px-3'
                   style={{ color: 'var( --main-color)' }}
                 >
-                  <FontAwesomeIcon icon={faStar} className='pr-1' />
+                  <FontAwesomeIcon icon={faStar} className='pr-1 md:text-lg' />
                   {hotel.rating}
                 </p>
                 <div className='flex justify-between '>
-                  <h2 className='text-xl mt-3 '>{hotel.hotelName}</h2>
+                  <h2 className='text-xl mt-3 md:text-3xl '>
+                    {hotel.hotelName}
+                  </h2>
                 </div>
-                <p className='my-2'>
+                <p className='my-2 md:text-2xl'>
                   <FontAwesomeIcon
                     icon={faLocationDot}
-                    className='pr-1 text-green-800'
+                    className='pr-1 text-green-800 md:text-2xl'
                   />
                   {hotel.location}
                 </p>
-                <p className='text-rose-700'>{hotel.price} kr</p>
+                <p className='text-rose-700 md:text-2xl'>{hotel.price} kr</p>
 
                 <button
                   onClick={() => clickRoom(hotel)}
                   type='button'
-                  className='btn btn-primary px-4 py-1 m-2 text-sm drop-shadow-lg'
+                  className='btn btn-primary px-4 py-1 m-2 text-sm drop-shadow-lg md: col-4 py-1 md:text-lg '
                 >
                   Select
                 </button>

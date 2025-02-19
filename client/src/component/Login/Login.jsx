@@ -12,34 +12,31 @@ const Login = () => {
   };
   return (
     <div className='flex flex-col items-center justify-center'>
-      <h1 className='text-3xl my-3'>Login</h1>
+      <h1 className='text-3xl my-3 md:font-semibold'>Login</h1>
 
       <form
         onSubmit={handleLogin}
-        className='border-3 border-blue-700 rounded flex flex-col items-center p-4'
+        className='border-3 border-blue-700 rounded flex flex-col items-center p-4 '
       >
-        <div>
+        <div className='items-center flex flex-col md:flex-row '>
           <img
             src='/animeImages/Login-bro.svg'
             alt='Login image'
-            style={{ maxWidth: '100%', width: '250px', maxHeight: '100%' }}
+            className='w-60 md:w-96'
           />
-        </div>
-        <div className='items-end flex flex-col'>
-          <div className='flex flex-row items-center gap-2'>
-            <h5>Email: </h5>
+
+          <div>
+            <h5 className='md:text-lg'>Email: </h5>
             <input
-              className='border-2 my-2 text-start'
+              className='border-2 my-2 text-start md:py-1 px-3'
               type='email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-          </div>
-          <div className='flex flex-row items-center gap-2'>
-            <h5>Password: </h5>
+            <h5 className='md:text-lg'>Password: </h5>
             <input
-              className='border-2 text-start'
+              className='border-2 text-start md:py-1 px-3'
               type='password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -49,14 +46,19 @@ const Login = () => {
         </div>
         <button
           type='submit'
-          className='btn btn-primary px-4 py-1 m-3 text-sm drop-shadow-sm '
+          className='btn btn-primary px-4 py-1 m-3 text-sm drop-shadow-sm md:text-lg col-5 '
         >
           Log In
         </button>
 
         <Link to='/register'>
           {' '}
-          <p className='text-sm'>Create an account</p>
+          <p className='text-sm md:text-base'>
+            Create an{' '}
+            <strong className='text-green-600 text-sm md:text-base'>
+              account
+            </strong>
+          </p>
         </Link>
       </form>
     </div>

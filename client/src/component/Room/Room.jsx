@@ -37,44 +37,60 @@ const Room = () => {
     <div>
       <div className='flex flex-col justify-center items-center text-center mx-2'>
         <img
-          className='w-56 h-full sm:w-5/6 md:w-2xl 
+          className='w-56 h-full sm:w-5/6 md:w-96
           
           '
           src={`http://localhost:3002${hotelData.hotelImages} `}
           alt={hotelData.hotelName}
         />
         <h1 className='text-3xl my-3'>{hotelData.hotelName}</h1>
-        <h4 className=' text-lg'>
-          <FontAwesomeIcon icon={faLocationDot} className='mr-2 text-lg' />
+        <h4 className=' text-lg md:text-2xl'>
+          <FontAwesomeIcon
+            icon={faLocationDot}
+            className='mr-2 text-lg md:text-2xl'
+          />
           {hotelData.location}
         </h4>
-        <div className='border-2 p-3 my-4'>
-          <p className='mb-3'>{hotelData.description}</p>
-          <p className='border-2 p-2 mb-3'>
-            {hotelData.facilities.join(' , ')}
-          </p>
+        <div className='border-2  border-blue-200 p-3 my-4 '>
+          <p className='mb-3 md:text-xl'>{hotelData.description}</p>
+          <div className='border-2 border-blue-200 p-2 mb-3'>
+            <p className='font-semibold mb-2'>Facilities</p>
+
+            <p className='mb-2 md:text-lg'>
+              {hotelData.facilities.join(' , ')}
+            </p>
+          </div>
 
           <div className='flex justify-center items-center gap-8 '>
             <div>
-              <p className='flex '>
-                <FontAwesomeIcon icon={faCalendarDays} className='mr-1 mt-1' />
+              <p className='flex md:text-lg'>
+                <FontAwesomeIcon
+                  icon={faCalendarDays}
+                  className='mr-1 mt-1 md:text-lg'
+                />
                 CheckIn
               </p>
-              <p> {checkInData ? checkInData?.toLocaleDateString() : 'null'}</p>
+              <p className='md:text-lg'>
+                {' '}
+                {checkInData ? checkInData?.toLocaleDateString() : 'null'}
+              </p>
             </div>
 
             <div>
-              <p className='flex '>
-                <FontAwesomeIcon icon={faCalendarDays} className='mr-1 mt-1' />
+              <p className='flex md:text-lg '>
+                <FontAwesomeIcon
+                  icon={faCalendarDays}
+                  className='mr-1 mt-1 md:text-lg'
+                />
                 CheckOut
               </p>
-              <p>
+              <p className='md:text-lg'>
                 {checkOutData ? checkOutData?.toLocaleDateString() : 'null'}
               </p>
             </div>
           </div>
 
-          <p>
+          <p className='my-2 md:text-lg'>
             <FontAwesomeIcon icon={faPerson} className='mr-2 text-lg' />
             {hotelData.people} people
           </p>
@@ -84,15 +100,16 @@ const Room = () => {
         {rooms.map((room, index) => (
           <div
             key={index}
-            className='flex flex-col justify-center items-center border-2 m-4 md:flex-row '
+            className='flex flex-col justify-center items-center border-2 m-4 md:flex-row max-w-full m-auto w-2/3 mb-3'
           >
             <motion.img
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 1 }}
-              className='w-full h-56 sm:h-56 md:h-80'
+              className='w-full h-80 md:w-96 overflow-hidden object-covers'
               src={`http://localhost:3002${room.roomImages}`}
               alt={`${selectedHotel.hotelName} ${index + 1}`}
             />
+
             <div className='md:flex flex-col justify-center text-center'>
               <h2 className='mt-2 text-lg md:text-2xl mb-4'>
                 <FontAwesomeIcon icon={faBed} className='mr-2' />
