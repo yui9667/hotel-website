@@ -68,27 +68,27 @@ const Landing = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <img
-                  className='w-full h-56 md:h-80'
+                  className='w-full h-56 object-cover md:h-80 w-96'
                   key={index}
                   src={`http://localhost:3002${hotel.hotelImages}`}
                   alt={hotel.hotelName}
                 />
                 <p
-                  className='border-2 border-indigo-500 rounded-lg mt-3 p-1 ml-40 px-2 md: border-3 text-lg ml-80 px-3'
+                  className='border-2 border-indigo-500 text-base rounded-lg mt-3 p-1 ml-40 px-2 md:text-lg '
                   style={{ color: 'var( --main-color)' }}
                 >
                   <FontAwesomeIcon icon={faStar} className='pr-1 md:text-lg' />
                   {hotel.rating}
                 </p>
                 <div className='flex justify-between '>
-                  <h2 className='text-xl mt-3 md:text-3xl '>
+                  <h2 className='text-xl mt-3 md:text-2xl '>
                     {hotel.hotelName}
                   </h2>
                 </div>
-                <p className='my-2 md:text-2xl'>
+                <p className='my-2 md:text-xl'>
                   <FontAwesomeIcon
                     icon={faLocationDot}
-                    className='pr-1 text-green-800 md:text-2xl'
+                    className='pr-1 text-green-800 md:text-xl'
                   />
                   {hotel.location}
                 </p>
@@ -97,7 +97,7 @@ const Landing = () => {
                 <button
                   onClick={() => clickRoom(hotel)}
                   type='button'
-                  className='btn btn-primary px-4 py-1 m-2 text-sm drop-shadow-lg md: col-4 py-1 md:text-lg '
+                  className='btn btn-primary px-4 py-1 m-2 text-sm drop-shadow-lg  md:text-lg  '
                 >
                   Select
                 </button>

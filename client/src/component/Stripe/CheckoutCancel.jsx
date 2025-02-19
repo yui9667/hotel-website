@@ -24,7 +24,7 @@ function CheckoutCancel() {
             to='/'
             className='px-12 bg-red-600 hover:bg-red-500 text-white font-semibold py-3 rounded-lg'
           >
-            Continue Shopping
+            Going back to Home page
           </Link>
         </div>
       </div>

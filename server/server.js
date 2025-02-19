@@ -37,15 +37,8 @@ app.post('/create-checkout-session', async (req, res) => {
   try {
     const { hotelData, selectedRoom } = req.body;
 
-    // const totalPrice = selectedRoom[0].adjustedPrice * 10;
-    // console.log('total price', totalPrice);
-    // const findAdjustedPrice = locationRoom.find(
-    //   (room) => room.adjustedPrice
-    // )?.adjustedPrice;
-    //  const findRoom = locationRoom.find((room) => room.id)?.roomType;
-
     console.log('selectedRoom', selectedRoom);
-    console.log(hotelData);
+    //console.log(hotelData);
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [

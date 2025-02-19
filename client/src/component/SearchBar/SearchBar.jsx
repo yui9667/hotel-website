@@ -49,7 +49,7 @@ const SearchBar = ({ setResetLanding }) => {
     <div>
       <header className='header'>
         <div
-          className='flex flex-col m-20 justify-center items-center text-center sm:flex-row m-0 gap-3 '
+          className='flex flex-col m-20 justify-center items-center text-center sm:flex-row m-0 p-2 gap-3  '
           style={{ backgroundColor: 'var(--second-color)' }}
         >
           <div className=''>

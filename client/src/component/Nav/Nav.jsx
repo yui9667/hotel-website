@@ -13,7 +13,7 @@ const Nav = () => {
       <nav className='nav-bar'>
         <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
           <li className='nav-item'>
-            <Link to='/' className='text-white' onClick={handleClick}>
+            <Link to='/' className='nav-link' onClick={handleClick}>
               Home
             </Link>
           </li>
@@ -22,12 +22,8 @@ const Nav = () => {
               Account
             </Link>
           </li>
-          <li className='nav-item'>
-            <FontAwesomeIcon
-              icon={faGlobe}
-              className='nav-item'
-              style={{ color: '#fff' }}
-            />
+          <li className='nav-item text-white sm:text-black'>
+            <FontAwesomeIcon icon={faGlobe} className='nav-item ' />
           </li>
         </ul>
         <div
