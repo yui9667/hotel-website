@@ -22,7 +22,11 @@ const SearchProvider = ({ children }) => {
 
   const [selectedRoom, setSelectedRoom] = useState(() => {
     const savedData = window.sessionStorage.getItem('hotelStorageData');
-    return savedData ? JSON.parse(savedData).selectedHotel.rooms : {};
+    if (savedData) {
+      const parsedData = JSON.parse(savedData);
+      return parsedData.selectedHotel?.rooms || [];
+    }
+    return [];
   });
   console.log(selectedRoom);
   useEffect(() => {

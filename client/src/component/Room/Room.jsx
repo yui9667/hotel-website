@@ -12,7 +12,7 @@ import { motion } from 'motion/react';
 import { differenceInDays } from 'date-fns';
 const Room = () => {
   const { searchParams, selectedHotel } = useContext(SearchContext);
-  const hotelData = { ...searchParams, ...selectedHotel };
+  const hotelData = { ...selectedHotel, ...searchParams };
 
   const [rooms, setRooms] = useState([]);
   const navigate = useNavigate();
@@ -27,6 +27,8 @@ const Room = () => {
 
   useEffect(() => {
     if (hotelData?.rooms) {
+      console.log('Updated searchParams:', searchParams);
+      console.log('Updated selectedHotel:', selectedHotel);
       setRooms(hotelData.rooms);
     }
   }, [hotelData]);

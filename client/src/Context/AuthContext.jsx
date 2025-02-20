@@ -1,10 +1,11 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { SearchContext } from './SearchContext';
 
 const AuthContext = createContext();
-
 const AuthProvider = ({ children }) => {
+  const { setSelectedHotel, selectedHotel } = useContext(SearchContext);
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
   const navigate = useNavigate();
@@ -18,6 +19,12 @@ const AuthProvider = ({ children }) => {
         setUser(response.data.user);
         setToken(response.data.token);
         console.log(response.data.user);
+        if (selectedHotel) {
+          window.sessionStorage.setItem(
+            'hotelStorageData',
+            JSON.stringify(selectedHotel)
+          );
+        }
         window.localStorage.setItem('token', response.data.token);
         window.localStorage.setItem(
           'userLocalStorage',
@@ -33,9 +40,11 @@ const AuthProvider = ({ children }) => {
   const logOutUser = () => {
     setUser(null);
     setToken(null);
+    setSelectedHotel(null);
     //*Removed data as keys
     window.localStorage.removeItem('userLocalStorage');
     window.localStorage.removeItem('token');
+    window.sessionStorage.removeItem('hotelStorageData');
     navigate('/');
   };
   useEffect(() => {
@@ -46,6 +55,7 @@ const AuthProvider = ({ children }) => {
       setToken(storedToken);
     }
   }, []);
+
   return (
     <AuthContext.Provider value={{ logOutUser, loginUser, user, token }}>
       {children}

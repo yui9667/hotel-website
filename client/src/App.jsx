@@ -12,8 +12,8 @@ import CheckoutSuccess from './component/Stripe/CheckoutSuccess';
 import CheckoutCancel from './component/Stripe/CheckoutCancel';
 function App() {
   return (
-    <AuthProvider>
-      <SearchProvider>
+    <SearchProvider>
+      <AuthProvider>
         <Nav />
         <Routes>
           <Route path='/' element={<Landing />} />
@@ -24,8 +24,8 @@ function App() {
           <Route path='/success' element={<CheckoutSuccess />} />
           <Route path='/canceled' element={<CheckoutCancel />} />
         </Routes>
-      </SearchProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </SearchProvider>
   );
 }
 
