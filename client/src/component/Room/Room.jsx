@@ -31,7 +31,7 @@ const Room = () => {
     }
   }, [hotelData]);
   if (!rooms || rooms.length === 0) {
-    return <div>Loading hotel information..</div>;
+    return <div>Loading hotel information.. Try it again</div>;
   }
   return (
     <div>

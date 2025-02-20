@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
@@ -17,8 +18,8 @@ const AuthProvider = ({ children }) => {
         setUser(response.data.user);
         setToken(response.data.token);
         console.log(response.data.user);
-        window.sessionStorage.setItem('Token :', response.data.token);
-        window.sessionStorage.setItem(
+        window.localStorage.setItem('token', response.data.token);
+        window.localStorage.setItem(
           'userLocalStorage',
           JSON.stringify(response.data.user)
         );
@@ -38,8 +39,8 @@ const AuthProvider = ({ children }) => {
     navigate('/');
   };
   useEffect(() => {
-    const storedUser = window.sessionStorage.getItem('userLocalStorage');
-    const storedToken = window.sessionStorage.getItem('token');
+    const storedUser = window.localStorage.getItem('userLocalStorage');
+    const storedToken = window.localStorage.getItem('token');
     if (storedToken && storedUser) {
       setUser(JSON.parse(storedUser));
       setToken(storedToken);

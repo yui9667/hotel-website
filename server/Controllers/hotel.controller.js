@@ -64,9 +64,9 @@ router.post('/hotel/search', async (req, res) => {
       //*Increase 20% on Weekend
       const weekendRate = weekdayRate * 1.2;
       const result = weekdayDays * weekdayRate + weekendDays * weekendRate;
-      console.log(
-        `Total Days: ${totalDays}, Weekdays: ${weekdayDays}, Weekends: ${weekendDays}`
-      );
+      // console.log(
+      //   `Total Days: ${totalDays}, Weekdays: ${weekdayDays}, Weekends: ${weekendDays}`
+      // );
       //* 5% increases price by people
       const moreGuests = result * people;
       return moreGuests;
@@ -88,7 +88,7 @@ router.post('/hotel/search', async (req, res) => {
 
       return { ...hotel.toObject(), rooms: roomNewPrice };
     });
-    console.log(hotelPrice);
+
     res.json(hotelPrice);
   } catch (error) {
     res.status(500).json({ error: 'Error to fetching search result' });
