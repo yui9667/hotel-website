@@ -64,43 +64,48 @@ const Landing = () => {
             >
               <motion.div
                 className=' hotel-container'
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 1 }}
               >
                 <img
-                  className='w-full h-56 object-cover md:h-80 w-96'
+                  className='w-full h-56 object-cover md:h-80 w-96 xl:w-[600px]'
                   key={index}
                   src={`http://localhost:3002${hotel.hotelImages}`}
                   alt={hotel.hotelName}
                 />
-                <p
-                  className='border-2 border-indigo-500 text-base rounded-lg mt-3 p-1 ml-40 px-2 md:text-lg '
-                  style={{ color: 'var( --main-color)' }}
-                >
-                  <FontAwesomeIcon icon={faStar} className='pr-1 md:text-lg' />
-                  {hotel.rating}
-                </p>
-                <div className='flex justify-between '>
-                  <h2 className='text-xl mt-3 md:text-2xl '>
-                    {hotel.hotelName}
-                  </h2>
-                </div>
-                <p className='my-2 md:text-xl'>
-                  <FontAwesomeIcon
-                    icon={faLocationDot}
-                    className='pr-1 text-green-800 md:text-xl'
-                  />
-                  {hotel.location}
-                </p>
-                <p className='text-rose-700 md:text-2xl'>{hotel.price} kr</p>
+                <div className='flex flex-col text-center items-center'>
+                  <p
+                    className='border-2 border-indigo-500 text-base rounded-lg mt-3 p-1 ml-40 px-2 md:text-lg '
+                    style={{ color: 'var( --main-color)' }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faStar}
+                      className='pr-1 md:text-lg'
+                    />
+                    {hotel.rating}
+                  </p>
+                  <div className='flex justify-between '>
+                    <h2 className='text-xl mt-3 md:text-2xl '>
+                      {hotel.hotelName}
+                    </h2>
+                  </div>
+                  <p className='my-2 md:text-xl'>
+                    <FontAwesomeIcon
+                      icon={faLocationDot}
+                      className='pr-1 text-green-800 md:text-xl'
+                    />
+                    {hotel.location}
+                  </p>
+                  <p className='text-rose-700 md:text-2xl'>{hotel.price} kr</p>
 
-                <button
-                  onClick={() => clickRoom(hotel)}
-                  type='button'
-                  className='btn btn-primary px-4 py-1 m-2 text-sm drop-shadow-lg  md:text-lg  '
-                >
-                  Select
-                </button>
+                  <button
+                    onClick={() => clickRoom(hotel)}
+                    type='button'
+                    className='btn btn-primary px-4 py-1 m-2 text-sm drop-shadow-lg  md:text-lg  '
+                  >
+                    Select
+                  </button>
+                </div>
               </motion.div>
             </div>
           ))

@@ -54,7 +54,7 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
-          roomImages: '/images/single-bed.jpg',
+          roomImages: '/images/one-bed.jpg',
           pricePerNight: 700,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
@@ -127,7 +127,7 @@ const seederHotels = async () => {
         },
         {
           roomType: 'Double',
-          roomImages: '/images/king-bed.jpg',
+          roomImages: '/images/room-dark.jpg',
           pricePerNight: 650,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
@@ -160,7 +160,7 @@ const seederHotels = async () => {
         },
         {
           roomType: 'Double',
-          roomImages: '/images/room3-dark.jpg',
+          roomImages: '/images/room-dark.jpg',
           pricePerNight: 500,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',
@@ -215,7 +215,7 @@ const seederHotels = async () => {
         'A serene hotel located near the outskirts, offering breathtaking sunset views and tranquil surroundings.',
       rating: 9.0,
       facilities: ['Spa', 'Breakfast', 'Pool'],
-      hotelImages: '/images/quality-hotel-match.jpg',
+      hotelImages: '/images/hotel-business.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -252,7 +252,7 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
-          roomImages: '/images/single-bed.jpg',
+          roomImages: '/images/one-bed-room.jpg',
           pricePerNight: 600,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
@@ -285,7 +285,7 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
-          roomImages: '/images/room3-dark.jpg',
+          roomImages: '/images/room-dark.jpg',
           pricePerNight: 700,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
@@ -319,7 +319,7 @@ const seederHotels = async () => {
         {
           roomType: 'Single',
           pricePerNight: 450,
-          roomImages: '/images/single-bed.jpg',
+          roomImages: '/images/one-bed-room.jpg',
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
         },
@@ -384,7 +384,7 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
-          roomImages: '/images/room3-dark.jpg',
+          roomImages: '/images/room-dark.jpg',
           pricePerNight: 850,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
@@ -417,7 +417,7 @@ const seederHotels = async () => {
       rooms: [
         {
           roomType: 'Single',
-          roomImages: '/images/single-bed.jpg',
+          roomImages: '/images/one-bed-room.jpg',
           pricePerNight: 700,
           capacity: 1,
           description: 'Cozy single room with a queen-size bed.',
@@ -446,7 +446,7 @@ const seederHotels = async () => {
         'A boutique hotel known for its contemporary design and excellent service. Located near cultural hotspots.',
       rating: 8.9,
       facilities: ['Wifi', 'Gym', 'Hot springs'],
-      hotelImages: '/images/hotel-pink.jpg',
+      hotelImages: '/images/hotel-look-cheap.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -479,7 +479,7 @@ const seederHotels = async () => {
         'A small, family-run inn offering a home-like atmosphere. Enjoy homemade breakfasts and warm hospitality.',
       rating: 7.9,
       facilities: ['Wifi', 'Family room', 'Breakfast'],
-      hotelImages: '/images/hotel-sea.jpg',
+      hotelImages: '/images/hotel-sweden.jpg',
       rooms: [
         {
           roomType: 'Single',
@@ -490,7 +490,7 @@ const seederHotels = async () => {
         },
         {
           roomType: 'Double',
-          roomImages: '/images/double-bed.jpg',
+          roomImages: '/images/one-bed-room.jpg',
           pricePerNight: 800,
           capacity: 2,
           description: 'Spacious double room with a kid-sized bed.',

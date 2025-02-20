@@ -8,6 +8,7 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   text-align: center;
   align-items: center;
 }
@@ -25,5 +26,15 @@
 @media (min-width: 768px) {
   .hotel-container {
     width: 400px;
+  }
+}
+@media (min-width: 1280px) {
+  .header {
+    aspect-ratio: 10 / 3;
+    background-size: cover;
+  }
+  .hotel-container {
+    flex-direction: row;
+    width: 900px;
   }
 }

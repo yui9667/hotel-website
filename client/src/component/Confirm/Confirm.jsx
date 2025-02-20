@@ -75,7 +75,7 @@ const Confirm = () => {
   return (
     <div>
       <div className='flex flex-col justify-center items-center xl:flex-row '>
-        <div className='flex flex-col justify-center items-center m-5 border-2  rounded lg:w-[650px]   '>
+        <div className='flex flex-col justify-center items-center m-2 border-2 rounded md:w-[650px] lg:w-[800px] xl:m-0 '>
           <div className='flex justify-center items-center m-3 border-3 rounded p-1'>
             <div className=' flex text-center'>
               <p className='sm:mr-3 md:text-lg'>
@@ -150,7 +150,7 @@ const Confirm = () => {
             </div>
           </div>
         </div>
-        <div className='flex flex-col mt-5 justify-center items-center border-2 rounded m-auto md:w-[650px] '>
+        <div className='flex flex-col mt-5 justify-center items-center border-2 rounded  w-4/5 md:w-[650px] lg:w-[800px] xl:m-2 py-3 leading-7 '>
           <h1 className='m-2 text-2xl'>Who is the lead guest?</h1>
           <form className=' flex flex-col items-center mt-2 '>
             <input

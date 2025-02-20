@@ -6,7 +6,7 @@ const SearchContext = createContext();
 const SearchProvider = ({ children }) => {
   const [searchParams, setSearchParams] = useState(() => {
     if (typeof window === 'undefined') return {};
-    const savedData = window.localStorage.getItem('hotelStorageData');
+    const savedData = window.sessionStorage.getItem('hotelStorageData');
     const parsedData = savedData ? JSON.parse(savedData).searchParams : {};
     console.log('searchParams:', savedData);
     return {
@@ -16,19 +16,19 @@ const SearchProvider = ({ children }) => {
     };
   });
   const [selectedHotel, setSelectedHotel] = useState(() => {
-    const savedData = window.localStorage.getItem('hotelStorageData');
+    const savedData = window.sessionStorage.getItem('hotelStorageData');
     return savedData ? JSON.parse(savedData).selectedHotel : {};
   });
 
   const [selectedRoom, setSelectedRoom] = useState(() => {
-    const savedData = window.localStorage.getItem('hotelStorageData');
+    const savedData = window.sessionStorage.getItem('hotelStorageData');
     return savedData ? JSON.parse(savedData).selectedHotel.rooms : {};
   });
   console.log(selectedRoom);
   useEffect(() => {
     console.log(searchParams);
     console.log(selectedHotel);
-    window.localStorage.setItem(
+    window.sessionStorage.setItem(
       'hotelStorageData',
       JSON.stringify({ searchParams, selectedHotel, selectedRoom })
     );

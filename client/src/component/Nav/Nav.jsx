@@ -1,6 +1,4 @@
 import { useState, useContext } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import './Nav.css';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext';
@@ -21,7 +19,7 @@ const Nav = () => {
           </li>
           {token && user ? (
             <li className='nav-item'>
-              <button className='nav-link' onClick={logOutUser}>
+              <button className='nav-link m-auto' onClick={logOutUser}>
                 Logout
               </button>
             </li>
@@ -32,9 +30,15 @@ const Nav = () => {
               </Link>
             </li>
           )}
-          <li className='nav-item text-white sm:text-black'>
-            <FontAwesomeIcon icon={faGlobe} className='nav-item ' />
-          </li>
+          {token && user ? (
+            <li className='nav-item text-white '>
+              <p className='nav-item text-sm sm:text-black'>
+                Welcome, {user.lastName}
+              </p>
+            </li>
+          ) : (
+            ''
+          )}
         </ul>
         <div
           className={`hamburger ${isOpen ? 'active' : ''}`}
