@@ -1,9 +1,6 @@
 .nav-bar {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
+  justify-content: space-between;
   transition: 1s ease-in-out;
 }
 nav.sticky {
@@ -52,6 +49,8 @@ nav.sticky {
   cursor: pointer;
   z-index: 10;
   padding: 20px;
+  margin-top: 11px;
+  margin-right: 10px;
 }
 .bar {
   display: block;

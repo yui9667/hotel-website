@@ -19,8 +19,12 @@ const Nav = () => {
   return (
     <>
       <nav className={`${sticky ? 'nav-bar sticky' : 'nav-bar'}`}>
+        <Link to='/' className='  '>
+          <img src='../../../public/logo.png' alt='logo' className='w-24 ' />
+        </Link>
+
         <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
-          <li className='nav-item'>
+          <li className='nav-item '>
             <Link to='/' className='nav-link' onClick={handleClick}>
               Home
             </Link>

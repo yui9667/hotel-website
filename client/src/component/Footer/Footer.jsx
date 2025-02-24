@@ -12,12 +12,15 @@ const Footer = () => {
   return (
     <div
       style={{ background: 'var(--main-color)' }}
-      className='flex flex-col justify-center items-center py-3 gap-2 overflow-hidden mt-40'
+      className='flex flex-col py-3 gap-2 overflow-hidden mt-40'
     >
-      <p onClick={toggleBtn} className='text-blue-100 hover:underline'>
-        Illustrations
-      </p>
-      <p className='text-blue-100 '>Copyright ©2025 All rights reserved.</p>
+      <img src='../../../public/logo.png' alt='logo' className='w-32' />
+      <div className='flex flex-col justify-center items-center'>
+        <p onClick={toggleBtn} className='text-blue-100 hover:underline'>
+          Illustrations
+        </p>
+        <p className='text-blue-100 '>Copyright ©2025 All rights reserved.</p>
+      </div>
     </div>
   );
 };
