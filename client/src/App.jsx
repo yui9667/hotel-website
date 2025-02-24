@@ -12,10 +12,12 @@ import CheckoutSuccess from './component/Stripe/CheckoutSuccess';
 import CheckoutCancel from './component/Stripe/CheckoutCancel';
 import Footer from './component/Footer/Footer';
 import Illustrations from './component/Footer/Illustrations';
+import ScrollTop from './component/ScrollTop/ScrollTop';
 function App() {
   return (
     <SearchProvider>
       <AuthProvider>
+        <ScrollTop />
         <Nav />
         <Routes>
           <Route path='/' element={<Landing />} />

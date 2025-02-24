@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <div
       style={{ background: 'var(--main-color)' }}
-      className='flex flex-col justify-center items-center py-3 gap-2'
+      className='flex flex-col justify-center items-center py-3 gap-2 overflow-hidden mt-40'
     >
       <p onClick={toggleBtn} className='text-blue-100 hover:underline'>
         Illustrations
