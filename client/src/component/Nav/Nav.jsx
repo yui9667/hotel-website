@@ -1,16 +1,24 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import './Nav.css';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext';
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [sticky, setSticky] = useState(false);
   const { user, token, logOutUser } = useContext(AuthContext);
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
+  useEffect(() => {
+    const handleScroll = () => {
+      setSticky(window.scrollY > 200);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  });
   return (
     <>
-      <nav className='nav-bar'>
+      <nav className={`${sticky ? 'nav-bar sticky' : 'nav-bar'}`}>
         <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
           <li className='nav-item'>
             <Link to='/' className='nav-link' onClick={handleClick}>

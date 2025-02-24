@@ -10,6 +10,8 @@ import { AuthProvider } from './Context/AuthContext';
 import Confirm from './component/Confirm/Confirm';
 import CheckoutSuccess from './component/Stripe/CheckoutSuccess';
 import CheckoutCancel from './component/Stripe/CheckoutCancel';
+import Footer from './component/Footer/Footer';
+import Illustrations from './component/Footer/Illustrations';
 function App() {
   return (
     <SearchProvider>
@@ -23,7 +25,9 @@ function App() {
           <Route path='/confirm' element={<Confirm />} />
           <Route path='/success' element={<CheckoutSuccess />} />
           <Route path='/canceled' element={<CheckoutCancel />} />
+          <Route path='/illustration' element={<Illustrations />} />
         </Routes>
+        <Footer />
       </AuthProvider>
     </SearchProvider>
   );
