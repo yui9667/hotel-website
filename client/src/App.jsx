@@ -29,7 +29,12 @@ function App() {
           <Route path='/canceled' element={<CheckoutCancel />} />
           <Route path='/illustration' element={<Illustrations />} />
         </Routes>
-        <Footer />
+
+        <footer className='w-full ' style={{ background: 'var(--main-color)' }}>
+          <div className='max-w-[1200px] mx-auto px-5'>
+            <Footer />
+          </div>
+        </footer>
       </AuthProvider>
     </SearchProvider>
   );

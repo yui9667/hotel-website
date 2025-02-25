@@ -19,8 +19,12 @@ const Nav = () => {
   return (
     <>
       <nav className={`${sticky ? 'nav-bar sticky' : 'nav-bar'}`}>
-        <Link to='/' className='  '>
-          <img src='../../../public/logo.png' alt='logo' className='w-24 ' />
+        <Link to='/'>
+          <img
+            src='../../../public/logo.png'
+            alt='logo'
+            className='w-24 mt-2 '
+          />
         </Link>
 
         <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
