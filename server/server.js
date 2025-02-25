@@ -19,7 +19,7 @@ app.use(
   express.static(path.join(__dirname, './client/public/hotel-images-folder'))
 );
 
-const PORT = 3002 || process.env.PORT;
+const PORT = 3002 || process.env.BACKEND_PORT;
 const BASE_URL =
   process.env.NODE_ENV === 'production'
     ? 'https://hotel-website-1-r5kh.onrender.com'
