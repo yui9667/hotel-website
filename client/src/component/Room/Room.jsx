@@ -33,7 +33,17 @@ const Room = () => {
     }
   }, [hotelData]);
   if (!rooms || rooms.length === 0) {
-    return <div>Loading hotel information.. Try it again</div>;
+    return (
+      <div className='text-center flex flex-col justify-center items-center p-3 h-dvh  '>
+        <p className=' mb-5 text-xl'>
+          Loading hotel information.. Try it again
+        </p>
+        <div
+          className='inline-block h-20 w-20 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]'
+          role='status'
+        ></div>
+      </div>
+    );
   }
   return (
     <div>

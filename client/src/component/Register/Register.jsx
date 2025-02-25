@@ -112,7 +112,7 @@ const Register = () => {
         </button>
       </form>
       {isModal && (
-        <div className='fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50'>
+        <div className='fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-10'>
           <div className='bg-white p-6 rounded shadow-md md:px-10'>
             <div className='flex flex-col my-5 '>
               <div className='flex flex-col text-center justify-center items-center'>

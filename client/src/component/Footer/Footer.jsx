@@ -11,7 +11,8 @@ const Footer = () => {
   };
   return (
     <div className='  flex flex-col py-3 gap-2 overflow-hidden mt-40'>
-      <img src='../../../public/logo.png' alt='logo' className='w-32' />
+      <img src='/logo.png' alt='logo' className='w-32' />
+      {/* <img src='../../../public/logo.png' alt='logo' className='w-32' /> */}
       <div className='flex flex-col justify-center items-center'>
         <p onClick={toggleBtn} className='text-blue-100 hover:underline'>
           Illustrations
