@@ -12,6 +12,7 @@ import {
   faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
+import BACKEND_URL from '../../config.js';
 //import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 const Confirm = () => {
@@ -36,7 +37,7 @@ const Confirm = () => {
     };
     try {
       const response = await axios.post(
-        'http://localhost:3002/create-checkout-session',
+        `${BACKEND_URL}/create-checkout-session`,
         body
       );
       const session = await response.data;
@@ -103,7 +104,7 @@ const Confirm = () => {
             <div className=' gap-3 p-4'>
               <img
                 className='w-56 h-auto   '
-                src={`http://localhost:3002${hotelData.hotelImages} `}
+                src={`${BACKEND_URL}${hotelData.hotelImages} `}
                 alt={hotelData.hotelName}
               />
 
@@ -125,7 +126,7 @@ const Confirm = () => {
             <div className=' flex flex-col justify-center bg-blue-100 mb-2 gap-3 p-4 lg:mr-5 mb-5'>
               <img
                 className='w-56 h-auto '
-                src={`http://localhost:3002${locationRoom?.roomImages} `}
+                src={`${BACKEND_URL}${locationRoom?.roomImages} `}
                 alt={hotelData.hotelName}
               />
               <div className='ml-1'>

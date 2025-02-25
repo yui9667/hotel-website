@@ -7,6 +7,7 @@ import { AuthContext } from '../../Context/AuthContext';
 import { motion } from 'motion/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
+import BACKEND_URL from '../../config.js';
 const Landing = () => {
   const [hotels, setHotels] = useState([]);
   const [resetLanding, setResetLanding] = useState([]);
@@ -16,7 +17,7 @@ const Landing = () => {
   //*this is for showing data from server side
   useEffect(() => {
     const fetchData = async () => {
-      const url = 'http://localhost:3002/api/hotels';
+      const url = `${BACKEND_URL}/api/hotels`;
 
       try {
         const response = await fetch(url);
@@ -70,7 +71,7 @@ const Landing = () => {
                 <img
                   className='w-full h-56 object-cover md:h-80 w-96 xl:w-[600px]'
                   key={index}
-                  src={`http://localhost:3002${hotel.hotelImages}`}
+                  src={`${BACKEND_URL}${hotel.hotelImages}`}
                   alt={hotel.hotelName}
                 />
                 <div className='flex flex-col text-center items-center'>

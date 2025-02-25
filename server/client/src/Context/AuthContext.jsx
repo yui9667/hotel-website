@@ -2,6 +2,7 @@ import { createContext, useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { SearchContext } from './SearchContext';
+import BACKEND_URL from '../config';
 
 const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
@@ -11,7 +12,7 @@ const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const loginUser = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:3002/user/login', {
+      const response = await axios.post(`${BACKEND_URL}/user/login`, {
         email,
         password,
       });
