@@ -15,13 +15,13 @@ const __dirname = path.dirname(__filename);
 const app = express();
 app.use(
   '/images',
-  express.static(path.join(__dirname, '../client/public/hotel-images-folder'))
+  express.static(path.join(__dirname, './client/public/hotel-images-folder'))
 );
 
 const PORT = 3002;
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '/client/dist')));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+  res.sendFile(path.join(__dirname, '/client/dist/index.html'));
 });
 app.use(express.json());
 app.use(express.static('public'));
