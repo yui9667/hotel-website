@@ -71,8 +71,8 @@ app.post('/create-checkout-session', async (req, res) => {
         },
       ],
       mode: 'payment',
-      success_url: `${BACKEND_URL}/success`,
-      cancel_url: `${BACKEND_URL}/canceled`,
+      success_url: `${process.env.VITE_BACKEND_URL}/success`,
+      cancel_url: `${process.env.VITE_BACKEND_URL}/canceled`,
     });
 
     res.json({ url: session.url });
