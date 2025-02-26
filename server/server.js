@@ -37,6 +37,8 @@ app.use(
       'http://localhost:5173',
       'https://hotel-website-1-r5kh.onrender.com',
     ],
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
 connectDB();
