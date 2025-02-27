@@ -18,7 +18,16 @@ app.use(
   '/images',
   express.static(path.join(__dirname, './client/public/hotel-images-folder'))
 );
-
+app.use(
+  cors({
+    origin: [
+      'http://localhost:5173',
+      'https://hotel-website-1-r5kh.onrender.com',
+    ],
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
 const PORT = 3002 || process.env.BACKEND_PORT;
 const BASE_URL =
   process.env.NODE_ENV === 'production'
@@ -31,16 +40,6 @@ app.get('*', (req, res) => {
 });
 app.use(express.json());
 app.use(express.static('public'));
-app.use(
-  cors({
-    origin: [
-      'http://localhost:5173',
-      'https://hotel-website-1-r5kh.onrender.com',
-    ],
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  })
-);
 connectDB();
 
 app.use('/api', hotelRouter);
