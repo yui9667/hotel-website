@@ -8,7 +8,7 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import Stripe from 'stripe';
-import BACKEND_URL from './client/src/config.js';
+//import BACKEND_URL from './client/src/config.js';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const __filename = fileURLToPath(import.meta.url);
@@ -62,7 +62,9 @@ app.post('/create-checkout-session', async (req, res) => {
             unit_amount: selectedRoom.adjustedPrice * 100,
             product_data: {
               name: `${hotelData.hotelName} - ${selectedRoom.roomType}`,
-              images: [`/images/${hotelData.hotelImages}`],
+              images: [
+                `${process.env.VITE_BACKEND_URL}/images/${hotelData.hotelImages}`,
+              ],
               description: `This room accommodates up to ${selectedRoom.capacity} people. 
                 This is test mode. Please enter a test card number "4242 4242 4242" `,
             },

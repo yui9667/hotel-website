@@ -26,8 +26,8 @@ const AuthProvider = ({ children }) => {
             JSON.stringify(selectedHotel)
           );
         }
-        window.localStorage.setItem('token', response.data.token);
-        window.localStorage.setItem(
+        window.sessionStorage.setItem('token', response.data.token);
+        window.sessionStorage.setItem(
           'userLocalStorage',
           JSON.stringify(response.data.user)
         );
@@ -43,14 +43,14 @@ const AuthProvider = ({ children }) => {
     setToken(null);
     setSelectedHotel(null);
     //*Removed data as keys
-    window.localStorage.removeItem('userLocalStorage');
-    window.localStorage.removeItem('token');
+    window.sessionStorage.removeItem('userLocalStorage');
+    window.sessionStorage.removeItem('token');
     window.sessionStorage.removeItem('hotelStorageData');
     navigate('/');
   };
   useEffect(() => {
-    const storedUser = window.localStorage.getItem('userLocalStorage');
-    const storedToken = window.localStorage.getItem('token');
+    const storedUser = window.sessionStorage.getItem('userLocalStorage');
+    const storedToken = window.sessionStorage.getItem('token');
     if (storedToken && storedUser) {
       setUser(JSON.parse(storedUser));
       setToken(storedToken);
