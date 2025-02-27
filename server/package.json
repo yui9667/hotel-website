@@ -4,8 +4,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "install": "npm install --prefix client",
-    "build": "npm run build --prefix client",
+    "build": "npm run build ",
     "start": "node server.js"
   },
   "keywords": [],

@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
-import { SearchContext } from '../../Context/SearchContext';
+import { SearchContext } from '../../Context/SearchContext.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faLocationDot,

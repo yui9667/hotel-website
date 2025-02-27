@@ -111,7 +111,7 @@ const Room = () => {
         {rooms.map((room, index) => (
           <div
             key={index}
-            className='flex flex-col justify-center items-center w-3/5 border-2 m-20 p-1 lg:flex-row  mb-3 justify-between m-auto'
+            className='flex flex-col justify-center items-center w-3/4 border-2 m-20 p-1 lg:flex-row  mb-3 justify-between m-auto'
           >
             <div className=' overflow-hidden flex items-center justify-center lg:w-1/2'>
               <motion.img
@@ -123,7 +123,7 @@ const Room = () => {
               />
             </div>
 
-            <div className='md:text-center w-1/2'>
+            <div className='text-center md:w-1/2'>
               <h2 className='mt-2 text-lg lg:text-2xl mb-4'>
                 <FontAwesomeIcon icon={faBed} className='mr-2' />
                 {room.roomType} bed
@@ -140,7 +140,7 @@ const Room = () => {
               </p>
 
               <button
-                className='btn btn-primary px-5 py-1 m-3  text-sm drop-shadow-sm'
+                className='btn btn-primary px-5 py-1 m-3 text-sm drop-shadow-sm'
                 type='button'
                 onClick={() => handleRoomSelection(room)}
               >
