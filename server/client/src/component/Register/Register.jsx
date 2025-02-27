@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import BACKEND_URL from '../../config';
 const Register = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -21,7 +22,7 @@ const Register = () => {
       return;
     }
     try {
-      const response = await axios.post('http://localhost:3002/user/register', {
+      const response = await axios.post(`${BACKEND_URL}/user/register`, {
         firstName,
         lastName,
         email,
