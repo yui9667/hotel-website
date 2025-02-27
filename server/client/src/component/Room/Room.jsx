@@ -47,8 +47,8 @@ const Room = () => {
     );
   }
   return (
-    <div>
-      <div className='flex flex-col justify-center items-center text-center mx-2'>
+    <div className='max-w-[1200px] m-auto'>
+      <div className='flex flex-col justify-center items-center text-center mt-5 mx-3'>
         <img
           className='w-56 h-full sm:w-5/6 md:w-96 '
           src={`${BACKEND_URL}${hotelData.hotelImages} `}

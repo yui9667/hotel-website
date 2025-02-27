@@ -74,9 +74,9 @@ const Confirm = () => {
     return <p>No room selected</p>;
   }
   return (
-    <div>
-      <div className='flex flex-col justify-center items-center xl:flex-row '>
-        <div className='flex flex-col justify-center items-center m-2 border-2 rounded md:w-[650px] lg:w-[800px] xl:m-0 '>
+    <div className=' max-w-[1200px] m-auto '>
+      <div className='flex flex-col mt-10 justify-center items-center xl:flex-row gap-5'>
+        <div className='flex flex-col justify-center items-center m-2 border-2 rounded md:w-[650px] lg:w-[800px] xl:m-0 xl:h-[600px] leading-5'>
           <div className='flex justify-center items-center m-3 border-3 rounded p-1'>
             <div className=' flex text-center'>
               <p className='sm:mr-3 md:text-lg'>
@@ -100,10 +100,10 @@ const Confirm = () => {
             </div>
           </div>
           <h1 className='text-3xl mb-1'>{hotelData.hotelName}</h1>
-          <div className='flex flex-col items-center justify-center lg:flex-row '>
+          <div className='flex flex-col items-center justify-center lg:flex-row lg:items-start'>
             <div className=' gap-3 p-4'>
               <img
-                className='w-56 h-auto   '
+                className='w-56  lg:w-[300px] lg:h-[250px] '
                 src={`${BACKEND_URL}${hotelData.hotelImages} `}
                 alt={hotelData.hotelName}
               />
@@ -123,9 +123,9 @@ const Confirm = () => {
               </div>
             </div>
 
-            <div className=' flex flex-col justify-center bg-blue-100 mb-2 gap-3 p-4 lg:mr-5 mb-5'>
+            <div className=' flex flex-col mb-5 justify-center bg-blue-100 gap-3 p-4 lg:mr-5'>
               <img
-                className='w-56 h-auto '
+                className='w-56 h-auto lg:w-[300px]'
                 src={`${BACKEND_URL}${locationRoom?.roomImages} `}
                 alt={hotelData.hotelName}
               />
@@ -151,7 +151,7 @@ const Confirm = () => {
             </div>
           </div>
         </div>
-        <div className='flex flex-col mt-5 justify-center items-center border-2 rounded  w-4/5 md:w-[650px] lg:w-[800px] xl:m-2 py-3 leading-7 '>
+        <div className='flex flex-col justify-center items-center border-2 rounded w-4/5 md:w-[650px] lg:w-[800px] xl:m-2 h-[600px] leading-10 mt-2'>
           <h1 className='m-2 text-2xl'>Who is the lead guest?</h1>
           <form className=' flex flex-col items-center mt-2 '>
             <input

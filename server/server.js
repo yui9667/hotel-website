@@ -62,7 +62,7 @@ app.post('/create-checkout-session', async (req, res) => {
             unit_amount: selectedRoom.adjustedPrice * 100,
             product_data: {
               name: `${hotelData.hotelName} - ${selectedRoom.roomType}`,
-              images: [`${BACKEND_URL}${hotelData.hotelImages}`],
+              images: [`/images/${hotelData.hotelImages}`],
               description: `This room accommodates up to ${selectedRoom.capacity} people. 
                 This is test mode. Please enter a test card number "4242 4242 4242" `,
             },
