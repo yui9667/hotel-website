@@ -29,7 +29,7 @@ app.use(
   })
 );
 
-const PORT = 3002 || process.env.BACKEND_PORT;
+const PORT = process.env.PORT || 3002;
 const BASE_URL =
   process.env.NODE_ENV === 'production'
     ? 'https://hotel-website-1-r5kh.onrender.com'
