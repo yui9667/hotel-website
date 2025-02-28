@@ -3,7 +3,6 @@ import SearchBar from '../SearchBar/SearchBar.jsx';
 import { useNavigate } from 'react-router-dom';
 import './Landing.css';
 import { SearchContext } from '../../Context/SearchContext.jsx';
-import { AuthContext } from '../../Context/AuthContext.jsx';
 import { motion } from 'motion/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
@@ -13,7 +12,7 @@ const Landing = () => {
   const [resetLanding, setResetLanding] = useState([]);
   const { setSelectedHotel } = useContext(SearchContext);
   const navigate = useNavigate();
-  const { user, token } = useContext(AuthContext);
+
   //*this is for showing data from server side
   useEffect(() => {
     const fetchData = async () => {
@@ -43,12 +42,9 @@ const Landing = () => {
         'Please fill all required fields: location, check-in, check-out, and number of people.'
       );
       return;
-    }
-    if (user && token) {
+    } else {
       navigate('/hotel/room', { state: { selectedRoom: rooms } });
       setSelectedHotel(hotel);
-    } else {
-      navigate('/login');
     }
   };
   return (

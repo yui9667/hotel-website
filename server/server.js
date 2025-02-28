@@ -16,7 +16,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 app.use(
   '/images',
-  express.static(path.join(__dirname, './client/public/hotel-images-folder'))
+  express.static(path.join(__dirname, '../client/public/hotel-images-folder'))
 );
 app.use(
   cors({
@@ -33,11 +33,11 @@ const BASE_URL =
   process.env.NODE_ENV === 'production'
     ? 'https://hotel-website-1-r5kh.onrender.com'
     : `http://localhost:${PORT}`;
-//*This is for Render to deploy the website
-app.use(express.static(path.join(__dirname, '/client/dist')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/dist/index.html'));
-});
+// //*This is for Render to deploy the website
+// app.use(express.static(path.join(__dirname, '/client/dist')));
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '/client/dist/index.html'));
+// });
 app.use(express.json());
 app.use(express.static('public'));
 connectDB();
@@ -62,7 +62,7 @@ app.post('/create-checkout-session', async (req, res) => {
             product_data: {
               name: `${hotelData.hotelName} - ${selectedRoom.roomType}`,
               images: [
-                `${process.env.VITE_BACKEND_URL}/images/${hotelData.hotelImages}`,
+                `${process.env.VITE_BACKEND_URL}${hotelData.hotelImages}`,
               ],
               description: `This room accommodates up to ${selectedRoom.capacity} people. 
                 This is test mode. Please enter a test card number "4242 4242 4242" `,
