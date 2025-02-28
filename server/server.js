@@ -64,7 +64,7 @@ app.post('/create-checkout-session', async (req, res) => {
             product_data: {
               name: `${hotelData.hotelName} - ${selectedRoom.roomType}`,
               images: [
-                `${process.env.VITE_BACKEND_URL}${hotelData.hotelImages}`,
+                `https://hotel-website-1-r5kh.onrender.com${hotelData.hotelImages}`,
               ],
               description: `This room accommodates up to ${selectedRoom.capacity} people. 
                 This is test mode. Please enter a test card number "4242 4242 4242" `,
@@ -74,8 +74,8 @@ app.post('/create-checkout-session', async (req, res) => {
         },
       ],
       mode: 'payment',
-      success_url: `${process.env.VITE_BACKEND_URL}/success`,
-      cancel_url: `${process.env.VITE_BACKEND_URL}/canceled`,
+      success_url: `https://hotel-website-1-r5kh.onrender.com/success`,
+      cancel_url: `https://hotel-website-1-r5kh.onrender.com/canceled`,
     });
 
     res.json({ url: session.url });
