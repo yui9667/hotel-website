@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { SearchContext } from '../../Context/SearchContext';
+import { SearchContext } from '../../Context/SearchContext.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPerson,

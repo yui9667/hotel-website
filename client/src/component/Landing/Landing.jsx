@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
-import SearchBar from '../SearchBar/SearchBar';
+import SearchBar from '../SearchBar/SearchBar.jsx';
 import { useNavigate } from 'react-router-dom';
 import './Landing.css';
-import { SearchContext } from '../../Context/SearchContext';
-import { AuthContext } from '../../Context/AuthContext';
+import { SearchContext } from '../../Context/SearchContext.jsx';
+import { AuthContext } from '../../Context/AuthContext.jsx';
 import { motion } from 'motion/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
