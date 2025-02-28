@@ -28,6 +28,7 @@ app.use(
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
+
 const PORT = 3002 || process.env.BACKEND_PORT;
 const BASE_URL =
   process.env.NODE_ENV === 'production'
@@ -40,7 +41,18 @@ app.get('*', (req, res) => {
 });
 app.use(express.json());
 app.use(express.static('public'));
+
 connectDB();
+
+const PORT = 3002 || process.env.BACKEND_PORT;
+const BASE_URL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://hotel-website-1-r5kh.onrender.com'
+    : `http://localhost:${PORT}`;
+//*This is for Render to deploy the website
+
+app.use(express.json());
+app.use(express.static('public'));
 
 app.use('/api', hotelRouter);
 //*Start the server
