@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
+
 import { SearchContext } from '../../Context/SearchContext.jsx';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPerson,
@@ -140,7 +142,9 @@ const Room = () => {
               </p>
 
               <button
+
                 className='btn btn-primary px-5 py-1 m-3  text-sm drop-shadow-sm'
+
                 type='button'
                 onClick={() => handleRoomSelection(room)}
               >
