@@ -1,6 +1,8 @@
 import { useContext, useState } from 'react';
-import { AuthContext } from '../../Context/AuthContext';
-import { SearchContext } from '../../Context/SearchContext';
+
+import { AuthContext } from '../../Context/AuthContext.jsx';
+import { SearchContext } from '../../Context/SearchContext.jsx';
+
 import { differenceInDays } from 'date-fns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {

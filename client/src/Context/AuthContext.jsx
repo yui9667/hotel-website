@@ -31,7 +31,9 @@ const AuthProvider = ({ children }) => {
           'userLocalStorage',
           JSON.stringify(response.data.user)
         );
+
         navigate('/');
+
       }
     } catch (error) {
       console.log(error.message);

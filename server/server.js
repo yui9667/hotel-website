@@ -28,6 +28,20 @@ app.use(
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
+
+const PORT = 3002 || process.env.BACKEND_PORT;
+const BASE_URL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://hotel-website-1-r5kh.onrender.com'
+    : `http://localhost:${PORT}`;
+//*This is for Render to deploy the website
+app.use(express.static(path.join(__dirname, '/client/dist')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client/dist/index.html'));
+});
+app.use(express.json());
+app.use(express.static('public'));
+
 connectDB();
 
 const PORT = 3002 || process.env.BACKEND_PORT;
