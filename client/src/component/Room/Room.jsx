@@ -16,10 +16,10 @@ import BACKEND_URL from '../../config.js';
 const Room = () => {
   const { searchParams, selectedHotel } = useContext(SearchContext);
   const hotelData = { ...selectedHotel, ...searchParams };
-
+  const selectedHotel1 = location.state?.selectedHotel;
   const [rooms, setRooms] = useState([]);
   const navigate = useNavigate();
-
+  console.log(selectedHotel1);
   const checkInData = hotelData.checkIn ? new Date(hotelData.checkIn) : null;
   const checkOutData = hotelData.checkOut ? new Date(hotelData.checkOut) : null;
 
@@ -35,6 +35,8 @@ const Room = () => {
       setRooms(hotelData.rooms);
     }
   }, [hotelData]);
+
+  console.log('Updated selectedHotel:', selectedHotel);
   if (!rooms || rooms.length === 0) {
     return (
       <div className='text-center flex flex-col justify-center items-center p-3 h-dvh  '>
@@ -142,9 +144,7 @@ const Room = () => {
               </p>
 
               <button
-
                 className='btn btn-primary px-5 py-1 m-3  text-sm drop-shadow-sm'
-
                 type='button'
                 onClick={() => handleRoomSelection(room)}
               >

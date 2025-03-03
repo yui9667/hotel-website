@@ -37,15 +37,15 @@ const Landing = () => {
 
   //* navigate room page
 
-  const clickRoom = (rooms, hotel) => {
+  const clickRoom = (hotel) => {
     if (resetLanding.length === 0) {
       alert(
         'Please fill all required fields: location, check-in, check-out, and number of people.'
       );
       return;
     } else {
-      navigate('/hotel/room', { state: { selectedRoom: rooms } });
       setSelectedHotel(hotel);
+      navigate('/hotel/room', { state: { selectedRoom: hotel } });
     }
   };
   return (

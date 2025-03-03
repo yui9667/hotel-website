@@ -16,21 +16,20 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
 app.use(
-  '/images',
-  express.static(path.join(__dirname, '../client/public/hotel-images-folder'))
-);
-app.use(
   cors({
     origin: [
       'http://localhost:5173',
       'https://hotel-website-1-r5kh.onrender.com',
-
       'https://swejencom.netlify.app',
     ],
     methods: ['GET', 'POST'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
+);
+app.use(
+  '/images',
+  express.static(path.join(__dirname, '../client/public/hotel-images-folder'))
 );
 
 const PORT = process.env.PORT || 3002;

@@ -1,6 +1,6 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 
-import { AuthContext } from '../../Context/AuthContext.jsx';
+//import { AuthContext } from '../../Context/AuthContext.jsx';
 import { SearchContext } from '../../Context/SearchContext.jsx';
 
 import { differenceInDays } from 'date-fns';
@@ -18,17 +18,24 @@ import BACKEND_URL from '../../config.js';
 //import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 const Confirm = () => {
-  const { user } = useContext(AuthContext);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const location = useLocation();
+
   const { searchParams, selectedHotel } = useContext(SearchContext);
   const hotelData = { ...searchParams, ...selectedHotel };
   const checkInData = hotelData.checkIn ? new Date(hotelData.checkIn) : null;
   const checkOutData = hotelData.checkOut ? new Date(hotelData.checkOut) : null;
   const locationRoom = location.state?.selectedRoom;
+  const [user, setUser] = useState('');
+  console.log(user);
 
+  useEffect(() => {
+    const storedUser = window.sessionStorage.getItem('userLocalStorage');
+    if (storedUser) setUser(JSON.parse(storedUser));
+    console.log(storedUser);
+  }, []);
   const handleSubmit = async () => {
     //*Since I use test mode, I don't need to use key.
     // const stripe = await new loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
@@ -45,8 +52,8 @@ const Confirm = () => {
       const session = await response.data;
       console.log(session);
 
-      if (!setFirstName || !setEmail || !lastName) {
-        return alert('Please fill in your information');
+      if (!firstName || !email || !lastName) {
+        return <p className='text-red-500'>Please fill in all information</p>;
       }
       if (session.url) {
         window.location.href = session.url;

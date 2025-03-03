@@ -6,35 +6,48 @@ import Nav from './component/Nav/Nav';
 import Room from './component/Room/Room';
 import Login from './component/Login/Login';
 import Register from './component/Register/Register';
-import { AuthContext } from './Context/AuthContext';
 import Confirm from './component/Confirm/Confirm';
 import CheckoutSuccess from './component/Stripe/CheckoutSuccess';
 import CheckoutCancel from './component/Stripe/CheckoutCancel';
 import Footer from './component/Footer/Footer';
 import Illustrations from './component/Footer/Illustrations';
 import ScrollTop from './component/ScrollTop/ScrollTop';
-import { useContext } from 'react';
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 function App() {
-  const { user, token } = useContext(AuthContext);
-  const [isLogin, setIsLogin] = useState(false);
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
+
   useEffect(() => {
-    if (user && token) {
-      setIsLogin(true);
-    } else {
-      setIsLogin(false);
+    const storedToken = window.sessionStorage.getItem('token');
+    const storedUser = window.sessionStorage.getItem('userLocalStorage');
+    if (storedToken && storedUser) {
+      setToken(storedToken);
+      setUser(JSON.parse(storedUser));
     }
-  }, [user, token]);
+  }, []);
+  const handleLogin = (userData, tokenData) => {
+    setUser(userData);
+    setToken(tokenData);
+  };
+  console.log(user);
+  console.log(token);
+  if (user === null || token === null) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <ScrollTop />
-      <Nav />
+      <Nav user={user} token={token} setUser={setUser} setToken={setToken} />
       <Routes>
-        <Route path='/' element={<Landing />} />
-
+        <Route
+          path='/'
+          element={
+            user && token ? <Landing /> : <Navigate to='/login' replace />
+          }
+        />
         <Route path='/hotel/room' element={<Room />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={<Login handleLogin={handleLogin} />} />
         <Route path='/register' element={<Register />} />
         <Route path='/confirm' element={<Confirm />} />
         <Route path='/success' element={<CheckoutSuccess />} />

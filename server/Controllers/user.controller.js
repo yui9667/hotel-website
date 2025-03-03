@@ -45,11 +45,11 @@ router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!email) {
-      return res.status(401).json({ error: ' Authentication failed' });
+      return res.status(401).json({ error: ' Authentication failed, email' });
     }
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
-      return res.status(401).json({ error: 'Authentication failed' });
+      return res.status(401).json({ error: 'Authentication failed, password' });
     }
     const token = jwt.sign({ userId: user._id }, 'your-secret-key ', {
       expiresIn: '1h',

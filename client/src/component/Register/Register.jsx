@@ -29,7 +29,6 @@ const Register = () => {
         password,
       });
       console.log('Registration successfully', response);
-
       setIsModal(true);
     } catch (error) {
       console.error(error.message);
@@ -50,23 +49,23 @@ const Register = () => {
           className='flex flex-col items-end
         my-2'
         >
-          <div className='flex items-center my-4'>
-            <h5 className='mr-2 md:text-lg'>First name: </h5>
-            <input
-              className='border-2 md:py-1 px-3'
-              type='text'
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              required
-            />
-          </div>
-          <div className='flex items-center mb-4'>
-            <h5 className='mr-2 md:text-lg'>Last name</h5>
+          <div className='flex items-center '>
+            <h5 className='mr-2 md:text-lg'>First Name:</h5>
             <input
               className='border-2 md:py-1 px-3'
               type='text'
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
+              required
+            />
+          </div>
+          <div className='flex items-center my-4'>
+            <h5 className='mr-2 md:text-lg'>Last Name: </h5>
+            <input
+              className='border-2 md:py-1 px-3'
+              type='text'
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
               required
             />
           </div>
