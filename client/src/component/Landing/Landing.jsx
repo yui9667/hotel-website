@@ -36,6 +36,7 @@ const Landing = () => {
   //console.log('resetLanding in LandingPage:', resetLanding);
 
   //* navigate room page
+
   const clickRoom = (rooms, hotel) => {
     if (resetLanding.length === 0) {
       alert(
