@@ -21,11 +21,6 @@ const Nav = () => {
       <nav className={`${sticky ? 'nav-bar sticky' : 'nav-bar'}`}>
         <Link to='/'>
           {<img src='/logo.png' alt='logo' className='w-24 mt-2 ' />}
-          {/* <img
-            src='../../../public/logo.png'
-            alt='logo'
-            className='w-24 mt-2 '
-          /> */}
         </Link>
 
         <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>

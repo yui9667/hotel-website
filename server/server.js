@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config({ path: './config.env' });
 import express from 'express';
+import compression from 'compression';
 import connectDB from './Config/db.js';
 import hotelRouter from './Controllers/hotel.controller.js';
 import userRouter from './Controllers/user.controller.js';
@@ -26,6 +27,7 @@ app.use(
       'https://swejencom.netlify.app',
     ],
     methods: ['GET', 'POST'],
+    credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
@@ -36,6 +38,7 @@ const BASE_URL =
     ? 'https://hotel-website-1-r5kh.onrender.com'
     : `http://localhost:${PORT}`;
 app.use(express.json());
+app.use(compression());
 app.use(express.static('public'));
 
 connectDB();
@@ -70,8 +73,8 @@ app.post('/create-checkout-session', async (req, res) => {
         },
       ],
       mode: 'payment',
-      success_url: `https://hotel-website-1-r5kh.onrender.com/success`,
-      cancel_url: `https://hotel-website-1-r5kh.onrender.com/canceled`,
+      success_url: 'https://swejencom.netlify.app/success',
+      cancel_url: 'https://swejencom.netlify.app/canceled',
     });
 
     res.json({ url: session.url });

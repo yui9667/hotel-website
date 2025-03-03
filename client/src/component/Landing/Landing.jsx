@@ -69,6 +69,7 @@ const Landing = () => {
                   key={index}
                   src={`${BACKEND_URL}${hotel.hotelImages}`}
                   alt={hotel.hotelName}
+                  loading='lazy'
                 />
                 <div className='flex flex-col text-center items-center'>
                   <p
