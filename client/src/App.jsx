@@ -31,10 +31,8 @@ function App() {
       <ScrollTop />
       <Nav />
       <Routes>
-        <Route
-          path='/'
-          element={isLogin ? <Landing /> : <Navigate to='/login' replace />}
-        />
+        <Route path='/' element={<Landing />} />
+
         <Route path='/hotel/room' element={<Room />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
