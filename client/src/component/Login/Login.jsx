@@ -1,57 +1,44 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
 import { SearchContext } from '../../Context/SearchContext';
 import axios from 'axios';
 import BACKEND_URL from '../../config';
 
-const Login = () => {
+const Login = ({ switchLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { selectedHotel } = useContext(SearchContext);
-  const [user, setUser] = useState('');
-  const [token, setToken] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const loginUser = async (email, password) => {
     try {
-      console.log(email, password);
       const response = await axios.post(`${BACKEND_URL}/user/login`, {
         email,
         password,
       });
       if (response.status === 200) {
-        setUser(response.data.user);
-        setToken(response.data.token);
-        console.log(response.data.user);
+        const userData = response.data.user;
+        const tokenData = response.data.token;
+        switchLogin(userData, tokenData);
         if (selectedHotel) {
           window.sessionStorage.setItem(
             'hotelStorageData',
             JSON.stringify(selectedHotel)
           );
         }
-        window.sessionStorage.setItem('token', response.data.token);
+        window.sessionStorage.setItem('token', tokenData);
         window.sessionStorage.setItem(
           'userLocalStorage',
-          JSON.stringify(response.data.user)
+          JSON.stringify(userData)
         );
-        // navigate('/', {
-        //   state: { user: response.data.user, token: response.data.token },
-        // });
+        navigate('/');
       }
     } catch (error) {
       console.log(error.message);
       setError('Login failed. Try again ');
     }
   };
-  useEffect(() => {
-    const storedUser = window.sessionStorage.getItem('userLocalStorage');
-    const storedToken = window.sessionStorage.getItem('token');
-    if (storedToken && storedUser) {
-      setUser(JSON.parse(storedUser));
-      setToken(storedToken);
-    }
-  }, []);
+
   const handleLogin = (e) => {
     e.preventDefault();
     loginUser(email, password);

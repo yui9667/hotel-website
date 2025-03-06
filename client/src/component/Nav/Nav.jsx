@@ -50,7 +50,7 @@ const Nav = ({ user, token, setUser, setToken }) => {
                   Logout
                 </button>
               </li>
-              <li className='nav-item text-white '>
+              <li className='nav-item '>
                 <p className='nav-item text-sm sm:text-black'>
                   Welcome, {user.lastName}
                 </p>

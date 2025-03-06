@@ -17,6 +17,7 @@ import { Navigate } from 'react-router-dom';
 function App() {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
+  const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
     const storedToken = window.sessionStorage.getItem('token');
@@ -24,30 +25,29 @@ function App() {
     if (storedToken && storedUser) {
       setToken(storedToken);
       setUser(JSON.parse(storedUser));
+      setIsLogin(true);
     }
   }, []);
-  const handleLogin = (userData, tokenData) => {
+  const switchLogin = (userData, tokenData) => {
     setUser(userData);
     setToken(tokenData);
+    setIsLogin(true);
+    window.sessionStorage.setItem('token', tokenData);
+    window.sessionStorage.setItem('userLocalStorage', JSON.stringify(userData));
   };
-  console.log(user);
-  console.log(token);
-  if (user === null || token === null) {
-    return <div>Loading...</div>;
-  }
   return (
     <>
       <ScrollTop />
       <Nav user={user} token={token} setUser={setUser} setToken={setToken} />
+
       <Routes>
         <Route
           path='/'
-          element={
-            user && token ? <Landing /> : <Navigate to='/login' replace />
-          }
+          element={isLogin ? <Landing /> : <Navigate to='/login' />}
         />
+
         <Route path='/hotel/room' element={<Room />} />
-        <Route path='/login' element={<Login handleLogin={handleLogin} />} />
+        <Route path='/login' element={<Login switchLogin={switchLogin} />} />
         <Route path='/register' element={<Register />} />
         <Route path='/confirm' element={<Confirm />} />
         <Route path='/success' element={<CheckoutSuccess />} />

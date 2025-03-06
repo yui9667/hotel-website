@@ -21,12 +21,14 @@ app.use(
       'http://localhost:5173',
       'https://hotel-website-1-r5kh.onrender.com',
       'https://swejencom.netlify.app',
+      'https://localhost:3002',
     ],
-    methods: ['GET', 'POST'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
+
 app.use(
   '/images',
   express.static(path.join(__dirname, '../client/public/hotel-images-folder'))
@@ -85,6 +87,7 @@ app.post('/create-checkout-session', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
 app.listen(PORT, () => {
-  console.log(`PORT is running on${BASE_URL}`);
+  console.log(`PORT is running on ${BASE_URL}`);
 });
