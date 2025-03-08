@@ -51,9 +51,7 @@ const Nav = ({ user, token, setUser, setToken }) => {
                 </button>
               </li>
               <li className='nav-item '>
-                <p className='nav-item text-sm sm:text-black'>
-                  Welcome, {user.lastName}
-                </p>
+                <p className='welcome-name'>Welcome, {user.lastName}</p>
               </li>
             </>
           ) : (

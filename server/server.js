@@ -52,6 +52,8 @@ app.use('/api', hotelRouter);
 //*Start the server
 app.use('/user', userRouter);
 //*Check Out  Stripe
+const frontendUrl = 'http://localhost:5173' || 'https://swejencom.netlify.app';
+console.log(frontendUrl);
 app.post('/create-checkout-session', async (req, res) => {
   try {
     const { hotelData, selectedRoom } = req.body;
@@ -78,8 +80,8 @@ app.post('/create-checkout-session', async (req, res) => {
         },
       ],
       mode: 'payment',
-      success_url: 'https://swejencom.netlify.app/success',
-      cancel_url: 'https://swejencom.netlify.app/canceled',
+      success_url: `${frontendUrl}/success`,
+      cancel_url: `${frontendUrl}/canceled`,
     });
 
     res.json({ url: session.url });
