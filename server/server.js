@@ -16,20 +16,22 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
 app.use(
-  '/images',
-  express.static(path.join(__dirname, '../client/public/hotel-images-folder'))
-);
-app.use(
   cors({
     origin: [
       'http://localhost:5173',
       'https://hotel-website-1-r5kh.onrender.com',
       'https://swejencom.netlify.app',
+      'https://localhost:3002',
     ],
-    methods: ['GET', 'POST'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
+);
+
+app.use(
+  '/images',
+  express.static(path.join(__dirname, '../client/public/hotel-images-folder'))
 );
 
 const PORT = process.env.PORT || 3002;
@@ -37,6 +39,9 @@ const BASE_URL =
   process.env.NODE_ENV === 'production'
     ? 'https://hotel-website-1-r5kh.onrender.com'
     : `http://localhost:${PORT}`;
+
+//*This is for Render to deploy the website
+
 app.use(express.json());
 app.use(compression());
 app.use(express.static('public'));
@@ -47,6 +52,8 @@ app.use('/api', hotelRouter);
 //*Start the server
 app.use('/user', userRouter);
 //*Check Out  Stripe
+const frontendUrl = 'http://localhost:5173' || 'https://swejencom.netlify.app';
+console.log(frontendUrl);
 app.post('/create-checkout-session', async (req, res) => {
   try {
     const { hotelData, selectedRoom } = req.body;
@@ -73,8 +80,8 @@ app.post('/create-checkout-session', async (req, res) => {
         },
       ],
       mode: 'payment',
-      success_url: 'https://swejencom.netlify.app/success',
-      cancel_url: 'https://swejencom.netlify.app/canceled',
+      success_url: `${frontendUrl}/success`,
+      cancel_url: `${frontendUrl}/canceled`,
     });
 
     res.json({ url: session.url });
@@ -82,6 +89,7 @@ app.post('/create-checkout-session', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
 app.listen(PORT, () => {
-  console.log(`PORT is running on${BASE_URL}`);
+  console.log(`PORT is running on ${BASE_URL}`);
 });

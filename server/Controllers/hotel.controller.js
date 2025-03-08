@@ -16,15 +16,15 @@ router.get('/hotels', async (req, res) => {
   }
 });
 
-//*specific hotel
-router.get('/hotel/:id', async (req, res) => {
-  const { id } = req.params;
-  const hotel = await Hotel.findById(id);
-  if (!hotel) {
-    return res.status(404).send({ error: 'Hotel not found' });
-  }
-  res.send(hotel);
-});
+// //*specific hotel
+// router.get('/hotel/:id', async (req, res) => {
+//   const { id } = req.params;
+//   const hotel = await Hotel.findById(id);
+//   if (!hotel) {
+//     return res.status(404).send({ error: 'Hotel not found' });
+//   }
+//   res.send(hotel);
+// });
 
 //*Search hotel by amount of guests  (Used for search bar) Used post because it is more than one request
 router.post('/hotel/search', async (req, res) => {

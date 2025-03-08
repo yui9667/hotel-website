@@ -35,6 +35,10 @@ nav.sticky {
   margin: auto 0;
   text-align: center;
 }
+.welcome-name {
+  font-size: 14px;
+  color: #fff;
+}
 .nav-link {
   text-decoration: none;
   color: var(--text-color);
@@ -85,7 +89,8 @@ nav.sticky {
   .nav-bar {
     padding: 0;
   }
-  .nav-link {
+  .nav-link,
+  .welcome-name {
     color: #000;
   }
 }

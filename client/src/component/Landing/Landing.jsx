@@ -16,7 +16,7 @@ const Landing = () => {
   //*this is for showing data from server side
   useEffect(() => {
     const fetchData = async () => {
-      const url = `${BACKEND_URL}/api/hotels`;
+      const url = 'https://hotel-website-1-r5kh.onrender.com/api/hotels';
 
       try {
         const response = await fetch(url);
@@ -36,15 +36,15 @@ const Landing = () => {
   //console.log('resetLanding in LandingPage:', resetLanding);
 
   //* navigate room page
-  const clickRoom = (hotel, rooms) => {
+  const clickRoom = (hotel) => {
     if (resetLanding.length === 0) {
       alert(
         'Please fill all required fields: location, check-in, check-out, and number of people.'
       );
       return;
     } else {
-      navigate('/hotel/room', { state: { selectedRoom: rooms } });
       setSelectedHotel(hotel);
+      navigate('/hotel/room', { state: { selectedRoom: hotel } });
     }
   };
   return (

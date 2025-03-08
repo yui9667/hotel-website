@@ -11,13 +11,13 @@ const SearchProvider = ({ children }) => {
     console.log('searchParams:', savedData);
     return {
       ...parsedData,
-      checkIn: parsedData.checkIn ? new Date(parsedData.checkIn) : null,
-      checkOut: parsedData.checkOut ? new Date(parsedData.checkOut) : null,
+      checkIn: parsedData?.checkIn ? new Date(parsedData.checkIn) : null,
+      checkOut: parsedData?.checkOut ? new Date(parsedData.checkOut) : null,
     };
   });
   const [selectedHotel, setSelectedHotel] = useState(() => {
     const savedData = window.sessionStorage.getItem('hotelStorageData');
-    return savedData ? JSON.parse(savedData).selectedHotel : {};
+    return savedData ? JSON.parse(savedData) : {};
   });
 
   const [selectedRoom, setSelectedRoom] = useState(() => {

@@ -1,11 +1,44 @@
 import { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../../Context/AuthContext';
+import { Link, useNavigate } from 'react-router-dom';
+import { SearchContext } from '../../Context/SearchContext';
+import axios from 'axios';
+import BACKEND_URL from '../../config';
 
-const Login = () => {
+const Login = ({ switchLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { loginUser } = useContext(AuthContext);
+  const { selectedHotel } = useContext(SearchContext);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const loginUser = async (email, password) => {
+    try {
+      const response = await axios.post(`${BACKEND_URL}/user/login`, {
+        email,
+        password,
+      });
+      if (response.status === 200) {
+        const userData = response.data.user;
+        const tokenData = response.data.token;
+        switchLogin(userData, tokenData);
+        if (selectedHotel) {
+          window.sessionStorage.setItem(
+            'hotelStorageData',
+            JSON.stringify(selectedHotel)
+          );
+        }
+        window.sessionStorage.setItem('token', tokenData);
+        window.sessionStorage.setItem(
+          'userLocalStorage',
+          JSON.stringify(userData)
+        );
+        navigate('/');
+      }
+    } catch (error) {
+      console.log(error.message);
+      setError('Login failed. Try again ');
+    }
+  };
+
   const handleLogin = (e) => {
     e.preventDefault();
     loginUser(email, password);
@@ -13,7 +46,7 @@ const Login = () => {
   return (
     <div className='flex flex-col items-center justify-center'>
       <h1 className='text-3xl my-3 md:font-semibold'>Login</h1>
-
+      {error && <p className='text-red-500'>{error}</p>}
       <form
         onSubmit={handleLogin}
         className='border-3 border-blue-700 rounded flex flex-col items-center p-4 '
