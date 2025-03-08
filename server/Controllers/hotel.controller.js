@@ -1,9 +1,7 @@
 import Hotel from '../Models/hotel.model.js';
 import express from 'express';
-// import db from '../Config/db.js';
 const router = express.Router();
-import Stripe from 'stripe';
-const stripe = process.env.STRIPE_SECRET_KEY;
+
 //*Here is endpoint for hotel's information
 
 //*Get all hotels
@@ -16,23 +14,12 @@ router.get('/hotels', async (req, res) => {
   }
 });
 
-// //*specific hotel
-// router.get('/hotel/:id', async (req, res) => {
-//   const { id } = req.params;
-//   const hotel = await Hotel.findById(id);
-//   if (!hotel) {
-//     return res.status(404).send({ error: 'Hotel not found' });
-//   }
-//   res.send(hotel);
-// });
-
 //*Search hotel by amount of guests  (Used for search bar) Used post because it is more than one request
 router.post('/hotel/search', async (req, res) => {
   const { location, checkIn, checkOut, people } = req.body;
 
   try {
     const hotels = await Hotel.find({ location });
-    //console.log('hotels found:', hotels);
 
     //*Calculate the price difference between weekdays and weekends
     const calculatePrice = (pricePerNight, checkIn, checkOut) => {
@@ -52,7 +39,6 @@ router.post('/hotel/search', async (req, res) => {
         const dayOfWeek = checkInDate.getDay();
         //*Sunday is 0 and Saturday is 6
         if (dayOfWeek === 0 || dayOfWeek === 6) {
-          //   console.log('Weekend', dayOfWeek);
           weekendDays++;
         }
       }
@@ -83,7 +69,6 @@ router.post('/hotel/search', async (req, res) => {
           ...room.toObject(),
           adjustedPrice: calculatePrice(room.pricePerNight, checkIn, checkOut),
         }));
-      //¨ console.log('adjustedPrice', roomNewPrice);
       //*Convert to JavaScript from Mongoose
 
       return { ...hotel.toObject(), rooms: roomNewPrice };

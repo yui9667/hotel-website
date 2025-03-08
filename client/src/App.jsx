@@ -20,24 +20,24 @@ const ScrollTop = lazy(() => import('./component/ScrollTop/ScrollTop'));
 function App() {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  const [isLogin, setIsLogin] = useState(false);
+  // const [isLogin, setIsLogin] = useState(false);
 
-  useEffect(() => {
-    const storedToken = window.sessionStorage.getItem('token');
-    const storedUser = window.sessionStorage.getItem('userLocalStorage');
-    if (storedToken && storedUser) {
-      setToken(storedToken);
-      setUser(JSON.parse(storedUser));
-      setIsLogin(true);
-    }
-  }, []);
-  const switchLogin = (userData, tokenData) => {
-    setUser(userData);
-    setToken(tokenData);
-    setIsLogin(true);
-    window.sessionStorage.setItem('token', tokenData);
-    window.sessionStorage.setItem('userLocalStorage', JSON.stringify(userData));
-  };
+  // useEffect(() => {
+  //   const storedToken = window.sessionStorage.getItem('token');
+  //   const storedUser = window.sessionStorage.getItem('userLocalStorage');
+  //   if (storedToken && storedUser) {
+  //     setToken(storedToken);
+  //     setUser(JSON.parse(storedUser));
+  //     setIsLogin(true);
+  //   }
+  // }, []);
+  // const switchLogin = (userData, tokenData) => {
+  //   setUser(userData);
+  //   setToken(tokenData);
+  //   setIsLogin(true);
+  //   window.sessionStorage.setItem('token', tokenData);
+  //   window.sessionStorage.setItem('userLocalStorage', JSON.stringify(userData));
+  // };
   return (
     <>
       <Suspense
@@ -55,13 +55,10 @@ function App() {
         <ScrollTop />
         <Nav user={user} token={token} setUser={setUser} setToken={setToken} />
         <Routes>
-          <Route
-            path='/'
-            element={isLogin ? <Landing /> : <Navigate to='/login' />}
-          />
+          <Route path='/' element={<Landing />} />
           <Route path='/hotel/room' element={<Room />} />
-          <Route path='/login' element={<Login switchLogin={switchLogin} />} />
-          <Route path='/register' element={<Register />} />
+          {/* <Route path='/login' element={<Login switchLogin={switchLogin} />} />
+          <Route path='/register' element={<Register />} /> */}
           <Route path='/confirm' element={<Confirm />} />
           <Route path='/success' element={<CheckoutSuccess />} />
           <Route path='/canceled' element={<CheckoutCancel />} />

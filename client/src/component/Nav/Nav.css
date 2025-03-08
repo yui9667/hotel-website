@@ -56,6 +56,11 @@ nav.sticky {
   padding: 20px;
   margin-right: 10px;
 }
+_::-webkit-full-page-media,
+_:future,
+:root .hamburger {
+  position: relative;
+}
 .bar {
   display: block;
   width: 25px;

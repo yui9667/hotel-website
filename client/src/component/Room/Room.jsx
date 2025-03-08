@@ -57,6 +57,7 @@ const Room = () => {
           className='w-56 h-full sm:w-5/6 md:w-96 '
           src={`${BACKEND_URL}${hotelData.hotelImages} `}
           alt={hotelData.hotelName}
+          loading='lazy'
         />
         <h1 className='text-3xl my-3'>{hotelData.hotelName}</h1>
         <h4 className=' text-lg md:text-2xl'>
@@ -124,6 +125,7 @@ const Room = () => {
                 className='w-full h-full object-cover'
                 src={`${BACKEND_URL}${room.roomImages}`}
                 alt={`${selectedHotel.hotelName} ${index + 1}`}
+                loading='lazy'
               />
             </div>
 

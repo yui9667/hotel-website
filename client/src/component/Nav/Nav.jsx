@@ -56,9 +56,9 @@ const Nav = ({ user, token, setUser, setToken }) => {
             </>
           ) : (
             <li className='nav-item'>
-              <Link to='/login' className='nav-link' onClick={handleClick}>
+              {/* <Link to='/login' className='nav-link' onClick={handleClick}>
                 Account
-              </Link>
+              </Link> */}
             </li>
           )}
         </ul>
