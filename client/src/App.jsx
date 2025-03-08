@@ -11,9 +11,9 @@ const Login = lazy(() => import('./component/Login/Login'));
 const Register = lazy(() => import('./component/Register/Register'));
 const Confirm = lazy(() => import('./component/Confirm/Confirm'));
 const CheckoutSuccess = lazy(() =>
-  import('./component/stripe/CheckoutSuccess')
+  import('./component/Stripe/CheckoutSuccess')
 );
-const CheckoutCancel = lazy(() => import('./component/stripe/CheckoutCancel'));
+const CheckoutCancel = lazy(() => import('./component/Stripe/CheckoutCancel'));
 const Footer = lazy(() => import('./component/Footer/Footer'));
 const Illustrations = lazy(() => import('./component/Footer/Illustrations'));
 const ScrollTop = lazy(() => import('./component/ScrollTop/ScrollTop'));
