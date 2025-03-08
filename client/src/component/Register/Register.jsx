@@ -12,8 +12,8 @@ const Register = () => {
   const navigate = useNavigate();
 
   const closeModal = () => {
-    navigate('/login');
     setIsModal(false);
+    navigate('/login');
   };
   const handleRegister = async (e) => {
     e.preventDefault();

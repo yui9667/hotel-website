@@ -115,6 +115,7 @@ const Confirm = () => {
                 className='w-56  lg:w-[300px] lg:h-[250px] '
                 src={`${BACKEND_URL}${hotelData.hotelImages} `}
                 alt={hotelData.hotelName}
+                loading='lazy'
               />
 
               <div className='text-lg md:text-lg'>
@@ -137,6 +138,7 @@ const Confirm = () => {
                 className='w-56 h-auto lg:w-[300px]'
                 src={`${BACKEND_URL}${locationRoom?.roomImages} `}
                 alt={hotelData.hotelName}
+                loading='lazy'
               />
               <div className='ml-1'>
                 <p className='lg:text-lg mb-1'>

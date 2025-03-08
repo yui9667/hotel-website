@@ -9,7 +9,6 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import Stripe from 'stripe';
-//import BACKEND_URL from './client/src/config.js';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const __filename = fileURLToPath(import.meta.url);
@@ -53,13 +52,11 @@ app.use('/api', hotelRouter);
 app.use('/user', userRouter);
 //*Check Out  Stripe
 const frontendUrl = 'http://localhost:5173' || 'https://swejencom.netlify.app';
-console.log(frontendUrl);
 app.post('/create-checkout-session', async (req, res) => {
   try {
     const { hotelData, selectedRoom } = req.body;
 
     console.log('selectedRoom', selectedRoom);
-    //console.log(hotelData);
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [
