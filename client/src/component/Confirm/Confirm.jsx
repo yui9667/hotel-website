@@ -46,7 +46,7 @@ const Confirm = () => {
     };
     try {
       const response = await axios.post(
-        `${BACKEND_URL}/create-checkout-session`,
+        'https://hotel-website-1-r5kh.onrender.com/create-checkout-session',
         body
       );
       const session = await response.data;

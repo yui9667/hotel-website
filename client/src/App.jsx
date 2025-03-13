@@ -2,13 +2,13 @@ import './App.css';
 import { useEffect, Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+//import { Navigate } from 'react-router-dom';
 
 const Landing = lazy(() => import('./component/Landing/Landing'));
 const Nav = lazy(() => import('./component/Nav/Nav'));
 const Room = lazy(() => import('./component/Room/Room'));
-const Login = lazy(() => import('./component/Login/Login'));
-const Register = lazy(() => import('./component/Register/Register'));
+//const Login = lazy(() => import('./component/Login/Login'));
+//const Register = lazy(() => import('./component/Register/Register'));
 const Confirm = lazy(() => import('./component/Confirm/Confirm'));
 const CheckoutSuccess = lazy(() =>
   import('./component/Stripe/CheckoutSuccess')

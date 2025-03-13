@@ -9,7 +9,7 @@ import {
   faCalendar,
   faPerson,
 } from '@fortawesome/free-solid-svg-icons';
-import BACKEND_URL from '../../config.js';
+
 const SearchBar = ({ setResetLanding }) => {
   //*passing props by context provider
   const { setSearchParams } = useContext(SearchContext);
@@ -28,12 +28,17 @@ const SearchBar = ({ setResetLanding }) => {
         alert('please add correct date');
         return;
       }
-      const response = await axios.post(`${BACKEND_URL}/api/hotel/search`, {
-        location,
-        checkIn,
-        checkOut,
-        people,
-      });
+
+      const response = await axios.post(
+        'https://hotel-website-1-r5kh.onrender.com/api/hotel/search',
+        {
+          location,
+          checkIn,
+          checkOut,
+          people,
+        }
+      );
+
       setResetLanding(response.data);
       setSearchParams({ location, checkIn, checkOut, people });
       console.log(response.data);

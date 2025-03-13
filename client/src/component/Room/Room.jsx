@@ -12,7 +12,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { differenceInDays } from 'date-fns';
-import BACKEND_URL from '../../config.js';
+
 const Room = () => {
   const { searchParams, selectedHotel } = useContext(SearchContext);
   const hotelData = { ...selectedHotel, ...searchParams };
@@ -55,7 +55,7 @@ const Room = () => {
       <div className='flex flex-col justify-center items-center text-center mt-5 mx-3'>
         <img
           className='w-56 h-full sm:w-5/6 md:w-96 '
-          src={`${BACKEND_URL}${hotelData.hotelImages} `}
+          src={`https://hotel-website-1-r5kh.onrender.com/${hotelData.hotelImages} `}
           alt={hotelData.hotelName}
           loading='lazy'
         />
@@ -123,7 +123,7 @@ const Room = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 1 }}
                 className='w-full h-full object-cover'
-                src={`${BACKEND_URL}${room.roomImages}`}
+                src={`https://hotel-website-1-r5kh.onrender.com/${room.roomImages}`}
                 alt={`${selectedHotel.hotelName} ${index + 1}`}
                 loading='lazy'
               />
