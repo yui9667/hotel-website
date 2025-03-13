@@ -17,6 +17,7 @@ const SearchBar = ({ setResetLanding }) => {
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [people, setPeople] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const handleSearch = async () => {
     try {
@@ -44,6 +45,7 @@ const SearchBar = ({ setResetLanding }) => {
       console.log(response.data);
     } catch (error) {
       console.error('Failed to fetch data', error.message);
+      setLoading(false);
     }
   };
   //*check-out next day of check-in
@@ -55,87 +57,98 @@ const SearchBar = ({ setResetLanding }) => {
 
   return (
     <div>
-      <header className='header'>
-        <div
-          className='flex flex-col m-20 justify-center items-center text-center sm:flex-row m-0 p-2 gap-3  '
-          style={{ backgroundColor: 'var(--second-color)' }}
-        >
-          <div>
-            <FontAwesomeIcon
-              icon={faLocationDot}
-              style={{ color: '#fff' }}
-              className='mr-1'
-            />
-            <select
-              className=' w-28 rounded text-sm md:text-base  '
-              required
-              onChange={(e) => setLocation(e.target.value)}
-            >
-              <option value=''>Select City</option>
-              <option value='Malmö'>Malmö</option>
-              <option value='Gothenburg'>Gothenburg</option>
-              <option value='Stockholm'>Stockholm</option>
-            </select>
-          </div>
+      {loading ? (
+        <div className='flex justify-center flex-col gap-3 items-center h-screen'>
+          <p className='text-blue-800'>Loading...</p>
 
-          <div>
-            <FontAwesomeIcon icon={faCalendar} className='mr-1 text-white ' />
-            <DatePicker
-              className='rounded w-28 text-center'
-              selectsStart
-              placeholderText='Check In'
-              selected={checkIn}
-              onChange={(data) => setCheckIn(data)}
-              startDate={checkIn}
-              minDate={new Date()}
-              required
-            />
-          </div>
-
-          <div>
-            <FontAwesomeIcon icon={faCalendar} className='mr-1 text-white ' />
-            <DatePicker
-              className='rounded w-28 text-center'
-              selectsEnd
-              placeholderText='Check Out'
-              selected={checkOut}
-              onChange={(data) => setCheckOut(data)}
-              endDate={checkOut}
-              startDate={checkOut}
-              minDate={checkoutNextDay(checkIn)}
-              required
-            />
-          </div>
-
-          <div>
-            <FontAwesomeIcon
-              icon={faPerson}
-              className='mr-1 text-white text-lg'
-            />
-            <select
-              className='w-28 rounded text-sm md:text-base '
-              id='guests'
-              value={people}
-              //change to number
-              onChange={(e) => setPeople(Number(e.target.value))}
-              required
-            >
-              <option value=''>Guests</option>
-              <option value='1'>1</option>
-              <option value='2'>2</option>
-              <option value='3'>3</option>
-              <option value='4'>4</option>
-            </select>
-          </div>
-          <button
-            className='btn btn-primary px-4 py-1 m-2 text-sm'
-            type='button'
-            onClick={handleSearch}
-          >
-            Search
-          </button>
+          <div
+            className='inline-block h-32 w-32 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]'
+            role='status'
+          ></div>
         </div>
-      </header>
+      ) : (
+        <header className='header'>
+          <div
+            className='flex flex-col m-20 justify-center items-center text-center sm:flex-row m-0 p-2 gap-3  '
+            style={{ backgroundColor: 'var(--second-color)' }}
+          >
+            <div>
+              <FontAwesomeIcon
+                icon={faLocationDot}
+                style={{ color: '#fff' }}
+                className='mr-1'
+              />
+              <select
+                className=' w-28 rounded text-sm md:text-base  '
+                required
+                onChange={(e) => setLocation(e.target.value)}
+              >
+                <option value=''>Select City</option>
+                <option value='Malmö'>Malmö</option>
+                <option value='Gothenburg'>Gothenburg</option>
+                <option value='Stockholm'>Stockholm</option>
+              </select>
+            </div>
+
+            <div>
+              <FontAwesomeIcon icon={faCalendar} className='mr-1 text-white ' />
+              <DatePicker
+                className='rounded w-28 text-center'
+                selectsStart
+                placeholderText='Check In'
+                selected={checkIn}
+                onChange={(data) => setCheckIn(data)}
+                startDate={checkIn}
+                minDate={new Date()}
+                required
+              />
+            </div>
+
+            <div>
+              <FontAwesomeIcon icon={faCalendar} className='mr-1 text-white ' />
+              <DatePicker
+                className='rounded w-28 text-center'
+                selectsEnd
+                placeholderText='Check Out'
+                selected={checkOut}
+                onChange={(data) => setCheckOut(data)}
+                endDate={checkOut}
+                startDate={checkOut}
+                minDate={checkoutNextDay(checkIn)}
+                required
+              />
+            </div>
+
+            <div>
+              <FontAwesomeIcon
+                icon={faPerson}
+                className='mr-1 text-white text-lg'
+              />
+              <select
+                className='w-28 rounded text-sm md:text-base '
+                id='guests'
+                value={people}
+                //change to number
+                onChange={(e) => setPeople(Number(e.target.value))}
+                required
+              >
+                <option value=''>Guests</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+              </select>
+            </div>
+            <button
+              className='btn btn-primary px-4 py-1 m-2 text-sm'
+              type='button'
+              onClick={handleSearch}
+            >
+              Search
+            </button>
+          </div>
+        </header>
+      )}
     </div>
   );
 };
