@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import './Nav.css';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Nav = ({ user, token, setUser, setToken }) => {
+const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -19,21 +19,21 @@ const Nav = ({ user, token, setUser, setToken }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  const logOutUser = () => {
-    //*Removed data as keys
-    window.sessionStorage.removeItem('userLocalStorage');
-    window.sessionStorage.removeItem('token');
-    window.sessionStorage.removeItem('hotelStorageData');
-    setToken(null);
-    setUser(null);
-    navigate('/login');
-  };
+  // const logOutUser = () => {
+  //   //*Removed data as keys
+  //   window.sessionStorage.removeItem('userLocalStorage');
+  //   window.sessionStorage.removeItem('token');
+  //   window.sessionStorage.removeItem('hotelStorageData');
+  //   setToken(null);
+  //   setUser(null);
+  //   navigate('/login');
+  // };
 
   return (
     <>
       <nav className={`${sticky ? 'nav-bar sticky' : 'nav-bar'}`}>
-        <Link to='/'>
-          {<img src='/logo.png' alt='logo' className='w-24 mt-2 ' />}
+        <Link to='/' className='  bg-white'>
+          {<img src='/logo.png' alt='logo' className='w-24  mt-2' />}
         </Link>
 
         <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
@@ -43,7 +43,7 @@ const Nav = ({ user, token, setUser, setToken }) => {
             </Link>
           </li>
 
-          {token && user ? (
+          {/* {token && user ? (
             <>
               <li className='nav-item'>
                 <button className='nav-link m-auto' onClick={logOutUser}>
@@ -56,11 +56,11 @@ const Nav = ({ user, token, setUser, setToken }) => {
             </>
           ) : (
             <li className='nav-item'>
-              {/* <Link to='/login' className='nav-link' onClick={handleClick}>
+              <Link to='/login' className='nav-link' onClick={handleClick}>
                 Account
-              </Link> */}
+              </Link>
             </li>
-          )}
+          )} */}
         </ul>
         <div
           className={`hamburger ${isOpen ? 'active' : ''}`}

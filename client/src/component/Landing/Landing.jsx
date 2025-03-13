@@ -6,7 +6,7 @@ import { SearchContext } from '../../Context/SearchContext.jsx';
 import { motion } from 'motion/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
-import BACKEND_URL from '../../config.js';
+
 const Landing = () => {
   const [hotels, setHotels] = useState([]);
   const [resetLanding, setResetLanding] = useState([]);
@@ -16,7 +16,7 @@ const Landing = () => {
   //*this is for showing data from server side
   useEffect(() => {
     const fetchData = async () => {
-      const url = `${BACKEND_URL}/api/hotel`;
+      const url = 'https://hotel-website-1-r5kh.onrender.com/api/hotel';
 
       try {
         const response = await fetch(url);
@@ -67,7 +67,7 @@ const Landing = () => {
                 <img
                   className='w-full h-56 object-cover md:h-80 w-96 xl:w-[600px]'
                   key={index}
-                  src={`${BACKEND_URL}${hotel.hotelImages}`}
+                  src={`https://hotel-website-1-r5kh.onrender.com${hotel.hotelImages}`}
                   alt={hotel.hotelName}
                   loading='lazy'
                 />

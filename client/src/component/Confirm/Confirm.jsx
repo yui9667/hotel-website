@@ -14,7 +14,7 @@ import {
   faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
-import BACKEND_URL from '../../config.js';
+
 //import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 const Confirm = () => {
@@ -113,7 +113,7 @@ const Confirm = () => {
             <div className=' gap-3 p-4'>
               <img
                 className='w-56  lg:w-[300px] lg:h-[250px] '
-                src={`${BACKEND_URL}${hotelData.hotelImages} `}
+                src={`https://hotel-website-1-r5kh.onrender.com${hotelData.hotelImages} `}
                 alt={hotelData.hotelName}
                 loading='lazy'
               />
@@ -136,7 +136,7 @@ const Confirm = () => {
             <div className=' flex flex-col mb-5 justify-center bg-blue-100 gap-3 p-4 lg:mr-5'>
               <img
                 className='w-56 h-auto lg:w-[300px]'
-                src={`${BACKEND_URL}${locationRoom?.roomImages} `}
+                src={`https://hotel-website-1-r5kh.onrender.com${locationRoom?.roomImages} `}
                 alt={hotelData.hotelName}
                 loading='lazy'
               />
