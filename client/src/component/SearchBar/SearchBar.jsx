@@ -9,7 +9,7 @@ import {
   faCalendar,
   faPerson,
 } from '@fortawesome/free-solid-svg-icons';
-
+import './Loading.css';
 const SearchBar = ({ setResetLanding }) => {
   //*passing props by context provider
   const { setSearchParams } = useContext(SearchContext);
@@ -29,7 +29,7 @@ const SearchBar = ({ setResetLanding }) => {
         alert('please add correct date');
         return;
       }
-
+      setLoading(true);
       const response = await axios.post(
         'https://hotel-website-1-r5kh.onrender.com/api/hotel/search',
         {
@@ -43,6 +43,7 @@ const SearchBar = ({ setResetLanding }) => {
       setResetLanding(response.data);
       setSearchParams({ location, checkIn, checkOut, people });
       console.log(response.data);
+      setLoading(false);
     } catch (error) {
       console.error('Failed to fetch data', error.message);
       setLoading(false);
@@ -59,12 +60,10 @@ const SearchBar = ({ setResetLanding }) => {
     <div>
       {loading ? (
         <div className='flex justify-center flex-col gap-3 items-center h-screen'>
-          <p className='text-blue-800'>Loading...</p>
-
-          <div
-            className='inline-block h-32 w-32 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]'
-            role='status'
-          ></div>
+          <div className='loader'></div>
+          <p className='text-blue-800 pt-2'>
+            Loading... It takes a few seconds
+          </p>
         </div>
       ) : (
         <header className='header'>

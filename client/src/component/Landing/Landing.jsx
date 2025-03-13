@@ -109,7 +109,7 @@ const Landing = () => {
           ))
         ) : (
           <div className='text-center p-3'>
-            <p className=' border-2 w-50 py-5 m-auto border-blue-800 rounded text-xl'>
+            <p className=' w-50 py-5 m-auto rounded text-xl'>
               No hotels found. Please search hotels!
             </p>
           </div>
