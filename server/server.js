@@ -20,14 +20,18 @@ app.use(
       'http://localhost:5173',
       'https://hotel-website-1-r5kh.onrender.com',
       'https://swejencom.netlify.app',
-      'https://localhost:3002',
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
-
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
 app.use(
   '/images',
   express.static(path.join(__dirname, '../client/public/hotel-images-folder'))
