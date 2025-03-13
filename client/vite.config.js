@@ -9,6 +9,7 @@ export default defineConfig({
       '/api': {
         target: 'https://hotel-website-1-r5kh.onrender.com',
         changeOrigin: true,
+        secure: false,
       },
     },
   },
