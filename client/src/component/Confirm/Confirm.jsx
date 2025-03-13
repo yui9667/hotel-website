@@ -65,19 +65,19 @@ const Confirm = () => {
     }
   };
 
-  const checkboxInfo = (e) => {
-    const checked = e.target.checked;
-    if (checked) {
-      setFirstName(user.firstName);
-      setLastName(user.lastName);
-      setEmail(user.email);
-    } else {
-      setFirstName('');
-      setLastName('');
-      setEmail('');
-    }
-    console.log(user);
-  };
+  // const checkboxInfo = (e) => {
+  //   const checked = e.target.checked;
+  //   if (checked) {
+  //     setFirstName(user.firstName);
+  //     setLastName(user.lastName);
+  //     setEmail(user.email);
+  //   } else {
+  //     setFirstName('');
+  //     setLastName('');
+  //     setEmail('');
+  //   }
+  //   console.log(user);
+  // };
 
   if (!selectedHotel) {
     return <p>No room selected</p>;
@@ -195,10 +195,10 @@ const Confirm = () => {
               placeholder='Phone number(optional)'
             />
 
-            <label className='text-sm flex gap-2'>
+            {/* <label className='text-sm flex gap-2'>
               <input type='checkbox' value={user} onChange={checkboxInfo} />
               Same information as a user
-            </label>
+            </label> */}
 
             <button
               onClick={handleSubmit}
