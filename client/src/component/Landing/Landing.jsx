@@ -16,7 +16,7 @@ const Landing = () => {
   //*this is for showing data from server side
   useEffect(() => {
     const fetchData = async () => {
-      const url = 'https://hotel-website-1-r5kh.onrender.com/api/hotel';
+      const url = 'https://hotel-website-1-r5kh.onrender.com/api/hotels';
 
       try {
         const response = await fetch(url);
