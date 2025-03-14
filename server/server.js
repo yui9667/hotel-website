@@ -59,7 +59,6 @@ app.post('/create-checkout-session', async (req, res) => {
   try {
     const { hotelData, selectedRoom } = req.body;
 
-    console.log('selectedRoom', selectedRoom);
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [
