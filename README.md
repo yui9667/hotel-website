@@ -1,7 +1,7 @@
 # hotel-website 🏨
 ![Screenshot 2025-04-06 at 20 42 44](https://github.com/user-attachments/assets/2d1f5dcd-51df-4fb7-9d46-8f1ba5e8e9b1)
 
-Users can choose a hotel from Malmö, Stockholm, and Hensinborg. Select the check-in date, the check-out date, and the number of people looking for a hotel in the city. After selecting the hotel and the room, you can experience paying with Stripe.
+Users can choose a hotel from Malmö, Stockholm, and Helsingborg. Users can select the check-in date, the check-out date, and the number of people looking to stay at a hotel in the city. After selecting the hotel and the room, they can try paying with Stripe.
 
 ## Language 📖
 ・React
